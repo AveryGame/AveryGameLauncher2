@@ -19,7 +19,6 @@ using DiscordRPC;
 using DiscordRPC.Logging;
 using Windows.ApplicationModel.DataTransfer;
 using DocumentFormat.OpenXml.Spreadsheet;
-using static AgsLauncherV2.HomePage;
 
 namespace AgsLauncherV2
 {
@@ -87,12 +86,11 @@ namespace AgsLauncherV2
                         WelcomeRPCLabel.Content = "Welcome to the AGS Launcher!";
                     }
                 }
-
                 if (client.CurrentUser.Username == "12᲼")
                 {
                     WelcomeRPCLabel.Content = "Hi, kianna!";
                 }
-                if (client.CurrentUser.Username == "artemis_terrain")
+                if (client.CurrentUser.Username == "AveryMadness")
                 {
                     WelcomeRPCLabel.Content = "Hi, avery!";
                 }
@@ -104,17 +102,37 @@ namespace AgsLauncherV2
             catch
             {
                 WelcomeRPCLabel.Content = "Welcome to the AGS Launcher!";
+            }  
+            try
+            {
+                pfp.Source = new BitmapImage(new Uri(client.CurrentUser.GetAvatarURL(User.AvatarFormat.PNG)));
             }
-            pfp.Source = new BitmapImage(new Uri(client.CurrentUser.GetAvatarURL(User.AvatarFormat.PNG)));
+            catch
+            {
+                pfp.Source = new BitmapImage(new Uri("https://cdn.discordapp.com/icons/907015974669131786/7db27e5f7ea4bd86cb35847c469b70e9.webp?size=96"));
+            }
         }
         private void Home(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("home button clicked");
-            
+            HomeButton.IsEnabled = false;
+            testbutton.IsEnabled = true;
+            BugsButton.IsEnabled = true;
+            ChangelogButton.IsEnabled = true;
+            testbutton.Opacity = 1;
+            AGSLogo.Opacity = 0;
+            ChangelogBugsTitle.Text = "Home";
+            VerSTR.Opacity = 0;
         }
         private void Changelog(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("changelog button clicked");
+            ChangelogButton.IsEnabled = false;
+            HomeButton.IsEnabled = true;
+            testbutton.IsEnabled = false;
+            BugsButton.IsEnabled = true;
+            testbutton.Opacity = 0;
+            AGSLogo.Opacity = 0;
+            ChangelogBugsTitle.Text = "Changelog";
+            VerSTR.Opacity = 1;
         }
         private void DragBar(object sender, MouseButtonEventArgs e)
         {
@@ -122,7 +140,14 @@ namespace AgsLauncherV2
         }
         private void Bugs(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("bugs button clicked");
+            BugsButton.IsEnabled = false;
+            HomeButton.IsEnabled = true;
+            ChangelogButton.IsEnabled = true;
+            testbutton.IsEnabled = false;
+            testbutton.Opacity = 0;
+            AGSLogo.Opacity = 0;
+            ChangelogBugsTitle.Text = "Bugs";
+            VerSTR.Opacity = 0;
         }
         private void RpcNameCopy(object sender, RoutedEventArgs e)
         {
@@ -135,6 +160,10 @@ namespace AgsLauncherV2
         private void Close(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+        private void addPath(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("path button clicked");
         }
     }
 }

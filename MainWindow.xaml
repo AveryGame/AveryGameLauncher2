@@ -13,7 +13,7 @@
         </Border>
         <Border BorderBrush="#FF121212" BorderThickness="1000" Height="30" VerticalAlignment="Bottom">
         </Border>
-        <Button Content="Home" HorizontalAlignment="Left" Margin="6,50,0,0" VerticalAlignment="Top" Width="132" BorderBrush="{x:Null}" Foreground="White" Background="#FF24252B" Click="Home" FontFamily="Segoe UI Variable Text Light">
+        <Button Name="HomeButton" Content="Home" HorizontalAlignment="Left" Margin="6,50,0,0" VerticalAlignment="Top" Width="132" BorderBrush="{x:Null}" Foreground="White" Background="#FF24252B" Click="Home" FontFamily="Segoe UI Variable Text Light">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="15"/>
@@ -60,7 +60,7 @@
         </Button>
         <Border BorderBrush="#FF121212" BorderThickness="100" HorizontalAlignment="Center" Height="16" VerticalAlignment="Top" Width="800" MouseDown="DragBar"/>
         <Label Content="Avery Game" Foreground="White" FontFamily="Corbel Light" FontSize="20" Margin="18,10,0,0" Height="35" VerticalAlignment="Top" HorizontalAlignment="Left" Width="108"/>
-        <Label FontSize="172" FontFamily="Corbel Light" Height="329" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="491" Content="AGS">
+        <Label Name="AGSLogo" FontSize="172" FontFamily="Corbel Light" Height="329" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="491" Content="AGS" Opacity="0">
             <Label.Foreground>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FF313131" Offset="0.667"/>
@@ -69,7 +69,7 @@
             </Label.Foreground>
         </Label>
         <TextBlock HorizontalAlignment="Center" Height="0" TextWrapping="Wrap" Text="Test" VerticalAlignment="Center" Width="0" Foreground="White"/>
-        <Button Content="Changelog" HorizontalAlignment="Left" Margin="6,80,0,0" VerticalAlignment="Top" Width="132" BorderBrush="{x:Null}" Foreground="White" Background="#FF24252B" Click="Changelog" FontFamily="Segoe UI Variable Text Light">
+        <Button Name="ChangelogButton" Content="Changelog" HorizontalAlignment="Left" Margin="6,80,0,0" VerticalAlignment="Top" Width="132" BorderBrush="{x:Null}" Foreground="White" Background="#FF24252B" Click="Changelog" FontFamily="Segoe UI Variable Text Light">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="15"/>
@@ -106,7 +106,7 @@
             </Button.Style>
         </Button>
         <Image HorizontalAlignment="Left" Height="20" Margin="11,50,0,0" VerticalAlignment="Top" Width="21" Source="/outline_home_white_24dp.png"/>
-        <Button Content="Bugs" HorizontalAlignment="Left" Margin="6,110,0,0" VerticalAlignment="Top" Width="132" BorderBrush="{x:Null}" Foreground="White" Background="#FF24252B" Click="Bugs" FontFamily="Segoe UI Variable Text Light">
+        <Button Name="BugsButton" Content="Bugs" HorizontalAlignment="Left" Margin="6,110,0,0" VerticalAlignment="Top" Width="132" BorderBrush="{x:Null}" Foreground="White" Background="#FF24252B" Click="Bugs" FontFamily="Segoe UI Variable Text Light">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="15"/>
@@ -144,8 +144,8 @@
         </Button>
         <Image HorizontalAlignment="Left" Height="20" Margin="11,80,0,0" VerticalAlignment="Top" Width="21" Source="/outline_settings_ethernet_white_24dp.png"/>
         <Image HorizontalAlignment="Left" Height="22" Margin="11,110,0,0" VerticalAlignment="Top" Width="20" Source="/outline_bug_report_white_24dp.png"/>
-        <TextBlock Text="Made by 1 24 9 with help from artemis_terrain and Crunnie." HorizontalAlignment="Left" Margin="6,394,0,0" VerticalAlignment="Top" Width="130" Height="42" FontSize="10" FontFamily="Segoe UI Variable Text Light" Foreground="#FF888888"/>
-        <TextBlock Text="artemis_terrain and Crunnie." HorizontalAlignment="Left" Margin="10,405,0,0" VerticalAlignment="Top" Width="130" Height="42" FontSize="10" FontFamily="Segoe UI Variable Text Light" Foreground="#FF888888"/>
+        <TextBlock Text="Made by 1 24 9 with help from AveryMadness and Crunnie." HorizontalAlignment="Left" Margin="6,394,0,0" VerticalAlignment="Top" Width="130" Height="42" FontSize="10" FontFamily="Segoe UI Variable Text Light" Foreground="#FF888888"/>
+        <TextBlock Text="AveryMadness, Sizzy, and Crunnie." HorizontalAlignment="Left" Margin="5,405,0,0" VerticalAlignment="Top" Width="144" Height="42" FontSize="9" FontFamily="Segoe UI Variable Text Light" Foreground="#FF888888"/>
         <Label HorizontalAlignment="Left" Margin="221,391,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Segoe UI Variable Text Light"/>
         <Label Content="Loading..." HorizontalAlignment="Left" Margin="33,422,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" Width="800" Height="28" FontFamily="Segoe UI Variable Text Light" Name="WelcomeRPCLabel"/>
         <Button Content="attempt name copy from rpc" HorizontalAlignment="Left" Margin="338,447,0,0" VerticalAlignment="Top" Click="RpcNameCopy" Height="3" Width="3" Background="#FF121212" Foreground="{x:Null}" BorderBrush="#FF191919">
@@ -260,5 +260,81 @@
                 </Style>
             </Button.Style>
         </Button>
+        <Button Name="newpath" Click="addPath" Content="Add Avery Game manually" HorizontalAlignment="Left" Height="29" Margin="340,367,0,0" VerticalAlignment="Top" Width="140" Opacity="1" FontFamily="Corbel Light" Background="#FF211F1F" BorderBrush="Gainsboro" Foreground="White">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Width="140" Height="29" CornerRadius="2" Background="{TemplateBinding Background}">
+                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="#FF8EBA8A"/>
+                    <Setter Property="Cursor" Value="Hand"/>
+                    <Style.Triggers>
+                        <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="00:00:00.15" From="#FF211F1F" To="#FF313461"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="00:00:00.15" From="#FF313461" To="#FF211F1F"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button Name="testbutton" Content="Launch Avery Game" HorizontalAlignment="Left" Height="29" Margin="485,367,0,0" VerticalAlignment="Top" Width="140" Opacity="1" FontFamily="Corbel Light" Background="#FF211F1F" BorderBrush="Gainsboro" Foreground="White">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Width="140" Height="29" CornerRadius="2" Background="{TemplateBinding Background}">
+                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="#FF8EBA8A"/>
+                    <Setter Property="Cursor" Value="Hand"/>
+                    <Style.Triggers>
+                        <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="00:00:00.15" From="#FF211F1F" To="#FF313461"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="00:00:00.15" From="#FF313461" To="#FF211F1F"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <TextBlock Name="ChangelogBugsTitle" Text="Home" HorizontalAlignment="Left" Margin="400,27,0,0" VerticalAlignment="Top" Width="181" TextAlignment="Center" Foreground="White" FontFamily="Segoe UI Variable Text Light" Height="73" FontSize="36"/>
+        <TextBlock Name="VerSTR" HorizontalAlignment="Left" Margin="400,75,0,0" TextWrapping="Wrap" Text="Version 4.4" VerticalAlignment="Top" Width="181" TextAlignment="Center" Foreground="White" FontFamily="Segoe UI Variable Text Light" FontSize="14" Opacity="0"/>
+        <TextBlock HorizontalAlignment="Left" Margin="278,82,0,0" TextWrapping="Wrap" Text="Welcome to the AGS Launcher!" VerticalAlignment="Top" Height="48" Width="426" Foreground="White" FontFamily="Segoe UI Variable Text Light" FontSize="32"/>
+        <TextBlock HorizontalAlignment="Left" Margin="278,130,0,0" TextWrapping="Wrap" Text="Here is where you can read the latest patch notes, look at current bugs, download Avery Game, and launch it." VerticalAlignment="Top" Height="101" Width="426" Foreground="White" TextAlignment="Center" FontFamily="Segoe UI Variable Text Light" FontSize="24"/>
     </Grid>
 </Window>

@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" ResizeMode="NoResize" WindowStyle="None">
     <Grid Background="#FF24252B">
-        <Frame Name="MainPage"/>
+        <Frame Name="MainPage" Foreground="White"/>
         <Border BorderBrush="#FF191919" BorderThickness="1000" Margin="0,16,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="144" >
             <Label Content="Label" HorizontalAlignment="Center" Height="0" VerticalAlignment="Center" Width="0"/>
         </Border>
@@ -144,8 +144,8 @@
         </Button>
         <Image HorizontalAlignment="Left" Height="20" Margin="11,80,0,0" VerticalAlignment="Top" Width="21" Source="/outline_settings_ethernet_white_24dp.png"/>
         <Image HorizontalAlignment="Left" Height="22" Margin="11,110,0,0" VerticalAlignment="Top" Width="20" Source="/outline_bug_report_white_24dp.png"/>
-        <TextBlock Text="Made by 1 24 9 with help from AveryMadness and Crunnie." HorizontalAlignment="Left" Margin="6,394,0,0" VerticalAlignment="Top" Width="130" Height="42" FontSize="10" FontFamily="Segoe UI Variable Text Light" Foreground="#FF888888"/>
-        <TextBlock Text="AveryMadness, Sizzy, and Crunnie." HorizontalAlignment="Left" Margin="5,405,0,0" VerticalAlignment="Top" Width="144" Height="42" FontSize="9" FontFamily="Segoe UI Variable Text Light" Foreground="#FF888888"/>
+        <TextBlock Text="Made by kianna with help from " HorizontalAlignment="Left" Margin="2,396,0,0" VerticalAlignment="Top" Width="136" Height="42" FontSize="8" FontFamily="Segoe UI Variable Text Light" Foreground="#FF888888" TextAlignment="Center"/>
+        <TextBlock Text="AveryMadness, Sizzy, Ozne, and Crunnie." HorizontalAlignment="Left" Margin="2,406,0,0" VerticalAlignment="Top" Width="142" Height="42" FontSize="8" FontFamily="Segoe UI Variable Text Light" Foreground="#FF888888" TextAlignment="Center"/>
         <Label HorizontalAlignment="Left" Margin="221,391,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Segoe UI Variable Text Light"/>
         <Label Content="Loading..." HorizontalAlignment="Left" Margin="33,422,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" Width="800" Height="28" FontFamily="Segoe UI Variable Text Light" Name="WelcomeRPCLabel"/>
         <Button Content="attempt name copy from rpc" HorizontalAlignment="Left" Margin="338,447,0,0" VerticalAlignment="Top" Click="RpcNameCopy" Height="3" Width="3" Background="#FF121212" Foreground="{x:Null}" BorderBrush="#FF191919">
@@ -260,7 +260,7 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Button Name="newpath" Click="addPath" Content="Add Avery Game manually" HorizontalAlignment="Left" Height="29" Margin="340,367,0,0" VerticalAlignment="Top" Width="140" Opacity="1" FontFamily="Corbel Light" Background="#FF211F1F" BorderBrush="Gainsboro" Foreground="White">
+        <Button Name="newpath" Click="addPath" Content="Add Avery Game manually" HorizontalAlignment="Left" Height="29" Margin="340,367,0,0" VerticalAlignment="Top" Width="140" Opacity="1" FontFamily="Corbel Light" Background="#FF211F1F" BorderBrush="Gainsboro" Foreground="White" Visibility="Hidden">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="15"/>
@@ -296,7 +296,7 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Button Name="testbutton" Content="Launch Avery Game" HorizontalAlignment="Left" Height="29" Margin="485,367,0,0" VerticalAlignment="Top" Width="140" Opacity="1" FontFamily="Corbel Light" Background="#FF211F1F" BorderBrush="Gainsboro" Foreground="White">
+        <Button Name="LaunchButton" Content="Launch Avery Game" HorizontalAlignment="Left" Height="29" Margin="485,367,0,0" VerticalAlignment="Top" Width="140" Opacity="1" FontFamily="Corbel Light" Background="#FF211F1F" BorderBrush="Gainsboro" Foreground="White" Click="testbutton_Click" Visibility="Hidden">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="15"/>
@@ -332,9 +332,20 @@
                 </Style>
             </Button.Style>
         </Button>
-        <TextBlock Name="ChangelogBugsTitle" Text="Home" HorizontalAlignment="Left" Margin="400,27,0,0" VerticalAlignment="Top" Width="181" TextAlignment="Center" Foreground="White" FontFamily="Segoe UI Variable Text Light" Height="73" FontSize="36"/>
-        <TextBlock Name="VerSTR" HorizontalAlignment="Left" Margin="400,75,0,0" TextWrapping="Wrap" Text="Version 4.4" VerticalAlignment="Top" Width="181" TextAlignment="Center" Foreground="White" FontFamily="Segoe UI Variable Text Light" FontSize="14" Opacity="0"/>
-        <TextBlock HorizontalAlignment="Left" Margin="278,82,0,0" TextWrapping="Wrap" Text="Welcome to the AGS Launcher!" VerticalAlignment="Top" Height="48" Width="426" Foreground="White" FontFamily="Segoe UI Variable Text Light" FontSize="32"/>
-        <TextBlock HorizontalAlignment="Left" Margin="278,130,0,0" TextWrapping="Wrap" Text="Here is where you can read the latest patch notes, look at current bugs, download Avery Game, and launch it." VerticalAlignment="Top" Height="101" Width="426" Foreground="White" TextAlignment="Center" FontFamily="Segoe UI Variable Text Light" FontSize="24"/>
+        <TextBlock Name="ChangelogBugsTitle" Text="Changelog" HorizontalAlignment="Left" Margin="386,26,0,0" VerticalAlignment="Top" Width="180" TextAlignment="Center" Foreground="White" FontFamily="Segoe UI Variable Text Light" Height="73" FontSize="36"/>
+        <TextBlock Name="VerSTR" HorizontalAlignment="Left" Margin="386,71,0,0" TextWrapping="Wrap" Text="Version 4.2" VerticalAlignment="Top" Width="181" TextAlignment="Center" Foreground="White" FontFamily="Segoe UI Variable Text Light" FontSize="14" Opacity="1"/>
+        <TextBlock Name="WelcomeText" HorizontalAlignment="Left" Margin="278,82,0,0" TextWrapping="Wrap" Text="Welcome to the AGS Launcher!" VerticalAlignment="Top" Height="48" Width="426" Foreground="White" FontFamily="Segoe UI Variable Text Light" FontSize="32" Opacity="0"/>
+        <TextBlock Name="LauncherInfoText" HorizontalAlignment="Left" Margin="278,130,0,0" TextWrapping="Wrap" Text="Here is where you can read the latest patch notes, look at current bugs, download Avery Game, and launch it." VerticalAlignment="Top" Height="101" Width="426" Foreground="White" TextAlignment="Center" FontFamily="Segoe UI Variable Text Light" FontSize="24" Opacity="0"/>
+        <ProgressBar Name="dprog" HorizontalAlignment="Left" Height="10" Margin="171,405,0,0" VerticalAlignment="Top" Width="610" IsIndeterminate="True" RenderTransformOrigin="0.514,0.533" Opacity="0"/>
+        <TextBlock x:Name="ChangelogLine1" HorizontalAlignment="Left" Margin="143,130,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontFamily="Segoe UI Variable Text Light" Foreground="White" Width="657" TextAlignment="Center" Height="30" FontSize="18" Opacity="0"/>
+        <TextBlock x:Name="ChangelogLine2" HorizontalAlignment="Left" Margin="143,170,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontFamily="Segoe UI Variable Text Light" Foreground="White" Width="657" TextAlignment="Center" Height="30" FontSize="18" Opacity="0"/>
+        <TextBlock x:Name="ChangelogLine3" HorizontalAlignment="Left" Margin="143,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Center" FontFamily="Segoe UI Variable Text Light" Foreground="White" Width="657" TextAlignment="Center" Height="30" FontSize="18" Opacity="0"/>
+        <TextBlock x:Name="ChangelogLine4" HorizontalAlignment="Left" Margin="143,253,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontFamily="Segoe UI Variable Text Light" Foreground="White" Width="657" TextAlignment="Center" Height="30" FontSize="18" Opacity="0"/>
+        <TextBlock x:Name="ChangelogLine5" HorizontalAlignment="Left" Margin="143,294,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontFamily="Segoe UI Variable Text Light" Foreground="White" Width="657" TextAlignment="Center" Height="30" FontSize="18" Opacity="0"/>
+        <TextBlock x:Name="BugsLine1" HorizontalAlignment="Left" Margin="143,130,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontFamily="Segoe UI Variable Text Light" Foreground="White" Width="657" TextAlignment="Center" Height="30" FontSize="18" Opacity="0"/>
+        <TextBlock x:Name="BugsLine2" HorizontalAlignment="Left" Margin="143,170,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontFamily="Segoe UI Variable Text Light" Foreground="White" Width="657" TextAlignment="Center" Height="30" FontSize="18" Opacity="0"/>
+        <TextBlock x:Name="BugsLine3" HorizontalAlignment="Left" Margin="143,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Center" FontFamily="Segoe UI Variable Text Light" Foreground="White" Width="657" TextAlignment="Center" Height="30" FontSize="18" Opacity="0"/>
+        <TextBlock x:Name="BugsLine4" HorizontalAlignment="Left" Margin="143,253,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontFamily="Segoe UI Variable Text Light" Foreground="White" Width="657" TextAlignment="Center" Height="30" FontSize="18" Opacity="0"/>
+        <TextBlock x:Name="BugsLine5" HorizontalAlignment="Left" Margin="143,294,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontFamily="Segoe UI Variable Text Light" Foreground="White" Width="657" TextAlignment="Center" Height="30" FontSize="18" Opacity="0"/>
     </Grid>
 </Window>

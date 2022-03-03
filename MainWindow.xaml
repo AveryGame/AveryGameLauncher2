@@ -314,5 +314,6 @@
         <TextBlock x:Name="BugsLine3" HorizontalAlignment="Left" Margin="143,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Center" FontFamily="Segoe UI Variable Text Light" Foreground="White" Width="657" TextAlignment="Center" Height="30" FontSize="18" Opacity="0" Grid.ColumnSpan="2"/>
         <TextBlock x:Name="BugsLine4" HorizontalAlignment="Left" Margin="143,253,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontFamily="Segoe UI Variable Text Light" Foreground="White" Width="657" TextAlignment="Center" Height="30" FontSize="18" Opacity="0" Grid.ColumnSpan="2"/>
         <TextBlock x:Name="BugsLine5" HorizontalAlignment="Left" Margin="143,294,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontFamily="Segoe UI Variable Text Light" Foreground="White" Width="657" TextAlignment="Center" Height="30" FontSize="18" Opacity="0" Grid.ColumnSpan="2"/>
+        <TextBlock x:Name="ReleaseString" Text="ags+release+2.0.2+dev" HorizontalAlignment="Left" Margin="183,426,0,0" VerticalAlignment="Top" Width="138" Height="20" FontSize="14" FontFamily="Segoe UI Variable Text Light" Foreground="White" TextAlignment="Center" Grid.Column="1" Opacity="0.02"/>
     </Grid>
 </Window>

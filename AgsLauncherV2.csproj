@@ -24,6 +24,7 @@
     <None Remove="outline_home_white_24dp.png" />
     <None Remove="outline_settings_ethernet_white_24dp.png" />
     <None Remove="R.png" />
+    <None Remove="st.png" />
     <None Remove="white-house-icon-31.png" />
   </ItemGroup>
 
@@ -45,6 +46,7 @@
     <Resource Include="outline_bug_report_white_24dp.png" />
     <Resource Include="outline_home_white_24dp.png" />
     <Resource Include="outline_settings_ethernet_white_24dp.png" />
+    <Resource Include="st.png" />
   </ItemGroup>
 
   <ItemGroup>

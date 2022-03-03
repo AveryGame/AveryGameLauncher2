@@ -21,40 +21,23 @@ namespace AgsLauncherV2
     /// 
     public partial class MainWindow : Window
     {
-		public DiscordRpcClient client;
+        public DiscordRpcClient client;
         public MainWindow()
         {
-            
             InitializeComponent();
             try
             {
-                NavigationService ns = NavigationService.GetNavigationService(this);
-                /*
-                Create a Discord client
-                NOTE: If you are using Unity3D, you must use the full constructor and define
-                 the pipe connection.
-                */
                 client = new DiscordRpcClient("939285353355935774");
-
-                //Set the logger
                 client.Logger = new ConsoleLogger() { Level = LogLevel.Warning };
-
-                //Subscribe to events
                 client.OnReady += (sender, e) =>
                 {
                     Console.WriteLine("Received Ready from user {0}", e.User.Username);
                 };
-
                 client.OnPresenceUpdate += (sender, e) =>
                 {
                     Console.WriteLine("Received Update! {0}", e.Presence);
                 };
-
-                //Connect to the RPC
                 client.Initialize();
-
-                //Set the rich presence
-                //Call this as many times as you want and anywhere in your code.
                 client.SetPresence(new RichPresence()
                 {
                     Details = "V2 beta launcher",
@@ -62,7 +45,7 @@ namespace AgsLauncherV2
                     Assets = new Assets()
                     {
                         LargeImageKey = "agsgrey",
-                        LargeImageText = "Release 2.0",
+                        LargeImageText = "ags+release+2.1+dev",
                         SmallImageKey = ""
                     }
                 });
@@ -83,17 +66,24 @@ namespace AgsLauncherV2
                             WelcomeRPCLabel.Content = "Welcome to the AGS Launcher!";
                         }
                     }
+                    if (client.CurrentUser.Username != json.KiannaUN || client.CurrentUser.Username != json.AveryUN || client.CurrentUser.Username != json.CrunnieUN)
+                    {
+                        ReleaseString.Text = json.LauncherVer;
+                    }
                     if (client.CurrentUser.Username == json.KiannaUN)
                     {
                         WelcomeRPCLabel.Content = "kys";
+                        ReleaseString.Text = json.DevLauncherVer;
                     }
                     if (client.CurrentUser.Username == json.AveryUN)
                     {
                         WelcomeRPCLabel.Content = "Hi, avery!";
+                        ReleaseString.Text = json.DevLauncherVer;
                     }
                     if (client.CurrentUser.Username == json.CrunnieUN)
                     {
                         WelcomeRPCLabel.Content = "FUCK U!";
+                        ReleaseString.Text = json.DevLauncherVer;
                     }
                 }
                 catch
@@ -132,7 +122,7 @@ namespace AgsLauncherV2
         }
         public class LauncherCloud
         {
-            public string Version {  get; set; }
+            public string Version { get; set; }
             public string VersionInt { get; set; }
             public string ChangelogLine1 { get; set; }
             public string ChangelogLine2 { get; set; }
@@ -148,6 +138,8 @@ namespace AgsLauncherV2
             public string AveryUN { get; set; }
             public string CrunnieUN { get; set; }
             public string VersionFolderInt { get; set; }
+            public string LauncherVer { get; set; }
+            public string DevLauncherVer { get; set; }
         }
         private void Home(object sender, RoutedEventArgs e)
         {
@@ -159,6 +151,7 @@ namespace AgsLauncherV2
                 ChangelogButton.IsEnabled = true;
                 LaunchButton.Opacity = 1;
                 AGSLogo.Opacity = 0;
+                ChangelogBugsTitle.Opacity = 1;
                 ChangelogBugsTitle.Text = "Home";
                 VerSTR.Opacity = 0;
                 WelcomeText.Opacity = 1;
@@ -191,6 +184,7 @@ namespace AgsLauncherV2
                 BugsButton.IsEnabled = true;
                 LaunchButton.Opacity = 0;
                 AGSLogo.Opacity = 0;
+                ChangelogBugsTitle.Opacity = 1;
                 ChangelogBugsTitle.Text = "Changelog";
                 VerSTR.Opacity = 1;
                 WelcomeText.Opacity = 0;
@@ -261,10 +255,10 @@ namespace AgsLauncherV2
         }
         private void Close(object sender, RoutedEventArgs e)
         {
-            if(dprog.Opacity == 1)
+            if (dprog.Opacity == 1)
             {
                 MessageBoxResult result = MessageBox.Show("AveryGame is not done downloading, and exiting will corrupt the download. Are you sure?", "Warning!", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-                if(result == MessageBoxResult.Yes)
+                if (result == MessageBoxResult.Yes)
                 {
                     this.Close();
                 }
@@ -287,7 +281,7 @@ namespace AgsLauncherV2
                 WebClient webclient = new WebClient();
                 string DATA = webclient.DownloadString("https://raw.githubusercontent.com/imstillamazedbyit/1q29dks43895r794/main/launcherinfo.json");
                 LauncherCloud json = JsonConvert.DeserializeObject<LauncherCloud>(DATA);
-                if (!File.Exists(System.IO.Path.Combine(json.VersionFolderInt +  "/4.2/WindowsNoEditor/AveryGame.exe")))
+                if (!File.Exists(System.IO.Path.Combine(json.VersionFolderInt + "/4.2/WindowsNoEditor/AveryGame.exe")))
                 {
                     MessageBoxResult result;
                     result = MessageBox.Show("Avery Game was not found! Would you like to install?", "Error", MessageBoxButton.YesNo, MessageBoxImage.Error);
@@ -339,17 +333,9 @@ namespace AgsLauncherV2
                         }
                         if (updateAvail == MessageBoxResult.No)
                         {
-                            try
-                            {
-                                Process.Start(System.IO.Path.Combine(json.VersionInt + "/WindowsNoEditor/AveryGame.exe"));
-                            }
-                            catch
-                            {
-                                Process.Start(System.IO.Path.Combine(json.VersionInt + "/4.2/WindowsNoEditor/AveryGame.exe"));
-                            }
+                            Process.Start(System.IO.Path.Combine(json.VersionInt + "/4.2/WindowsNoEditor/AveryGame.exe"));
                         }
                     }
-
                 }
             }
             catch

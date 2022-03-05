@@ -3,7 +3,6 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Diagnostics;
 using DiscordRPC;
 using DiscordRPC.Logging;
@@ -49,10 +48,14 @@ namespace AgsLauncherV2
                         SmallImageKey = ""
                     }
                 });
+                if (!Directory.Exists(filepath + "\\AveryGame Launcher"))
+                {
+                    Directory.CreateDirectory(filepath + "\\AveryGame Launcher");
+                }
                 WebClient webclient = new WebClient();
                 string DATA = webclient.DownloadString("https://raw.githubusercontent.com/imstillamazedbyit/1q29dks43895r794/main/launcherinfo.json");
                 LauncherCloud json = JsonConvert.DeserializeObject<LauncherCloud>(DATA);
-                File.WriteAllText(@"fuck.json", DATA);
+                File.WriteAllText(filepath + "\\AveryGame Launcher\\" + @"fuck.json", DATA);
                 try
                 {
                     Thread.Sleep(2500);
@@ -68,27 +71,32 @@ namespace AgsLauncherV2
                     }
                     if (client.CurrentUser.Username != json.KiannaUN || client.CurrentUser.Username != json.AveryUN || client.CurrentUser.Username != json.CrunnieUN)
                     {
+                        WelcomeRPCLabel.Content = "Welcome to the AGS Launcher!";
                         ReleaseString.Text = json.LauncherVer;
+                        VerSTR.Text = json.Version + " - " + json.LauncherString;
                     }
                     if (client.CurrentUser.Username == json.KiannaUN)
                     {
                         WelcomeRPCLabel.Content = "kys";
                         ReleaseString.Text = json.DevLauncherVer;
+                        VerSTR.Text = json.DevLauncherString;
                     }
                     if (client.CurrentUser.Username == json.AveryUN)
                     {
                         WelcomeRPCLabel.Content = "Hi, avery!";
                         ReleaseString.Text = json.DevLauncherVer;
+                        VerSTR.Text = json.DevLauncherString;
                     }
                     if (client.CurrentUser.Username == json.CrunnieUN)
                     {
                         WelcomeRPCLabel.Content = "FUCK U!";
                         ReleaseString.Text = json.DevLauncherVer;
+                        VerSTR.Text = json.DevLauncherString;
                     }
                 }
                 catch
                 {
-                    WelcomeRPCLabel.Content = "Welcome to the AGS Launcher!";
+
                 }
                 try
                 {
@@ -96,13 +104,14 @@ namespace AgsLauncherV2
                 }
                 catch
                 {
-                    pfp.Source = new BitmapImage(new Uri("https://cdn.discordapp.com/icons/907015974669131786/7db27e5f7ea4bd86cb35847c469b70e9.webp?size=96"));
+                    pfp.Source = new BitmapImage(new Uri("https://cdn.discordapp.com/app-assets/939285353355935774/939285441323077632.png"));
                 }
                 if (File.Exists("1i9qQNqWOlQcdrZ0qD3NU7WzHKW4h54U.zip"))
                 {
                     File.Delete("1i9qQNqWOlQcdrZ0qD3NU7WzHKW4h54U.zip");
                 }
-                VerSTR.Text = json.Version;
+                VerSTR.Text = json.Version + " - " + json.LauncherString;
+                ReleaseString.Text = json.LauncherVer;
                 ChangelogLine1.Text = json.ChangelogLine1;
                 ChangelogLine2.Text = json.ChangelogLine2;
                 ChangelogLine3.Text = json.ChangelogLine3;
@@ -114,12 +123,13 @@ namespace AgsLauncherV2
                 BugsLine4.Text = json.BugLine4;
                 BugsLine5.Text = json.BugLine5;
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("A fatal error occurred while opening the Avery Game launcher. Please make sure you are connected to the internet and try again. If the problem persists, report the issue and when it is occurring in #bug-reports in the Avery Game discord server.", "Fatal error!", MessageBoxButton.OK, MessageBoxImage.Stop);
+                MessageBox.Show("A fatal error occurred while opening the Avery Game launcher. Please make sure you are connected to the internet and try again. If the problem persists, report the issue and when it is occurring in #bug-reports in the Avery Game discord server. :" + ex.Message, "Fatal error!", MessageBoxButton.OK, MessageBoxImage.Stop);
                 this.Close();
             }
         }
+        private static string filepath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
         public class LauncherCloud
         {
             public string Version { get; set; }
@@ -140,6 +150,8 @@ namespace AgsLauncherV2
             public string VersionFolderInt { get; set; }
             public string LauncherVer { get; set; }
             public string DevLauncherVer { get; set; }
+            public string LauncherString { get; set; }
+            public string DevLauncherString { get; set; }
         }
         private void Home(object sender, RoutedEventArgs e)
         {
@@ -153,6 +165,9 @@ namespace AgsLauncherV2
                 AGSLogo.Opacity = 0;
                 ChangelogBugsTitle.Opacity = 1;
                 ChangelogBugsTitle.Text = "Home";
+                BugsButton.Content = "Bugs";
+                HomeButton.Content = "• Home";
+                ChangelogButton.Content = "Changelog";
                 VerSTR.Opacity = 0;
                 WelcomeText.Opacity = 1;
                 LauncherInfoText.Opacity = 1;
@@ -186,6 +201,9 @@ namespace AgsLauncherV2
                 AGSLogo.Opacity = 0;
                 ChangelogBugsTitle.Opacity = 1;
                 ChangelogBugsTitle.Text = "Changelog";
+                BugsButton.Content = "Bugs";
+                HomeButton.Content = "Home";
+                ChangelogButton.Content = "• Changelog";
                 VerSTR.Opacity = 1;
                 WelcomeText.Opacity = 0;
                 LauncherInfoText.Opacity = 0;
@@ -216,7 +234,6 @@ namespace AgsLauncherV2
             try
             {
                 ChangelogBugsTitle.Opacity = 1;
-                ChangelogBugsTitle.Text = "Bugs";
                 BugsButton.IsEnabled = false;
                 HomeButton.IsEnabled = true;
                 ChangelogButton.IsEnabled = true;
@@ -228,6 +245,9 @@ namespace AgsLauncherV2
                 WelcomeText.Opacity = 0;
                 LauncherInfoText.Opacity = 0;
                 LaunchButton.Visibility = Visibility.Hidden;
+                BugsButton.Content = "• Bugs";
+                HomeButton.Content = "Home";
+                ChangelogButton.Content = "Changelog";
                 ChangelogLine1.Opacity = 0;
                 ChangelogLine2.Opacity = 0;
                 ChangelogLine3.Opacity = 0;
@@ -269,7 +289,7 @@ namespace AgsLauncherV2
             }
             else
             {
-                File.Delete(@"fuck.json");
+                File.Delete(filepath + "\\AveryGame Launcher\\" + @"fuck.json");
                 this.Close();
             }
         }
@@ -298,7 +318,7 @@ namespace AgsLauncherV2
                 }
                 else
                 {
-                    string latest = File.ReadAllText(@"gclient.json");
+                    string latest = File.ReadAllText(filepath + "\\AveryGame Launcher\\" + @"gclient.json");
                     if (latest.Contains(json.VersionInt))
                     {
                         try
@@ -355,7 +375,7 @@ namespace AgsLauncherV2
                 File.Delete(gzip);
                 dprog.Opacity = 0;
                 LaunchButton.Content = "Launch Avery Game";
-                File.WriteAllText(@"gclient.json", json.VersionInt);
+                File.WriteAllText(filepath + "\\AveryGame Launcher\\" + @"gclient.json", json.VersionInt);
                 new ToastContentBuilder()
                 .AddArgument("action", "viewConversation")
                 .AddArgument("conversationId", 9813)
@@ -372,8 +392,6 @@ namespace AgsLauncherV2
         {
             try
             {
-
-
                 string gzip = "1i9qQNqWOlQcdrZ0qD3NU7WzHKW4h54U.zip";
                 WebClient webclient = new WebClient();
                 string DATA = webclient.DownloadString("https://raw.githubusercontent.com/imstillamazedbyit/1q29dks43895r794/main/launcherinfo.json");

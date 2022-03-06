@@ -18,11 +18,13 @@
   <ItemGroup>
     <None Remove="333-3334785_png-transparent-info-icon-white-clipart.png" />
     <None Remove="ags.png" />
+    <None Remove="agsgrey-1x.png" />
     <None Remove="houseicon.png" />
     <None Remove="nuts.png" />
     <None Remove="outline_bug_report_white_24dp.png" />
     <None Remove="outline_home_white_24dp.png" />
     <None Remove="outline_settings_ethernet_white_24dp.png" />
+    <None Remove="outline_settings_white_24dp.png" />
     <None Remove="R.png" />
     <None Remove="st.png" />
     <None Remove="white-house-icon-31.png" />
@@ -43,9 +45,11 @@
 
   <ItemGroup>
     <Resource Include="ags.png" />
+    <Resource Include="agsgrey-1x.png" />
     <Resource Include="outline_bug_report_white_24dp.png" />
     <Resource Include="outline_home_white_24dp.png" />
     <Resource Include="outline_settings_ethernet_white_24dp.png" />
+    <Resource Include="outline_settings_white_24dp.png" />
     <Resource Include="st.png" />
   </ItemGroup>
 

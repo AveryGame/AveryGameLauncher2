@@ -706,11 +706,12 @@ namespace AgsLauncherV2
                 LaunchButton.Content = "Launch Avery Game";
                 File.WriteAllText(filepath + "\\AveryGame Launcher\\" + @"gclient.json", json.VersionInt);
                 new ToastContentBuilder()
-                .AddArgument("action", "viewConversation")
-                .AddArgument("conversationId", 9813)
-                .AddText("Avery Game downloading status")
-                .AddText("Avery Game has finished downloading!")
-                .Show();
+                    .AddArgument("action", "viewConversation")
+                    .AddArgument("conversationId", 9813)
+                    .AddText("Avery Game downloading status")
+                    .AddText("Avery Game has finished downloading!")
+                    .Show();
+                DownloadProgPercent.Opacity = 0;
             }
             catch (Exception ex)
             {
@@ -734,12 +735,19 @@ namespace AgsLauncherV2
                     .Show();
                 dprog.Opacity = 1;
                 webclient.DownloadFileCompleted += new System.ComponentModel.AsyncCompletedEventHandler(DownloadGameCompletedCallback);
+                webclient.DownloadProgressChanged += new DownloadProgressChangedEventHandler(webclientDownloadProgressChanged);
+                DownloadProgPercent.Opacity = 1;
                 webclient.DownloadFileAsync(new Uri("https://www.googleapis.com/drive/v3/files/1i9qQNqWOlQcdrZ0qD3NU7WzHKW4h54U_?alt=media&key=AIzaSyD3hsuSxEFnxZkgadbUSPt_iyx8qJ4lwWQ"), gzip);
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error finishing download: {ex}");
             }
+        }
+        public void webclientDownloadProgressChanged(Object sender, DownloadProgressChangedEventArgs e)
+        {
+            DownloadProgPercent.Text = e.ProgressPercentage.ToString() + "%";
+            dprog.Value = e.ProgressPercentage;
         }
     }
 }

@@ -5,6 +5,10 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
     <ApplicationIcon>resources\launcher.ico</ApplicationIcon>
+    <Authors>Kianna</Authors>
+    <Version>2.5.0</Version>
+    <Product>AveryGameLauncher2</Product>
+    <Description>Launcher for Avery Game by AveryMadness</Description>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

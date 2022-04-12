@@ -11,7 +11,7 @@
             <ColumnDefinition Width="19*"/>
             <ColumnDefinition Width="13*"/>
         </Grid.ColumnDefinitions>
-        <Border BorderBrush="#FF191919" BorderThickness="1000" Margin="0,16,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="44" >
+        <Border Name="Collapsed" BorderBrush="#FF191919" BorderThickness="1000" Margin="0,16,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="44" >
             <Label Content="Label" HorizontalAlignment="Center" Height="0" VerticalAlignment="Center" Width="0"/>
         </Border>
         <Border Name="Uncollapsed" BorderBrush="#FF191919" BorderThickness="1000" Margin="0,16,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="144" Opacity="1">
@@ -19,16 +19,16 @@
         </Border>
         <Border BorderBrush="#FF121212" BorderThickness="1000" Height="30" VerticalAlignment="Bottom" Grid.ColumnSpan="2">
         </Border>
-        <TextBlock x:Name="ChangelogLine1" HorizontalAlignment="Left" Margin="44,105,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontFamily="Segoe UI Variable Text Light" Foreground="White" Width="756" TextAlignment="Center" Height="30" FontSize="18" Opacity="0" Grid.ColumnSpan="2"/>
-        <TextBlock x:Name="ChangelogLine2" HorizontalAlignment="Left" Margin="44,141,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontFamily="Segoe UI Variable Text Light" Foreground="White" Width="756" TextAlignment="Center" Height="30" FontSize="18" Opacity="0" Grid.ColumnSpan="2"/>
-        <TextBlock x:Name="ChangelogLine3" HorizontalAlignment="Left" Margin="44,176,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontFamily="Segoe UI Variable Text Light" Foreground="White" Width="756" TextAlignment="Center" Height="30" FontSize="18" Opacity="0" Grid.ColumnSpan="2"/>
-        <TextBlock x:Name="ChangelogLine4" HorizontalAlignment="Left" Margin="44,206,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontFamily="Segoe UI Variable Text Light" Foreground="White" Width="756" TextAlignment="Center" Height="30" FontSize="18" Opacity="0" Grid.ColumnSpan="2"/>
-        <TextBlock x:Name="ChangelogLine5" HorizontalAlignment="Left" Margin="44,242,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontFamily="Segoe UI Variable Text Light" Foreground="White" Width="756" TextAlignment="Center" Height="30" FontSize="18" Opacity="0" Grid.ColumnSpan="2"/>
-        <TextBlock x:Name="BugsLine1" HorizontalAlignment="Left" Margin="44,105,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontFamily="Segoe UI Variable Text Light" Foreground="White" Width="756" TextAlignment="Center" Height="30" FontSize="18" Opacity="0" Grid.ColumnSpan="2"/>
-        <TextBlock x:Name="BugsLine2" HorizontalAlignment="Left" Margin="44,141,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontFamily="Segoe UI Variable Text Light" Foreground="White" Width="756" TextAlignment="Center" Height="30" FontSize="18" Opacity="0" Grid.ColumnSpan="2"/>
-        <TextBlock x:Name="BugsLine3" HorizontalAlignment="Left" Margin="44,176,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontFamily="Segoe UI Variable Text Light" Foreground="White" Width="756" TextAlignment="Center" Height="30" FontSize="18" Opacity="0" Grid.ColumnSpan="2"/>
-        <TextBlock x:Name="BugsLine4" HorizontalAlignment="Left" Margin="44,206,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontFamily="Segoe UI Variable Text Light" Foreground="White" Width="756" TextAlignment="Center" Height="30" FontSize="18" Opacity="0" Grid.ColumnSpan="2"/>
-        <TextBlock x:Name="BugsLine5" HorizontalAlignment="Left" Margin="44,241,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontFamily="Segoe UI Variable Text Light" Foreground="White" Width="756" TextAlignment="Center" Height="30" FontSize="18" Opacity="0" Grid.ColumnSpan="2"/>
+        <TextBlock x:Name="LogLine1" HorizontalAlignment="Left" Margin="144,105,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontFamily="Segoe UI Variable Text Light" Foreground="White" Width="656" TextAlignment="Center" Height="30" FontSize="18" Opacity="0" Grid.ColumnSpan="2"/>
+        <TextBlock x:Name="LogLine2" HorizontalAlignment="Left" Margin="144,141,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontFamily="Segoe UI Variable Text Light" Foreground="White" Width="656" TextAlignment="Center" Height="30" FontSize="18" Opacity="0" Grid.ColumnSpan="2"/>
+        <TextBlock x:Name="LogLine3" HorizontalAlignment="Left" Margin="144,176,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontFamily="Segoe UI Variable Text Light" Foreground="White" Width="656" TextAlignment="Center" Height="30" FontSize="18" Opacity="0" Grid.ColumnSpan="2"/>
+        <TextBlock x:Name="LogLine4" HorizontalAlignment="Left" Margin="144,206,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontFamily="Segoe UI Variable Text Light" Foreground="White" Width="656" TextAlignment="Center" Height="30" FontSize="18" Opacity="0" Grid.ColumnSpan="2"/>
+        <TextBlock x:Name="LogLine5" HorizontalAlignment="Left" Margin="144,242,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontFamily="Segoe UI Variable Text Light" Foreground="White" Width="656" TextAlignment="Center" Height="30" FontSize="18" Opacity="0" Grid.ColumnSpan="2"/>
+        <TextBlock x:Name="ColLogLine1" HorizontalAlignment="Left" Margin="33,105,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontFamily="Segoe UI Variable Text Light" Foreground="White" Width="767" TextAlignment="Center" Height="30" FontSize="18" Opacity="0" Grid.ColumnSpan="2"/>
+        <TextBlock x:Name="ColLogLine2" HorizontalAlignment="Left" Margin="33,141,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontFamily="Segoe UI Variable Text Light" Foreground="White" Width="767" TextAlignment="Center" Height="30" FontSize="18" Opacity="0" Grid.ColumnSpan="2"/>
+        <TextBlock x:Name="ColLogLine3" HorizontalAlignment="Left" Margin="33,176,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontFamily="Segoe UI Variable Text Light" Foreground="White" Width="767" TextAlignment="Center" Height="30" FontSize="18" Opacity="0" Grid.ColumnSpan="2"/>
+        <TextBlock x:Name="ColLogLine4" HorizontalAlignment="Left" Margin="33,206,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontFamily="Segoe UI Variable Text Light" Foreground="White" Width="767" TextAlignment="Center" Height="30" FontSize="18" Opacity="0" Grid.ColumnSpan="2"/>
+        <TextBlock x:Name="ColLogLine5" HorizontalAlignment="Left" Margin="33,242,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontFamily="Segoe UI Variable Text Light" Foreground="White" Width="767" TextAlignment="Center" Height="30" FontSize="18" Opacity="0" Grid.ColumnSpan="2"/>
         <Button Name="ColHomeButton" HorizontalAlignment="Left" Margin="11,50,0,0" VerticalAlignment="Top" Width="20" BorderBrush="{x:Null}" Foreground="White" Background="#FF24252B" Click="Home" FontFamily="Segoe UI Variable Text Light" Height="20" Visibility="Hidden">
             <Image Source="/outline_home_white_24dp.png"/>
             <Button.Resources>
@@ -311,13 +311,15 @@
                 </Style>
             </Button.Style>
         </Button>
-        <TextBlock Name="ChangelogBugsTitle" Text="" HorizontalAlignment="Left" Margin="44,26,0,0" VerticalAlignment="Top" Width="756" TextAlignment="Center" Foreground="White" FontFamily="Segoe UI Variable Text Light" Height="73" FontSize="36" Opacity="1" Grid.ColumnSpan="2" RenderTransformOrigin="0.501,0.548"/>
-        <TextBlock Name="VerSTR" HorizontalAlignment="Left" Margin="44,71,0,0" TextWrapping="Wrap" Text="Version 4.2 | Launcher Version 2.0.2" VerticalAlignment="Top" Width="756" TextAlignment="Center" Foreground="White" FontFamily="Segoe UI Variable Text Light" FontSize="14" Opacity="0" Grid.ColumnSpan="2" Height="19"/>
+        <TextBlock Name="ColChangelogBugsTitle" Text="" HorizontalAlignment="Left" Margin="44,26,0,0" VerticalAlignment="Top" Width="756" TextAlignment="Center" Foreground="White" FontFamily="Segoe UI Variable Text Light" Height="73" FontSize="36" Opacity="1" Grid.ColumnSpan="2" RenderTransformOrigin="0.501,0.548"/>
+        <TextBlock Name="ChangelogBugsTitle" Text="" HorizontalAlignment="Left" Margin="143,26,0,0" VerticalAlignment="Top" Width="657" TextAlignment="Center" Foreground="White" FontFamily="Segoe UI Variable Text Light" Height="73" FontSize="36" Opacity="1" Grid.ColumnSpan="2" RenderTransformOrigin="0.501,0.548"/>
+        <TextBlock Name="VerSTR" HorizontalAlignment="Left" Margin="143,71,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="657" TextAlignment="Center" Foreground="White" FontFamily="Segoe UI Variable Text Light" FontSize="14" Opacity="0" Grid.ColumnSpan="2" Height="19"/>
+        <TextBlock Name="ColVerSTR" HorizontalAlignment="Left" Margin="44,71,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="756" TextAlignment="Center" Foreground="White" FontFamily="Segoe UI Variable Text Light" FontSize="14" Opacity="0" Grid.ColumnSpan="2" Height="19"/>
         <TextBlock Name="WelcomeTextCol" HorizontalAlignment="Left" Margin="44,82,0,0" TextWrapping="Wrap" Text="Welcome to the AGS Launcher!" VerticalAlignment="Top" Height="48" Width="756" Foreground="White" FontFamily="Segoe UI Variable Text Light" FontSize="32" Opacity="0" Grid.ColumnSpan="2" TextAlignment="Center"/>
         <TextBlock Name="LauncherInfoTextCol" HorizontalAlignment="Left" Margin="226,130,0,0" TextWrapping="Wrap" Text="Here is where you can read the latest patch notes, look at current bugs, download Avery Game, and launch it." VerticalAlignment="Top" Height="101" Width="426" Foreground="White" TextAlignment="Center" FontFamily="Segoe UI Variable Text Light" FontSize="24" Opacity="0" Grid.ColumnSpan="2"/>
         <TextBlock Name="WelcomeText" HorizontalAlignment="Left" Margin="144,82,0,0" TextWrapping="Wrap" Text="Welcome to the AGS Launcher!" VerticalAlignment="Top" Height="48" Width="656" Foreground="White" FontFamily="Segoe UI Variable Text Light" FontSize="32" Opacity="0" Grid.ColumnSpan="2" TextAlignment="Center"/>
         <TextBlock Name="LauncherInfoText" HorizontalAlignment="Left" Margin="264,130,0,0" TextWrapping="Wrap" Text="Here is where you can read the latest patch notes, look at current bugs, download Avery Game, and launch it." VerticalAlignment="Top" Height="101" Width="426" Foreground="White" TextAlignment="Center" FontFamily="Segoe UI Variable Text Light" FontSize="24" Opacity="0" Grid.ColumnSpan="2"/>
-        <ProgressBar Name="dprog" HorizontalAlignment="Left" Height="12" Margin="462,365,0,0" VerticalAlignment="Top" Width="649" IsIndeterminate="False" RenderTransformOrigin="0.501,0.633" Opacity="0" Grid.ColumnSpan="2" Background="{x:Null}" BorderBrush="#FF7F7F7F">
+        <ProgressBar Name="dprog" HorizontalAlignment="Left" Height="8" Margin="132,210,0,0" VerticalAlignment="Top" Width="362" IsIndeterminate="False" RenderTransformOrigin="0.501,0.633" Opacity="0" BorderBrush="{x:Null}" Background="#FF252525" Orientation="Vertical" Grid.Column="1">
             <ProgressBar.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -326,10 +328,16 @@
                     <TranslateTransform/>
                 </TransformGroup>
             </ProgressBar.RenderTransform>
+            <ProgressBar.Foreground>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF24252B"/>
+                    <GradientStop Color="#FF00FF33" Offset="1"/>
+                </LinearGradientBrush>
+            </ProgressBar.Foreground>
         </ProgressBar>
-        <TextBlock x:Name="ReleaseString" Text="ags+release+2.3.0+dev" HorizontalAlignment="Left" Margin="183,426,0,0" VerticalAlignment="Top" Width="138" Height="20" FontSize="14" FontFamily="Segoe UI Variable Text Light" Foreground="White" TextAlignment="Center" Grid.Column="1" Opacity="0.06"/>
-        <TextBlock x:Name="Arguments" FontFamily="Segoe UI Variable Text Light" HorizontalAlignment="Left" Margin="22,77,0,0" TextWrapping="Wrap" Text="Additional arguments:                                    " VerticalAlignment="Top" Foreground="White" FontSize="20" Width="756" Grid.ColumnSpan="2" TextAlignment="Center" Opacity="0"/>
-        <Image Name="AGSLog" Source="/agsgrey-1x.png" Margin="8,16,441,403" Opacity="0"/>
+        <TextBlock x:Name="ReleaseString" Text="ags+release+2.5.0+pub" HorizontalAlignment="Left" Margin="183,426,0,0" VerticalAlignment="Top" Width="138" Height="20" FontSize="14" FontFamily="Segoe UI Variable Text Light" Foreground="White" TextAlignment="Center" Grid.Column="1" Opacity="0.06"/>
+        <TextBlock x:Name="Arguments" FontFamily="Segoe UI Variable Text Light" HorizontalAlignment="Left" Margin="282,78,0,0" TextWrapping="Wrap" Text="Additional arguments:" VerticalAlignment="Top" Foreground="White" FontSize="20" Width="190" TextAlignment="Center" Opacity="0"/>
+
         <Button Name="HomeButton" Content="Home" HorizontalAlignment="Left" Margin="6,50,0,0" VerticalAlignment="Top" Width="132" BorderBrush="{x:Null}" Foreground="White" Background="#FF24252B" Click="Home" FontFamily="Segoe UI Variable Text Light" Height="20" Opacity="1">
             <Button.Resources>
                 <Style TargetType="Border">
@@ -486,10 +494,10 @@
             </Button.Style>
         </Button>
         <Image x:Name="UncolSettings" HorizontalAlignment="Left" Height="22" Margin="11,140,0,0" VerticalAlignment="Top" Width="20" Source="/outline_settings_white_24dp.png"/>
-        <TextBlock Name="HideMenu" FontFamily="Segoe UI Variable Text Light" HorizontalAlignment="Left" Margin="143,51,0,0" TextWrapping="Wrap" Text="Collapse menu" VerticalAlignment="Top" Foreground="White" FontSize="20" Width="509" Grid.ColumnSpan="2" TextAlignment="Center" Opacity="0"/>
-        <CheckBox Name="CollapseCB" Content="" HorizontalAlignment="Left" Margin="469,60,0,0" VerticalAlignment="Top" Height="16" Width="16" FontSize="2" Foreground="White" BorderBrush="Black" Background="White" Grid.ColumnSpan="2" Opacity="0"/>
-        <TextBlock x:Name="Notice" FontFamily="Segoe UI Variable Text Light" HorizontalAlignment="Left" Margin="0,18,0,0" TextWrapping="Wrap" Text="Note: some settings require a restart to take effect." VerticalAlignment="Top" Foreground="White" FontSize="20" Grid.ColumnSpan="2" Width="800" TextAlignment="Center" Opacity="0"/>
-        <TextBox x:Name="args" HorizontalAlignment="Left" Margin="403,85,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="190" Grid.ColumnSpan="2" SelectionBrush="#FF5E91B9" Background="{x:Null}" Foreground="White" BorderBrush="#FF6F6F6F" Opacity="0"/>
+        <TextBlock Name="HideMenu" FontFamily="Segoe UI Variable Text Light" HorizontalAlignment="Left" Margin="129,51,0,0" TextWrapping="Wrap" Text="Collapse menu" VerticalAlignment="Top" Foreground="White" FontSize="20" Width="671" Grid.ColumnSpan="2" TextAlignment="Center" Opacity="0"/>
+        <CheckBox Name="CollapseCB" Content="" HorizontalAlignment="Left" Margin="63,59,0,0" VerticalAlignment="Top" Height="16" Width="16" FontSize="2" Foreground="White" BorderBrush="Black" Background="White" Opacity="0" Grid.Column="1"/>
+        <TextBlock x:Name="Notice" FontFamily="Segoe UI Variable Text Light" HorizontalAlignment="Left" Margin="144,18,0,0" TextWrapping="Wrap" Text="Note: some settings require a restart to take effect." VerticalAlignment="Top" Foreground="White" FontSize="20" Grid.ColumnSpan="2" Width="656" TextAlignment="Center" Opacity="0"/>
+        <TextBox x:Name="args" HorizontalAlignment="Left" Margin="2,83,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="190" SelectionBrush="#FF5E91B9" Background="{x:Null}" Foreground="White" BorderBrush="#FF6F6F6F" Opacity="0" Grid.Column="1"/>
         <Image Name="UncolSettingsImg" HorizontalAlignment="Left" Height="22" Margin="11,140,0,0" VerticalAlignment="Top" Width="20" Source="/outline_settings_white_24dp.png"/>
         <Button x:Name="ColSettings" HorizontalAlignment="Left" Margin="11,140,0,0" VerticalAlignment="Top" Width="20" BorderBrush="{x:Null}" Foreground="White" Background="#FF24252B" Click="SettingsClick" FontFamily="Segoe UI Variable Text Light" Height="20" Visibility="Hidden">
             <Image Source="/outline_settings_white_24dp.png"/>
@@ -529,5 +537,7 @@
             </Button.Style>
         </Button>
         <TextBlock Name="DownloadProgPercent" Grid.Column="1" HorizontalAlignment="Left" Margin="278,191,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="32" Opacity="0" Foreground="White" FontFamily="Segoe UI Light"/>
+        <TextBlock Name="AGSLog" HorizontalAlignment="Left" Margin="11,24,0,0" TextWrapping="Wrap" Text="AGS" VerticalAlignment="Top" Height="24" Width="23" Foreground="White" FontFamily="Segoe UI Variable Display Light" Opacity="0"/>
+        <TextBlock x:Name="Notice2" FontFamily="Segoe UI Variable Text Light" HorizontalAlignment="Left" Margin="142,106,0,0" TextWrapping="Wrap" Text="This menu is offcenter and i dont care to fix it" VerticalAlignment="Top" Foreground="White" FontSize="20" Grid.ColumnSpan="2" Width="656" TextAlignment="Center" Opacity="0"/>
     </Grid>
 </Window>

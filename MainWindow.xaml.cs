@@ -16,7 +16,6 @@ namespace AgsLauncherV2
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    /// 
     public partial class MainWindow : Window
     {
         public DiscordRpcClient client;
@@ -26,6 +25,7 @@ namespace AgsLauncherV2
 
             try
             {
+                //set client id
                 client = new DiscordRpcClient("939285353355935774");
                 client.Logger = new ConsoleLogger() { Level = LogLevel.Warning };
                 client.OnReady += (sender, e) =>
@@ -36,7 +36,9 @@ namespace AgsLauncherV2
                 {
                     Console.WriteLine("Received Update! {0}", e.Presence);
                 };
+                //initialize discord rpc service
                 client.Initialize();
+                //set rpc
                 client.SetPresence(new RichPresence()
                 {
                     Details = "V2 launcher",
@@ -48,22 +50,29 @@ namespace AgsLauncherV2
                         SmallImageKey = ""
                     }
                 });
+                //checking for program files directory
                 if (!Directory.Exists(filepath + "\\AveryGame Launcher"))
                 {
+                    //create program files directory if it doesnt exist
                     Directory.CreateDirectory(filepath + "\\AveryGame Launcher");
                 }
+                //check if log file doesnt exist
                 if (!File.Exists(filepath + "\\AveryGame Launcher\\Logs\\log.txt"))
                 {
+                    //create directory
                     Directory.CreateDirectory(filepath + "\\AveryGame Launcher\\Logs");
                     Thread.Sleep(200);
+                    //start logging service
                     File.Create(filepath + "\\AveryGame Launcher\\Logs\\log.txt");
                     Thread.Sleep(200);
                     File.WriteAllText(filepath + "\\AveryGame Launcher\\Logs\\log.txt", "");
                 }
+                //check if log file exists
                 if (File.Exists(filepath + "\\AveryGame Launcher\\Logs\\log.txt"))
                 {
                     File.WriteAllText(filepath + "\\AveryGame Launcher\\Logs\\log.txt", "MainWindow initalized" + Environment.NewLine);
                 }
+                //write needed launcher updater content
                 File.WriteAllText(filepath + "\\AveryGame Launcher\\EnvPath.txt", Environment.CurrentDirectory + "\\AGSLauncherV2.exe");
                 File.WriteAllText(filepath + "\\AveryGame Launcher\\Dir.txt", Environment.CurrentDirectory);
                 WebClient webclient = new WebClient();
@@ -76,69 +85,91 @@ namespace AgsLauncherV2
                     {
                         try
                         {
+                            //set welcome rpc content
                             WelcomeRPCLabel.Content = "Welcome, " + client.CurrentUser.Username + "!";
                         }
                         catch
                         {
+                            //set fallback content
                             WelcomeRPCLabel.Content = "Welcome to the AGS Launcher!";
                         }
                     }
+                    //check if user is a developer
                     if (client.CurrentUser.Username != json.KiannaUN || client.CurrentUser.Username != json.AveryUN || client.CurrentUser.Username != json.CrunnieUN)
                     {
-                        WelcomeRPCLabel.Content = "Welcome to the AGS Launcher!";
                         VerSTR.Text = json.Version + " - " + json.LauncherString;
                     }
+                    //check if developer is kianna
                     if (client.CurrentUser.Username == json.KiannaUN)
                     {
                         WelcomeRPCLabel.Content = "kys";
                         VerSTR.Text = json.DevLauncherString;
                     }
+                    //check if developer is avery
                     if (client.CurrentUser.Username == json.AveryUN)
                     {
                         WelcomeRPCLabel.Content = "Hi, avery!";
                         VerSTR.Text = json.DevLauncherString;
                     }
+                    //check if developer is crunnie
                     if (client.CurrentUser.Username == json.CrunnieUN)
                     {
                         WelcomeRPCLabel.Content = "FUCK U!";
                         VerSTR.Text = json.DevLauncherString;
                     }
+                    //log rpc init
                     File.AppendAllText(filepath + "\\AveryGame Launcher\\Logs\\log.txt", "RPC initialized" + Environment.NewLine);
                 }
                 catch
                 {
-
+                    //useless catch i guess lol
                 }
                 try
                 {
+                    //set pfp source to user pfp 
+                    //this is grabbed from rpc
                     pfp.Source = new BitmapImage(new Uri(client.CurrentUser.GetAvatarURL(User.AvatarFormat.PNG)));
                 }
                 catch
                 {
+                    //if pfp grab from rpc fails this is the fallback
                     pfp.Source = new BitmapImage(new Uri("https://cdn.discordapp.com/app-assets/939285353355935774/939285441323077632.png"));
                 }
+                //check if corrupted game zip exists
                 if (File.Exists("1i9qQNqWOlQcdrZ0qD3NU7WzHKW4h54U.zip"))
                 {
+                    //delete corrupted game zip
                     File.Delete("1i9qQNqWOlQcdrZ0qD3NU7WzHKW4h54U.zip");
+                    //log corrupted zip deletion
                     File.AppendAllText(filepath + "\\AveryGame Launcher\\Logs\\log.txt", "Corrupt game zip deleted" + Environment.NewLine);
                 }
+                //check if unneeded download helper folder exists (temporary)
                 if (Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\DownloadHelper"))
                 {
                     Directory.Delete(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\DownloadHelper", true);
                 }
+                //set version descriptions
                 VerSTR.Text = json.Version + " - " + json.LauncherString;
-                File.AppendAllText(filepath + "\\AveryGame Launcher\\Logs\\log.txt", "Set changelog lines with json information" + Environment.NewLine);
+                //log
+                File.AppendAllText(filepath + "\\AveryGame Launcher\\Logs\\log.txt", "Set version strings with json information" + Environment.NewLine);
+                //begin setting uncollapsed menu elements
                 HideMenu.Opacity = 0;
                 CollapseCB.Opacity = 0;
                 Notice.Opacity = 0;
                 Arguments.Opacity = 0;
                 args.Opacity = 0;
+                //check if client settings exists
+                //this is only written if the user has collapsed the menu. 
+                //if it does not exist the menu will fallback to its collapsed state
                 if (File.Exists(filepath + "\\AveryGame Launcher\\Clientsettings.json"))
                 {
                     string js2 = File.ReadAllText(filepath + "\\AveryGame Launcher\\Clientsettings.json");
                     LauncherCloud z = JsonConvert.DeserializeObject<LauncherCloud>(js2);
+                    //read json data
+                    //check if collapse menu option is set to true
                     if (z.CollapseMenu == "True")
                     {
+                        //set collapsed menu elements
                         CollapseCB.IsChecked = true;
                         Uncollapsed.Opacity = 0;
                         AGSLogo.Margin = new Thickness(0, 0, 56, 11);
@@ -158,41 +189,52 @@ namespace AgsLauncherV2
                         UncolHome.Margin = new Thickness(69, 69, 69, 69);
                         UncolChangelog.Margin = new Thickness(69, 69, 69, 69);
                         UncolBugs.Margin = new Thickness(69, 69, 69, 69);
+                        //log set
                         File.AppendAllText(filepath + "\\AveryGame Launcher\\Logs\\log.txt", "Set collapsed menu elements" + Environment.NewLine);
                     }
                     else
                     {
+                        //set checkbox state
                         CollapseCB.IsChecked = false;
                         VerSTR.Text = "" + json.Version + " - " + json.LauncherString;
                         CreditLine1.Opacity = 1;
                         CreditLine2.Opacity = 1;
+                        //log data
                         File.AppendAllText(filepath + "\\AveryGame Launcher\\Logs\\log.txt", "Set line balances for uncollapsed menu elements");
                     }
                 }
                 else
                 {
+                    //write client settings
                     File.WriteAllText(@filepath + "\\AveryGame Launcher\\Clientsettings.json", "{ \"CollapseMenu\":\"" + CollapseCB.IsChecked + "\" }");
-                    File.AppendAllText(filepath + "\\AveryGame Launcher\\Logs\\log.txt", "Wrote collapse menu checkbox information to json" + Environment.NewLine);
+                    //log written client settings
+                    File.AppendAllText(filepath + "\\AveryGame Launcher\\Logs\\log.txt", "Wrote collapse menu checkbox information to json. New state: " + CollapseCB.IsChecked + Environment.NewLine);
                 }
+                //check if launcher needs an update
                 if (json.LauncherVer != ReleaseString.Text)
                 {
+                    //show toast notif
                     new ToastContentBuilder()
                     .AddArgument("action", "viewConversation")
                     .AddArgument("conversationId", 9813)
                     .AddText("Avery Game download status")
                     .AddText("There is an update available for the launcher, installing...")
                     .Show();
+                    //log updater download
                     File.AppendAllText(filepath + "\\AveryGame Launcher\\Logs\\log.txt", "There is a launcher update available, downloading..." + Environment.NewLine);
+                    //set callbacks
                     webclient.DownloadFileCompleted += new System.ComponentModel.AsyncCompletedEventHandler(help);
                     Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\DownloadHelper");
+                    //start downloading 
                     webclient.DownloadFileAsync(new Uri("https://www.googleapis.com/drive/v3/files/1MBkHHCCuYiJO2Z19OT6djQmnPY0zc6Qv?alt=media&key=AIzaSyD3hsuSxEFnxZkgadbUSPt_iyx8qJ4lwWQ"), Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\DownloadHelper\\Release.zip");
                 }
             }
+            //if something causes the launher to crash it will log the error and show the user a messagebox
             catch (Exception ex)
             {
                 File.AppendAllText(filepath + "\\AveryGame Launcher\\Logs\\log.txt", "Fatal error occurred, logging..." + Environment.NewLine);
                 ErrorLogging(ex);
-                MessageBox.Show("A fatal error occurred while opening the Avery Game launcher. Please make sure you are connected to the internet and try again. If the problem persists, report the log file at " + filepath + "\\AveryGame Launcher\\Logs" + " in #bug-reports in the Avery Game discord server.", "Fatal error!", MessageBoxButton.OK, MessageBoxImage.Stop);
+                MessageBox.Show("A fatal error occurred while opening the Avery Game launcher. Please make sure you are connected to the internet and try again. If the problem persists, send the log file at " + filepath + "\\AveryGame Launcher\\Logs" + " in #bug-reports in the Avery Game discord server.", "Fatal error!", MessageBoxButton.OK, MessageBoxImage.Stop);
                 this.Close();
             }
         }
@@ -202,24 +244,32 @@ namespace AgsLauncherV2
         {
             try
             {
+                //extract launcher updater
                 ZipFile.ExtractToDirectory(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\DownloadHelper\\Release.zip", Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\DownloadHelper");
                 File.AppendAllText(filepath + "\\AveryGame Launcher\\Logs\\log.txt", "Extracted launcher updater" + Environment.NewLine);
+                //start launcher updater
                 System.Diagnostics.Process.Start(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\DownloadHelper\\AGSLauncherUpdater.exe");
+                //log process start
                 File.AppendAllText(filepath + "\\AveryGame Launcher\\Logs\\log.txt", "Starting launcher updater" + Environment.NewLine);
+                //log launcher shutdown
                 File.AppendAllText(filepath + "\\AveryGame Launcher\\Logs\\log.txt", "Shutting down launcher..." + Environment.NewLine);
+                //close launcher
+                //if i dont it will crash the updater
                 this.Close();
             }
             catch (Exception ex)
             {
+                //log error
                 File.AppendAllText(filepath + "\\AveryGame Launcher\\Logs\\log.txt", "Fatal error occurred, logging..." + Environment.NewLine);
                 ErrorLogging(ex);
-                MessageBox.Show($"Error finishing download: {ex}");
+                MessageBox.Show($"Error starting launcher update");
             }
         }
         public static void ErrorLogging(Exception ex)
         {
             using (StreamWriter sw = File.AppendText(filepath + "\\AveryGame Launcher\\Logs\\log.txt"))
             {
+                //logic for all error logging
                 sw.WriteLine("=============Error Logging ===========");
                 sw.WriteLine("===========Start============= " + DateTime.Now);
                 sw.WriteLine("Error Message: " + ex.Message);
@@ -231,6 +281,7 @@ namespace AgsLauncherV2
         private static readonly string filepath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
         public class LauncherCloud
         {
+            //all json strings
             public string Version { get; set; }
             public string VersionInt { get; set; }
             public string ChangelogLine1 { get; set; }
@@ -264,6 +315,7 @@ namespace AgsLauncherV2
         }
         private void Home(object sender, RoutedEventArgs e)
         {
+            //home button logic
             try
             {
                 if ((bool)!CollapseCB.IsChecked)
@@ -385,6 +437,7 @@ namespace AgsLauncherV2
         }
         private void Changelog(object sender, RoutedEventArgs e)
         {
+            //changelog button logic
             try
             {
                 if ((bool)!CollapseCB.IsChecked)
@@ -526,11 +579,13 @@ namespace AgsLauncherV2
         }
         private void DragBar(object sender, MouseButtonEventArgs e)
         {
+            //dragbar logic
             File.AppendAllText(filepath + "\\AveryGame Launcher\\Logs\\log.txt", "Window drag area clicked" + Environment.NewLine);
             this.DragMove();
         }
         private void Bugs(object sender, RoutedEventArgs e)
         {
+            //bug button logic
             try
             {
                 if ((bool)!CollapseCB.IsChecked)
@@ -677,6 +732,7 @@ namespace AgsLauncherV2
         }
         private void SettingsClick(object sender, RoutedEventArgs e)
         {
+            //setting button logic
             try
             {
                 if ((bool)!CollapseCB.IsChecked)
@@ -805,34 +861,41 @@ namespace AgsLauncherV2
         }
         private void RpcNameCopy(object sender, RoutedEventArgs e)
         {
+            //IGNORE
             WelcomeRPCLabel.Content = "astolfo hentai not done yet ";
             File.AppendAllText(filepath + "\\AveryGame Launcher\\Logs\\log.txt", "Secret button clicked" + Environment.NewLine);
         }
         private void Minimize(object sender, RoutedEventArgs e)
         {
+            //minimize button logic
             this.WindowState = WindowState.Minimized;
             File.AppendAllText(filepath + "\\AveryGame Launcher\\Logs\\log.txt", "Minimized window" + Environment.NewLine);
         }
         private void Close(object sender, RoutedEventArgs e)
         {
+            //close button logic
             File.AppendAllText(filepath + "\\AveryGame Launcher\\Logs\\log.txt", "Close button clicked" + Environment.NewLine);
+            //check if game is downloading
             if (dprog.Opacity == 1)
             {
                 MessageBoxResult result = MessageBox.Show("AveryGame is not done downloading, and exiting will corrupt the download. Are you sure?", "Warning!", MessageBoxButton.YesNo, MessageBoxImage.Warning);
                 File.AppendAllText(filepath + "\\AveryGame Launcher\\Logs\\log.txt", "Close interrupted by game download" + Environment.NewLine);
                 if (result == MessageBoxResult.Yes)
                 {
+                    //user forced to close the launcher
                     File.AppendAllText(filepath + "\\AveryGame Launcher\\Logs\\log.txt", "User interrupted game download" + Environment.NewLine);
                     File.AppendAllText(filepath + "\\AveryGame Launcher\\Logs\\log.txt", "Launcher shutting down" + Environment.NewLine);
                     this.Close();
                 }
                 else
                 {
+                    //user did not force close
                     File.AppendAllText(filepath + "\\AveryGame Launcher\\Logs\\log.txt", "User did not interrupt game download" + Environment.NewLine);
                 }
             }
             else
             {
+                //delete launcher strings and log all events
                 File.Delete(filepath + "\\AveryGame Launcher\\" + @"fuck.json");
                 File.AppendAllText(filepath + "\\AveryGame Launcher\\Logs\\log.txt", "Deleted json strings" + Environment.NewLine);
                 File.WriteAllText(@filepath + "\\AveryGame Launcher\\Clientsettings.json", "{ \"CollapseMenu\":\"" + CollapseCB.IsChecked + "\" }");
@@ -844,6 +907,7 @@ namespace AgsLauncherV2
 
         private void testbutton_Click(object sender, RoutedEventArgs e)
         {
+            //play button logic
             try
             {
                 File.AppendAllText(filepath + "\\AveryGame Launcher\\Logs\\log.txt", "Play button clicked" + Environment.NewLine);
@@ -932,18 +996,22 @@ namespace AgsLauncherV2
         {
             try
             {
+                //game completed callback
                 File.AppendAllText(filepath + "\\AveryGame Launcher\\Logs\\log.txt", "Game completed, running extraction + completion code..." + Environment.NewLine);
                 WebClient webclient = new WebClient();
                 string DATA = webclient.DownloadString("https://raw.githubusercontent.com/imstillamazedbyit/1q29dks43895r794/main/launcherinfo.json");
                 LauncherCloud json = JsonConvert.DeserializeObject<LauncherCloud>(DATA);
                 string gzip = "1i9qQNqWOlQcdrZ0qD3NU7WzHKW4h54U.zip";
+                //extracting game
                 ZipFile.ExtractToDirectory(gzip, Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\AveryGame\\" + json.VersionInt);
                 File.AppendAllText(filepath + "\\AveryGame Launcher\\Logs\\log.txt", "Extracting game to folder" + Environment.NewLine);
+                //delete useless folder
                 File.Delete(gzip);
                 File.AppendAllText(filepath + "\\AveryGame Launcher\\Logs\\log.txt", "Deleted unneeded zip" + Environment.NewLine);
                 dprog.Opacity = 0;
                 LaunchButton.Content = "Launch Avery Game";
                 File.AppendAllText(filepath + "\\AveryGame Launcher\\Logs\\log.txt", "Set progress bar opacity and launch button text" + Environment.NewLine);
+                //wrote game version to gclient
                 File.WriteAllText(filepath + "\\AveryGame Launcher\\" + @"gclient.json", json.VersionInt);
                 File.AppendAllText(filepath + "\\AveryGame Launcher\\Logs\\log.txt", "Wrote game version to gclient" + Environment.NewLine);
                 new ToastContentBuilder()
@@ -966,6 +1034,7 @@ namespace AgsLauncherV2
         {
             try
             {
+                //download code logic
                 string gzip = "1i9qQNqWOlQcdrZ0qD3NU7WzHKW4h54U.zip";
                 WebClient webclient = new WebClient();
                 string DATA = webclient.DownloadString("https://raw.githubusercontent.com/imstillamazedbyit/1q29dks43895r794/main/launcherinfo.json");
@@ -994,6 +1063,7 @@ namespace AgsLauncherV2
         }
         public void webclientDownloadProgressChanged(Object sender, DownloadProgressChangedEventArgs e)
         {
+            //progress info
             DownloadProgPercent.Text = e.ProgressPercentage.ToString() + "%";
             dprog.Value = e.ProgressPercentage;
         }

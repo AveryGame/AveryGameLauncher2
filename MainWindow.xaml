@@ -76,14 +76,6 @@
         </Button>
         <Border BorderBrush="#FF121212" BorderThickness="100" HorizontalAlignment="Left" Height="16" VerticalAlignment="Top" Width="800" MouseDown="DragBar" Grid.ColumnSpan="2"/>
         <Label Name="AveryGame" Content="Avery Game" Foreground="White" FontFamily="Corbel Light" FontSize="20" Margin="18,10,0,0" Height="35" VerticalAlignment="Top" HorizontalAlignment="Left" Width="108" Opacity="1"/>
-        <Label Name="AGSLogo" FontSize="172" FontFamily="Corbel Light" Height="329" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="491" Content="AGS" Opacity="1" Margin="0,0,0,-1" Grid.ColumnSpan="2">
-            <Label.Foreground>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FF313131" Offset="0.667"/>
-                    <GradientStop Color="#FF5D5D5D" Offset="0"/>
-                </LinearGradientBrush>
-            </Label.Foreground>
-        </Label>
         <TextBlock HorizontalAlignment="Left" Height="0" TextWrapping="Wrap" Text="Test" VerticalAlignment="Center" Width="0" Foreground="White" Margin="400,0,0,0"/>
         <Button Name="ColChangelogButton" HorizontalAlignment="Left" Margin="11,80,0,0" VerticalAlignment="Top" Width="20" BorderBrush="{x:Null}" Foreground="White" Background="#FF24252B" Click="Changelog" FontFamily="Segoe UI Variable Text Light" Height="20" Visibility="Hidden">
             <Image Source="/outline_settings_ethernet_white_24dp.png"/>
@@ -335,7 +327,7 @@
                 </LinearGradientBrush>
             </ProgressBar.Foreground>
         </ProgressBar>
-        <TextBlock x:Name="ReleaseString" Text="ags+release+2.5.0+pub" HorizontalAlignment="Left" Margin="183,426,0,0" VerticalAlignment="Top" Width="138" Height="20" FontSize="14" FontFamily="Segoe UI Variable Text Light" Foreground="White" TextAlignment="Center" Grid.Column="1" Opacity="0.06"/>
+        <TextBlock x:Name="ReleaseString" Text="ags+release+2.7.0+dev" HorizontalAlignment="Left" Margin="169,426,0,0" VerticalAlignment="Top" Width="154" Height="20" FontSize="14" FontFamily="Segoe UI Variable Text Light" Foreground="White" TextAlignment="Right" Grid.Column="1" Opacity="0.06"/>
         <TextBlock x:Name="Arguments" FontFamily="Segoe UI Variable Text Light" HorizontalAlignment="Left" Margin="282,78,0,0" TextWrapping="Wrap" Text="Additional arguments:" VerticalAlignment="Top" Foreground="White" FontSize="20" Width="190" TextAlignment="Center" Opacity="0"/>
 
         <Button Name="HomeButton" Content="Home" HorizontalAlignment="Left" Margin="6,50,0,0" VerticalAlignment="Top" Width="132" BorderBrush="{x:Null}" Foreground="White" Background="#FF24252B" Click="Home" FontFamily="Segoe UI Variable Text Light" Height="20" Opacity="1">
@@ -457,7 +449,7 @@
         <Image Name="UncolHome" HorizontalAlignment="Left" Height="20" Margin="11,50,0,0" VerticalAlignment="Top" Width="21" Source="/outline_home_white_24dp.png"/>
         <Image Name="UncolChangelog" HorizontalAlignment="Left" Height="20" Margin="11,80,0,0" VerticalAlignment="Top" Width="21" Source="/outline_settings_ethernet_white_24dp.png"/>
         <Image Name="UncolBugs" HorizontalAlignment="Left" Height="22" Margin="11,110,0,0" VerticalAlignment="Top" Width="20" Source="/outline_bug_report_white_24dp.png"/>
-        <Button x:Name="SettingsButton" Content="Settings" HorizontalAlignment="Left" Margin="7,140,0,0" VerticalAlignment="Top" Width="132" BorderBrush="{x:Null}" Foreground="White" Background="#FF24252B" Click="SettingsClick" FontFamily="Segoe UI Variable Text Light" Height="20" Opacity="1">
+        <Button x:Name="SettingsButton" Content="Settings" HorizontalAlignment="Left" Margin="7,170,0,0" VerticalAlignment="Top" Width="132" BorderBrush="{x:Null}" Foreground="White" Background="#FF24252B" Click="SettingsClick" FontFamily="Segoe UI Variable Text Light" Height="20" Opacity="1">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="15"/>
@@ -493,14 +485,10 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Image x:Name="UncolSettings" HorizontalAlignment="Left" Height="22" Margin="11,140,0,0" VerticalAlignment="Top" Width="20" Source="/outline_settings_white_24dp.png"/>
+        <Image Name="UncolSettingsImg" HorizontalAlignment="Left" Height="20" Margin="12,170,0,0" VerticalAlignment="Top" Width="19" Source="/outline_settings_white_24dp.png"/>
         <TextBlock Name="HideMenu" FontFamily="Segoe UI Variable Text Light" HorizontalAlignment="Left" Margin="129,51,0,0" TextWrapping="Wrap" Text="Collapse menu" VerticalAlignment="Top" Foreground="White" FontSize="20" Width="671" Grid.ColumnSpan="2" TextAlignment="Center" Opacity="0"/>
-        <CheckBox Name="CollapseCB" Content="" HorizontalAlignment="Left" Margin="63,59,0,0" VerticalAlignment="Top" Height="16" Width="16" FontSize="2" Foreground="White" BorderBrush="Black" Background="White" Opacity="0" Grid.Column="1"/>
-        <TextBlock x:Name="Notice" FontFamily="Segoe UI Variable Text Light" HorizontalAlignment="Left" Margin="144,18,0,0" TextWrapping="Wrap" Text="Note: some settings require a restart to take effect." VerticalAlignment="Top" Foreground="White" FontSize="20" Grid.ColumnSpan="2" Width="656" TextAlignment="Center" Opacity="0"/>
-        <TextBox x:Name="args" HorizontalAlignment="Left" Margin="2,83,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="190" SelectionBrush="#FF5E91B9" Background="{x:Null}" Foreground="White" BorderBrush="#FF6F6F6F" Opacity="0" Grid.Column="1"/>
-        <Image Name="UncolSettingsImg" HorizontalAlignment="Left" Height="22" Margin="11,140,0,0" VerticalAlignment="Top" Width="20" Source="/outline_settings_white_24dp.png"/>
-        <Button x:Name="ColSettings" HorizontalAlignment="Left" Margin="11,140,0,0" VerticalAlignment="Top" Width="20" BorderBrush="{x:Null}" Foreground="White" Background="#FF24252B" Click="SettingsClick" FontFamily="Segoe UI Variable Text Light" Height="20" Visibility="Hidden">
-            <Image Source="/outline_settings_white_24dp.png"/>
+        <Button x:Name="ColSettings" HorizontalAlignment="Left" Margin="11,170,0,0" VerticalAlignment="Top" Width="21" BorderBrush="{x:Null}" Foreground="White" Background="#FF24252B" Click="SettingsClick" FontFamily="Segoe UI Variable Text Light" Height="20" Visibility="Hidden">
+            <Image Source="/outline_settings_white_24dp.png" Height="20" Width="19"/>
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="15"/>
@@ -539,5 +527,98 @@
         <TextBlock Name="DownloadProgPercent" Grid.Column="1" HorizontalAlignment="Left" Margin="278,191,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="32" Opacity="0" Foreground="White" FontFamily="Segoe UI Light"/>
         <TextBlock Name="AGSLog" HorizontalAlignment="Left" Margin="11,24,0,0" TextWrapping="Wrap" Text="AGS" VerticalAlignment="Top" Height="24" Width="23" Foreground="White" FontFamily="Segoe UI Variable Display Light" Opacity="0"/>
         <TextBlock x:Name="Notice2" FontFamily="Segoe UI Variable Text Light" HorizontalAlignment="Left" Margin="142,106,0,0" TextWrapping="Wrap" Text="This menu is offcenter and i dont care to fix it" VerticalAlignment="Top" Foreground="White" FontSize="20" Grid.ColumnSpan="2" Width="656" TextAlignment="Center" Opacity="0"/>
+        <Button x:Name="NewsButton" Content="News" HorizontalAlignment="Left" Margin="6,140,0,0" VerticalAlignment="Top" Width="132" BorderBrush="{x:Null}" Foreground="White" Background="#FF24252B" Click="News" FontFamily="Segoe UI Variable Text Light" Height="20" Opacity="1">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Width="131" Height="20" CornerRadius="2" Background="{TemplateBinding Background}">
+                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="#FF8EBA8A"/>
+                    <Setter Property="Cursor" Value="Hand"/>
+                    <Style.Triggers>
+                        <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="00:00:00.15" From="#FF24252B" To="#FF313461"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="00:00:00.15" From="#FF313461" To="#FF24252B"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Image HorizontalAlignment="Left" Height="18" Margin="12,142,0,0" VerticalAlignment="Top" Width="20" Source="/newspaper-48.png"/>
+        <Button x:Name="ColNews" HorizontalAlignment="Left" Margin="10,140,0,0" VerticalAlignment="Top" Width="22" BorderBrush="{x:Null}" Foreground="White" Background="#FF24252B" Click="News" FontFamily="Segoe UI Variable Text Light" Height="20" Visibility="Hidden">
+            <Image Source="/newspaper-48.png" Height="20" Width="19"/>
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Width="20" Height="20" CornerRadius="2" Background="{TemplateBinding Background}">
+                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="#FF8EBA8A"/>
+                    <Setter Property="Cursor" Value="Hand"/>
+                    <Style.Triggers>
+                        <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="00:00:00.15" From="#FF24252B" To="#FF313461"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="00:00:00.15" From="#FF313461" To="#FF24252B"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <TextBlock Name="NewsHeader" TextWrapping="Wrap" Text="Avery Game account system" Foreground="White" Margin="169,262,19,156" Grid.ColumnSpan="2" TextAlignment="Left" FontSize="20" FontWeight="Normal" FontFamily="Segoe UI Semibold" Opacity="0"/>
+        <TextBlock x:Name="NewsSubheader" TextWrapping="Wrap" Text="Avery has been hard at work to introduce a new and improved account system that will be releasing soon, stay tuned!" Foreground="White" Margin="169,294,19,113" Grid.ColumnSpan="2" TextAlignment="Left" FontSize="14" FontWeight="Normal" FontFamily="Segoe UI Variable Display Light" Opacity="0"/>
+        <Border x:Name="NewsImageBorder" CornerRadius="3,3,3,3" Grid.ColumnSpan="2" Margin="169,26,19,193">
+            <Border.Background>
+                <ImageBrush Stretch="Fill" ImageSource="/NewsPreview.png" Opacity="0"/>
+            </Border.Background>
+        </Border>
+        <TextBlock Name="NewsDate" TextWrapping="Wrap" Text="26/04/22 at 12:14 AM MST" Margin="153,263,26,161" Grid.Column="1" FontSize="8" TextAlignment="Right" VerticalAlignment="Center" Foreground="Black" Opacity="0"/>
+        <Label Name="AGSLogo" FontSize="172" Content="AGS" FontFamily="Corbel Light" Height="329" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="491" Opacity="1" Margin="0,0,0,-1" Grid.ColumnSpan="2">
+            <Label.Foreground>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF313131" Offset="0.667"/>
+                    <GradientStop Color="#FF5D5D5D" Offset="0"/>
+                </LinearGradientBrush>
+            </Label.Foreground>
+        </Label>
+        <CheckBox Name="CollapseCB" Content="" HorizontalAlignment="Left" Margin="63,59,0,0" VerticalAlignment="Top" Height="16" Width="16" FontSize="2" Foreground="White" BorderBrush="Black" Background="White" Opacity="0" Grid.Column="1"/>
+        <TextBlock x:Name="Notice" FontFamily="Segoe UI Variable Text Light" HorizontalAlignment="Left" Margin="144,18,0,0" TextWrapping="Wrap" Text="Note: some settings require a restart to take effect." VerticalAlignment="Top" Foreground="White" FontSize="20" Grid.ColumnSpan="2" Width="656" TextAlignment="Center" Opacity="0"/>
+        <TextBox x:Name="args" HorizontalAlignment="Left" Margin="2,83,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="190" SelectionBrush="#FF5E91B9" Background="{x:Null}" Foreground="White" BorderBrush="#FF6F6F6F" Opacity="0" Grid.Column="1"/>
     </Grid>
 </Window>

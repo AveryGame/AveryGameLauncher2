@@ -311,6 +311,7 @@ namespace AgsLauncherV2
             public string LauncherVer { get; set; }
             public string NewsHeader { get; set; }
             public string NewsSubHeader { get; set; }
+            public string NewsDate { get; set; }
             public string NewsImageURL { get; set; }
         }
         private void Home(object sender, RoutedEventArgs e)
@@ -843,7 +844,10 @@ namespace AgsLauncherV2
                 btpImg.UriSource = new Uri(json.NewsImageURL);
                 btpImg.EndInit();
                 imgB.ImageSource = btpImg;
+                NewsDate.Text = json.NewsDate;
+                NewsHeader.Text = json.NewsHeader;
                 NewsImageBorder.Background = imgB;
+                NewsSubheader.Text = json.NewsSubHeader;
                 Services.LogSVC.BtnLogic.LogUncolElements();
                 if ((bool)(CollapseCB.IsChecked))
                 {

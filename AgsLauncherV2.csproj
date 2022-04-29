@@ -38,6 +38,7 @@
 		<None Remove="outline_settings_ethernet_white_24dp.png" />
 		<None Remove="outline_settings_white_24dp.png" />
 		<None Remove="R.png" />
+		<None Remove="slate-blank.png" />
 		<None Remove="st.png" />
 		<None Remove="white-house-icon-31.png" />
 	</ItemGroup>
@@ -71,6 +72,7 @@
 		<Resource Include="outline_home_white_24dp.png" />
 		<Resource Include="outline_settings_ethernet_white_24dp.png" />
 		<Resource Include="outline_settings_white_24dp.png" />
+		<Resource Include="slate-blank.png" />
 		<Resource Include="st.png" />
 	</ItemGroup>
 

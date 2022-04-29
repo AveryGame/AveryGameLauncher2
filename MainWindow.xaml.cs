@@ -422,6 +422,7 @@ namespace AgsLauncherV2
                     ColHomeButton.IsEnabled = false;
                     ColChangelogButton.IsEnabled = true;
                     ColBugsButton.IsEnabled = true;
+                    ColNews.IsEnabled = true;
                     WelcomeTextCol.Opacity = 1;
                     LauncherInfoTextCol.Opacity = 1;
                     LaunchButton.Margin = new Thickness(300, 367, 0, 0);
@@ -580,6 +581,7 @@ namespace AgsLauncherV2
                     ColHomeButton.IsEnabled = true;
                     ColChangelogButton.IsEnabled = false;
                     ColBugsButton.IsEnabled = true;
+                    ColNews.IsEnabled = true;
                     ChangelogBugsTitle.Text = "Changelog";
                     CreditLine1.Opacity = 0;
                     CreditLine2.Opacity = 0;
@@ -741,6 +743,7 @@ namespace AgsLauncherV2
                     ColHomeButton.IsEnabled = true;
                     ColChangelogButton.IsEnabled = true;
                     ColBugsButton.IsEnabled = false;
+                    ColNews.IsEnabled = true;
                     ChangelogBugsTitle.Text = "Bugs";
                     CreditLine1.Opacity = 0;
                     CreditLine2.Opacity = 0;
@@ -771,6 +774,8 @@ namespace AgsLauncherV2
                     BugsButton.Visibility = Visibility.Visible;
                     ColSettings.Visibility = Visibility.Hidden;
                     SettingsButton.Visibility = Visibility.Visible;
+                    ColNews.Visibility = Visibility.Hidden;
+                    NewsButton.Visibility = Visibility.Visible;
                     AveryGame.Opacity = 0;
                     AGSLog.Opacity = 0;
                     ColHomeButton.Visibility = Visibility.Hidden;
@@ -782,6 +787,10 @@ namespace AgsLauncherV2
                     UncolHome.Margin = new Thickness(11, 50, 0, 0);
                     UncolChangelog.Margin = new Thickness(11, 80, 0, 0);
                     UncolBugs.Margin = new Thickness(11, 110, 0, 0);
+                    NewsImageBorder.Margin = new Thickness(169, 26, 19, 193);
+                    NewsHeader.Margin = new Thickness(169, 262, 19, 156);
+                    NewsSubheader.Margin = new Thickness(169, 294, 19, 113);
+                    NewsDate.Margin = new Thickness(153, 263, 26, 161);
                     UncolHome.Opacity = 1;
                     UncolChangelog.Opacity = 1;
                     UncolBugs.Opacity = 1;
@@ -897,7 +906,8 @@ namespace AgsLauncherV2
                     UncolBugs.Margin = new Thickness(69, 69, 69, 69);
                     ColHomeButton.IsEnabled = true;
                     ColChangelogButton.IsEnabled = true;
-                    ColBugsButton.IsEnabled = false;
+                    ColBugsButton.IsEnabled = true;
+                    ColNews.IsEnabled = false;
                     ChangelogBugsTitle.Text = "News";
                     CreditLine1.Opacity = 0;
                     CreditLine2.Opacity = 0;
@@ -1035,6 +1045,7 @@ namespace AgsLauncherV2
                     ColHomeButton.IsEnabled = true;
                     ColChangelogButton.IsEnabled = true;
                     ColBugsButton.IsEnabled = true;
+                    ColNews.IsEnabled = true;
                     SettingsButton.IsEnabled = false;
                     ChangelogBugsTitle.Text = "Bugs";
                     CreditLine1.Opacity = 0;

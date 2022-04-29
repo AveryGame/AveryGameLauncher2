@@ -601,15 +601,15 @@
                 </Style>
             </Button.Style>
         </Button>
-        <TextBlock Name="NewsHeader" TextWrapping="Wrap" Text="" Foreground="White" Margin="169,262,19,156" Grid.ColumnSpan="2" TextAlignment="Left" FontSize="20" FontWeight="Normal" FontFamily="Segoe UI Semibold" Opacity="0"/>
-        <TextBlock x:Name="NewsSubheader" TextWrapping="Wrap" Text="" Foreground="White" Margin="169,294,19,113" Grid.ColumnSpan="2" TextAlignment="Left" FontSize="14" FontWeight="Normal" FontFamily="Segoe UI Variable Display Light" Opacity="0"/>
-        <Border x:Name="NewsImageBorder" CornerRadius="3,3,3,3" Grid.ColumnSpan="2" Margin="169,26,19,193">
+        <TextBlock Name="NewsHeader" TextWrapping="Wrap" Text="I FUCKING LOVE MEN" Foreground="White" Margin="109,262,79,156" Grid.ColumnSpan="2" TextAlignment="Left" FontSize="20" FontWeight="Normal" FontFamily="Segoe UI Semibold" Opacity="0"/>
+        <TextBlock x:Name="NewsSubheader" TextWrapping="Wrap" Text="OH MY GOD I LOVE HTEM SO MUCH" Foreground="White" Margin="109,294,79,113" Grid.ColumnSpan="2" TextAlignment="Left" FontSize="14" FontWeight="Normal" FontFamily="Segoe UI Variable Display Light" Opacity="0"/>
+        <Border x:Name="NewsImageBorder" CornerRadius="3,3,3,3" Grid.ColumnSpan="2" Margin="109,26,79,193">
             <Border.Background>
                 <ImageBrush Stretch="Fill" ImageSource="/slate-blank.png" Opacity="0"/>
             </Border.Background>
         </Border>
-        <TextBlock Name="NewsDate" TextWrapping="Wrap" Text="" Margin="153,263,26,161" Grid.Column="1" FontSize="8" TextAlignment="Right" VerticalAlignment="Center" Foreground="Black" Opacity="0"/>
-        <Label Name="AGSLogo" FontSize="172" Content="AGS" FontFamily="Corbel Light" Height="329" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="491" Opacity="1" Margin="0,0,0,-1" Grid.ColumnSpan="2">
+        <TextBlock Name="NewsDate" TextWrapping="Wrap" Text="" Margin="100,269,79,0" Grid.Column="1" FontSize="8" TextAlignment="Right" VerticalAlignment="Top" Foreground="Black" Opacity="0"/>
+        <Label Name="AGSLogo" FontSize="172" Content="AGS" FontFamily="Corbel Light" Height="329" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="491" Opacity="1" Margin="0,0,2,0" Grid.ColumnSpan="2">
             <Label.Foreground>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FF313131" Offset="0.667"/>

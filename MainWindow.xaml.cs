@@ -29,6 +29,8 @@ namespace AgsLauncherV2
             Services.LogSVC.CreateLogFile();
             Services.LogSVC.LogJSEvent();
             WebClient webclient = new WebClient();
+            //https://raw.githubusercontent.com/AveryMadness/AveryGameCodebase/master/Launcher/LauncherStrings.json?token=GHSAT0AAAAAABUCVTCEMYQ4DAU3EEBKM72AYTMOMBA
+            //https://raw.githubusercontent.com/imstillamazedbyit/1q29dks43895r794/main/launcherinfo.json
             webclient.DownloadFile("https://raw.githubusercontent.com/imstillamazedbyit/1q29dks43895r794/main/launcherinfo.json", Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\fuck.json");
             Services.LogSVC.LogJSDownload();
             string DATA = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\fuck.json");
@@ -313,6 +315,7 @@ namespace AgsLauncherV2
             public string NewsSubHeader { get; set; }
             public string NewsDate { get; set; }
             public string NewsImageURL { get; set; }
+            public string AccountPageReady { get; set; }
         }
         private void Home(object sender, RoutedEventArgs e)
         {
@@ -329,6 +332,10 @@ namespace AgsLauncherV2
                     BugsButton.Visibility = Visibility.Visible;
                     ColSettings.Visibility = Visibility.Hidden;
                     SettingsButton.Visibility = Visibility.Visible;
+                    ColNews.Visibility = Visibility.Hidden;
+                    NewsButton.Visibility = Visibility.Visible;
+                    ColAccount.Visibility = Visibility.Hidden;
+                    AccountButton.Visibility = Visibility.Visible;
                     AveryGame.Opacity = 0;
                     AGSLog.Opacity = 0;
                     ColHomeButton.Visibility = Visibility.Hidden;
@@ -406,6 +413,8 @@ namespace AgsLauncherV2
                     BugsButton.Visibility = Visibility.Hidden;
                     ColSettings.Visibility = Visibility.Visible;
                     SettingsButton.Visibility = Visibility.Hidden;
+                    AccountButton.Visibility = Visibility.Hidden;
+                    ColAccount.Visibility = Visibility.Visible;
                     AveryGame.Opacity = 0;
                     AGSLog.Opacity = 1;
                     ColHomeButton.Visibility = Visibility.Visible;
@@ -459,6 +468,10 @@ namespace AgsLauncherV2
                     BugsButton.Visibility = Visibility.Visible;
                     ColSettings.Visibility = Visibility.Hidden;
                     SettingsButton.Visibility = Visibility.Visible;
+                    ColNews.Visibility = Visibility.Hidden;
+                    NewsButton.Visibility = Visibility.Visible;
+                    ColAccount.Visibility = Visibility.Hidden;
+                    AccountButton.Visibility = Visibility.Visible;
                     AveryGame.Opacity = 0;
                     AGSLog.Opacity = 0;
                     ColHomeButton.Visibility = Visibility.Hidden;
@@ -564,6 +577,8 @@ namespace AgsLauncherV2
                     ChangelogButton.Visibility = Visibility.Hidden;
                     BugsButton.Visibility = Visibility.Hidden;
                     ColSettings.Visibility = Visibility.Visible;
+                    AccountButton.Visibility = Visibility.Hidden;
+                    ColAccount.Visibility = Visibility.Visible;
                     SettingsButton.Visibility = Visibility.Hidden;
                     AveryGame.Opacity = 0;
                     AGSLog.Opacity = 1;
@@ -618,6 +633,10 @@ namespace AgsLauncherV2
                     BugsButton.Visibility = Visibility.Visible;
                     ColSettings.Visibility = Visibility.Hidden;
                     SettingsButton.Visibility = Visibility.Visible;
+                    ColNews.Visibility = Visibility.Hidden;
+                    NewsButton.Visibility = Visibility.Visible;
+                    ColAccount.Visibility = Visibility.Hidden;
+                    AccountButton.Visibility = Visibility.Visible;
                     AveryGame.Opacity = 0;
                     AGSLog.Opacity = 0;
                     ColHomeButton.Visibility = Visibility.Hidden;
@@ -727,6 +746,8 @@ namespace AgsLauncherV2
                     ColSettings.Visibility = Visibility.Visible;
                     SettingsButton.Visibility = Visibility.Hidden;
                     ColNews.Visibility = Visibility.Visible;
+                    AccountButton.Visibility = Visibility.Hidden;
+                    ColAccount.Visibility = Visibility.Visible;
                     NewsButton.Visibility = Visibility.Hidden;
                     AveryGame.Opacity = 0;
                     AGSLog.Opacity = 1;
@@ -776,6 +797,10 @@ namespace AgsLauncherV2
                     SettingsButton.Visibility = Visibility.Visible;
                     ColNews.Visibility = Visibility.Hidden;
                     NewsButton.Visibility = Visibility.Visible;
+                    ColNews.Visibility = Visibility.Hidden;
+                    NewsButton.Visibility = Visibility.Visible;
+                    ColAccount.Visibility = Visibility.Hidden;
+                    AccountButton.Visibility = Visibility.Visible;
                     AveryGame.Opacity = 0;
                     AGSLog.Opacity = 0;
                     ColHomeButton.Visibility = Visibility.Hidden;
@@ -891,6 +916,8 @@ namespace AgsLauncherV2
                     ColSettings.Visibility = Visibility.Visible;
                     ColNews.Visibility = Visibility.Visible;
                     NewsButton.Visibility = Visibility.Hidden;
+                    AccountButton.Visibility = Visibility.Hidden;
+                    ColAccount.Visibility = Visibility.Visible;
                     SettingsButton.Visibility = Visibility.Hidden;
                     AveryGame.Opacity = 0;
                     AGSLog.Opacity = 1;
@@ -938,6 +965,10 @@ namespace AgsLauncherV2
                     BugsButton.Visibility = Visibility.Visible;
                     ColSettings.Visibility = Visibility.Hidden;
                     SettingsButton.Visibility = Visibility.Visible;
+                    ColNews.Visibility = Visibility.Hidden;
+                    NewsButton.Visibility = Visibility.Visible;
+                    ColAccount.Visibility = Visibility.Hidden;
+                    AccountButton.Visibility = Visibility.Visible;
                     AveryGame.Opacity = 0;
                     AGSLog.Opacity = 0;
                     ColHomeButton.Visibility = Visibility.Hidden;
@@ -1030,6 +1061,8 @@ namespace AgsLauncherV2
                     ColSettings.Visibility = Visibility.Visible;
                     SettingsButton.Visibility = Visibility.Hidden;
                     ColNews.Visibility = Visibility.Visible;
+                    AccountButton.Visibility = Visibility.Hidden;
+                    ColAccount.Visibility = Visibility.Visible;
                     NewsButton.Visibility = Visibility.Hidden;
                     AveryGame.Opacity = 0;
                     AGSLog.Opacity = 1;
@@ -1047,7 +1080,6 @@ namespace AgsLauncherV2
                     ColBugsButton.IsEnabled = true;
                     ColNews.IsEnabled = true;
                     SettingsButton.IsEnabled = false;
-                    ChangelogBugsTitle.Text = "Bugs";
                     CreditLine1.Opacity = 0;
                     CreditLine2.Opacity = 0;
                     Services.LogSVC.BtnLogic.LogColElements();
@@ -1061,6 +1093,11 @@ namespace AgsLauncherV2
                 this.Close();
 
             }
+        }
+        //Process.Start(@"C:\Program Files\Internet Explorer\iexplore.exe", "http://twitter.com/fortnitegame");
+        private void AccountButtonClick(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start(@"C:\Program Files\Internet Explorer\iexplore.exe", "http://averygame.averymadness.wtf/averygamelogin/home.php");
         }
         private void RpcNameCopy(object sender, RoutedEventArgs e)
         {

@@ -21,6 +21,7 @@
 
 	<ItemGroup>
 		<None Remove="333-3334785_png-transparent-info-icon-white-clipart.png" />
+		<None Remove="AccountIcon.png" />
 		<None Remove="ags.png" />
 		<None Remove="agsgrey-1x.png" />
 		<None Remove="houseicon.png" />
@@ -58,6 +59,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<Resource Include="AccountIcon.png" />
 		<Resource Include="ags.png" />
 		<Resource Include="agsgrey-1x.png" />
 		<Resource Include="NewPrev.png" />

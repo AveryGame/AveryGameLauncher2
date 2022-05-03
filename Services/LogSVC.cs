@@ -95,6 +95,18 @@ namespace AgsLauncherV2.Services
             {
                 File.AppendAllText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\Logs\\LogV2.txt", "[LOGBTN]: Bugs button clicked" + Environment.NewLine);
             }
+            public static void LogNewsBTNClick()
+            {
+                File.AppendAllText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\Logs\\LogV2.txt", "[LOGBTN]: News button clicked" + Environment.NewLine);
+            }
+            public static void LogAccountBTNClick()
+            {
+                File.AppendAllText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\Logs\\LogV2.txt", "[LOGBTN]: Account button clicked" + Environment.NewLine);
+            }
+            public static void LogAccountPageNotReady()
+            {
+                File.AppendAllText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\Logs\\LogV2.txt", "[LOGLAUNCHER]: Account page not ready" + Environment.NewLine + "[LOGLAUNCHER]: Replaced account button logic with settings button logic");
+            }
             public static void LogSettingBTNClick()
             {
                 File.AppendAllText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\Logs\\LogV2.txt", "[LOGBTN]: Settings button clicked" + Environment.NewLine);

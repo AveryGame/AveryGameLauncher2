@@ -6,11 +6,11 @@ using System.Windows;
 using Newtonsoft.Json;
 using System.Threading;
 using DiscordRPC.Logging;
+using System.Windows.Media;
 using System.Windows.Input;
 using System.IO.Compression;
 using System.Windows.Media.Imaging;
 using Microsoft.Toolkit.Uwp.Notifications;
-using System.Windows.Media;
 
 namespace AgsLauncherV2
 {
@@ -29,9 +29,7 @@ namespace AgsLauncherV2
             Services.LogSVC.CreateLogFile();
             Services.LogSVC.LogJSEvent();
             WebClient webclient = new WebClient();
-            //https://raw.githubusercontent.com/AveryMadness/AveryGameCodebase/master/Launcher/LauncherStrings.json?token=GHSAT0AAAAAABUCVTCEMYQ4DAU3EEBKM72AYTMOMBA
-            //https://raw.githubusercontent.com/imstillamazedbyit/1q29dks43895r794/main/launcherinfo.json
-            webclient.DownloadFile("https://raw.githubusercontent.com/imstillamazedbyit/1q29dks43895r794/main/launcherinfo.json", Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\fuck.json");
+            webclient.DownloadFile("https://raw.githubusercontent.com/AyeItsAxi/ags-launcher-strings/main/launcherinfo.json", Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\fuck.json");
             Services.LogSVC.LogJSDownload();
             string DATA = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\fuck.json");
             Services.LogSVC.LogJSRead();
@@ -90,7 +88,7 @@ namespace AgsLauncherV2
                         WelcomeRPCLabel.Content = "Welcome to the AGS Launcher!";
                     }
                 }
-                //check if user is a developer
+                //check if user is not a developer
                 if (client.CurrentUser.Username != json.KiannaUN || client.CurrentUser.Username != json.AveryUN || client.CurrentUser.Username != json.CrunnieUN)
                 {
                     VerSTR.Text = json.Version + " - " + json.LauncherString;
@@ -99,19 +97,16 @@ namespace AgsLauncherV2
                 if (client.CurrentUser.Username == json.KiannaUN)
                 {
                     WelcomeRPCLabel.Content = "kys";
-                    VerSTR.Text = json.DevLauncherString;
                 }
                 //check if developer is avery
                 if (client.CurrentUser.Username == json.AveryUN)
                 {
                     WelcomeRPCLabel.Content = "Hi, avery!";
-                    VerSTR.Text = json.DevLauncherString;
                 }
                 //check if developer is crunnie
                 if (client.CurrentUser.Username == json.CrunnieUN)
                 {
                     WelcomeRPCLabel.Content = "FUCK U!";
-                    VerSTR.Text = json.DevLauncherString;
                 }
             }
             catch
@@ -179,12 +174,24 @@ namespace AgsLauncherV2
                     ColBugsButton.Visibility = Visibility.Visible;
                     ColNews.Visibility = Visibility.Visible;
                     NewsButton.Visibility = Visibility.Hidden;
+                    ColAccount.Visibility = Visibility.Visible;
+                    AccountButton.Visibility = Visibility.Hidden;
                     UncolHome.Opacity = 0;
                     UncolChangelog.Opacity = 0;
                     UncolBugs.Opacity = 0;
                     UncolHome.Margin = new Thickness(69, 69, 69, 69);
                     UncolChangelog.Margin = new Thickness(69, 69, 69, 69);
                     UncolBugs.Margin = new Thickness(69, 69, 69, 69);
+                    if (json.AccountPageReady.ToLower() == "false")
+                    {
+                        Services.LogSVC.BtnLogic.LogAccountPageNotReady();
+                        AccountButton.Visibility = Visibility.Hidden;
+                        ColAccount.Visibility = Visibility.Hidden;
+                        AccountIcon.Visibility = Visibility.Hidden;
+                        SettingsButton.Margin = new Thickness(6, 170, 0, 0);
+                        ColSettings.Margin = new Thickness(10, 170, 0, 0);
+                        UncolSettingsImg.Margin = new Thickness(10, 170, 0, 0);
+                    }
                     //log set
                     Services.LogSVC.BtnLogic.LogColElements();
                 }
@@ -195,6 +202,16 @@ namespace AgsLauncherV2
                     VerSTR.Text = "" + json.Version + " - " + json.LauncherString;
                     CreditLine1.Opacity = 1;
                     CreditLine2.Opacity = 1;
+                    if (json.AccountPageReady.ToLower() == "false")
+                    {
+                        Services.LogSVC.BtnLogic.LogAccountPageNotReady();
+                        AccountButton.Visibility = Visibility.Hidden;
+                        ColAccount.Visibility = Visibility.Hidden;
+                        AccountIcon.Visibility = Visibility.Hidden;
+                        SettingsButton.Margin = new Thickness(6, 170, 0, 0);
+                        ColSettings.Margin = new Thickness(10, 170, 0, 0);
+                        UncolSettingsImg.Margin = new Thickness(10, 170, 0, 0);
+                    }
                     //log data
                     Services.LogSVC.BtnLogic.LogUncolElements();
                 }
@@ -316,12 +333,16 @@ namespace AgsLauncherV2
             public string NewsDate { get; set; }
             public string NewsImageURL { get; set; }
             public string AccountPageReady { get; set; }
+            public string AccountPageURL { get; set; }
         }
         private void Home(object sender, RoutedEventArgs e)
         {
             //home button logic
             try
             {
+                string DATA = File.ReadAllText(filepath + "\\AveryGame Launcher\\fuck.json");
+                LauncherCloud json = JsonConvert.DeserializeObject<LauncherCloud>(DATA);
+                Services.LogSVC.LogJSRead();
                 if ((bool)!CollapseCB.IsChecked)
                 {
                     Uncollapsed.Opacity = 1;
@@ -351,11 +372,19 @@ namespace AgsLauncherV2
                     UncolChangelog.Opacity = 1;
                     UncolBugs.Opacity = 1;
                     UncolSettingsImg.Opacity = 1;
+                    if (json.AccountPageReady.ToLower() == "false")
+                    {
+                        Services.LogSVC.BtnLogic.LogAccountPageNotReady();
+                        AccountButton.Visibility = Visibility.Hidden;
+                        ColAccount.Visibility = Visibility.Hidden;
+                        AccountIcon.Visibility = Visibility.Hidden;
+                        SettingsButton.Margin = new Thickness(6, 170, 0, 0);
+                        ColSettings.Margin = new Thickness(10, 170, 0, 0);
+                        UncolSettingsImg.Margin = new Thickness(10, 170, 0, 0);
+                    }
                     Services.LogSVC.BtnLogic.LogOpacityChange();
                 }
                 Services.LogSVC.BtnLogic.LogHomeBTNClick();
-                string DATA = File.ReadAllText(filepath + "\\AveryGame Launcher\\fuck.json");
-                LauncherCloud json = JsonConvert.DeserializeObject<LauncherCloud>(DATA);
                 AGSLog.Opacity = 0;
                 AveryGame.Opacity = 1;
                 HomeButton.IsEnabled = false;
@@ -401,11 +430,12 @@ namespace AgsLauncherV2
                 {
                     AveryGame.Opacity = 0;
                     ChangelogBugsTitle.Opacity = 0;
+                    Collapsed.Opacity = 1;
                     ColChangelogBugsTitle.Opacity = 1;
                     ColChangelogBugsTitle.Text = "Home";
-                    ColVerSTR.Opacity = 1;
+                    ColVerSTR.Opacity = 0;
                     VerSTR.Opacity = 0;
-                    ColVerSTR.Opacity = 1;
+                    ColVerSTR.Opacity = 0;
                     ChangelogBugsTitle.Text = "Home";
                     Uncollapsed.Opacity = 0;
                     HomeButton.Visibility = Visibility.Hidden;
@@ -437,6 +467,16 @@ namespace AgsLauncherV2
                     LaunchButton.Margin = new Thickness(300, 367, 0, 0);
                     CreditLine1.Opacity = 0;
                     CreditLine2.Opacity = 0;
+                    if (json.AccountPageReady.ToLower() == "false")
+                    {
+                        Services.LogSVC.BtnLogic.LogAccountPageNotReady();
+                        AccountButton.Visibility = Visibility.Hidden;
+                        ColAccount.Visibility = Visibility.Hidden;
+                        AccountIcon.Visibility = Visibility.Hidden;
+                        SettingsButton.Margin = new Thickness(6, 170, 0, 0);
+                        ColSettings.Margin = new Thickness(10, 170, 0, 0);
+                        UncolSettingsImg.Margin = new Thickness(10, 170, 0, 0);
+                    }
                     Services.LogSVC.BtnLogic.LogColElements();
                 }
                 else
@@ -458,6 +498,9 @@ namespace AgsLauncherV2
             //changelog button logic
             try
             {
+                string DATA = File.ReadAllText(filepath + "\\AveryGame Launcher\\fuck.json");
+                LauncherCloud json = JsonConvert.DeserializeObject<LauncherCloud>(DATA);
+                Services.LogSVC.LogJSRead();
                 if ((bool)!CollapseCB.IsChecked)
                 {
                     Uncollapsed.Opacity = 1;
@@ -487,11 +530,19 @@ namespace AgsLauncherV2
                     UncolChangelog.Opacity = 1;
                     UncolBugs.Opacity = 1;
                     UncolSettingsImg.Opacity = 1;
+                    if (json.AccountPageReady.ToLower() == "false")
+                    {
+                        Services.LogSVC.BtnLogic.LogAccountPageNotReady();
+                        AccountButton.Visibility = Visibility.Hidden;
+                        ColAccount.Visibility = Visibility.Hidden;
+                        AccountIcon.Visibility = Visibility.Hidden;
+                        SettingsButton.Margin = new Thickness(6, 170, 0, 0);
+                        ColSettings.Margin = new Thickness(10, 170, 0, 0);
+                        UncolSettingsImg.Margin = new Thickness(10, 170, 0, 0);
+                    }
                     Services.LogSVC.BtnLogic.LogUncolElements();
                 }
                 Services.LogSVC.BtnLogic.LogChangelogBTNClick();
-                string DATA = File.ReadAllText(filepath + "\\AveryGame Launcher\\fuck.json");
-                LauncherCloud json = JsonConvert.DeserializeObject<LauncherCloud>(DATA);
                 Services.LogSVC.LogJSRead();
                 AGSLog.Opacity = 0;
                 AveryGame.Opacity = 1;
@@ -551,6 +602,7 @@ namespace AgsLauncherV2
                 {
                     AveryGame.Opacity = 0;
                     ChangelogBugsTitle.Opacity = 0;
+                    Collapsed.Opacity = 1;
                     ColChangelogBugsTitle.Opacity = 1;
                     ColChangelogBugsTitle.Text = "Changelog";
                     ColVerSTR.Opacity = 1;
@@ -600,6 +652,16 @@ namespace AgsLauncherV2
                     ChangelogBugsTitle.Text = "Changelog";
                     CreditLine1.Opacity = 0;
                     CreditLine2.Opacity = 0;
+                    if (json.AccountPageReady.ToLower() == "false")
+                    {
+                        Services.LogSVC.BtnLogic.LogAccountPageNotReady();
+                        AccountButton.Visibility = Visibility.Hidden;
+                        ColAccount.Visibility = Visibility.Hidden;
+                        AccountIcon.Visibility = Visibility.Hidden;
+                        SettingsButton.Margin = new Thickness(6, 170, 0, 0);
+                        ColSettings.Margin = new Thickness(10, 170, 0, 0);
+                        UncolSettingsImg.Margin = new Thickness(10, 170, 0, 0);
+                    }
                     Services.LogSVC.BtnLogic.LogColElements();
                 }
             }
@@ -623,6 +685,9 @@ namespace AgsLauncherV2
             try
             {
                 Services.LogSVC.BtnLogic.LogBugBTNClick();
+                string DATA = File.ReadAllText(filepath + "\\AveryGame Launcher\\fuck.json");
+                LauncherCloud json = JsonConvert.DeserializeObject<LauncherCloud>(DATA);
+                Services.LogSVC.LogJSRead();
                 if ((bool)!CollapseCB.IsChecked)
                 {
                     Uncollapsed.Opacity = 1;
@@ -652,11 +717,18 @@ namespace AgsLauncherV2
                     UncolChangelog.Opacity = 1;
                     UncolBugs.Opacity = 1;
                     UncolSettingsImg.Opacity = 1;
+                    if (json.AccountPageReady.ToLower() == "false")
+                    {
+                        Services.LogSVC.BtnLogic.LogAccountPageNotReady();
+                        AccountButton.Visibility = Visibility.Hidden;
+                        ColAccount.Visibility = Visibility.Hidden;
+                        AccountIcon.Visibility = Visibility.Hidden;
+                        SettingsButton.Margin = new Thickness(6, 170, 0, 0);
+                        ColSettings.Margin = new Thickness(10, 170, 0, 0);
+                        UncolSettingsImg.Margin = new Thickness(10, 170, 0, 0);
+                    }
                     Services.LogSVC.BtnLogic.LogUncolElements();
                 }
-                string DATA = File.ReadAllText(filepath + "\\AveryGame Launcher\\fuck.json");
-                LauncherCloud json = JsonConvert.DeserializeObject<LauncherCloud>(DATA);
-                Services.LogSVC.LogJSRead();
                 AGSLog.Opacity = 0;
                 AveryGame.Opacity = 1;
                 LogLine1.Text = json.BugLine1;
@@ -717,6 +789,7 @@ namespace AgsLauncherV2
                 {
                     AveryGame.Opacity = 0;
                     ChangelogBugsTitle.Opacity = 0;
+                    Collapsed.Opacity = 1;
                     ColChangelogBugsTitle.Opacity = 1;
                     ColChangelogBugsTitle.Text = "Bugs";
                     ChangelogBugsTitle.Text = "Bugs";
@@ -768,6 +841,16 @@ namespace AgsLauncherV2
                     ChangelogBugsTitle.Text = "Bugs";
                     CreditLine1.Opacity = 0;
                     CreditLine2.Opacity = 0;
+                    if (json.AccountPageReady.ToLower() == "false")
+                    {
+                        Services.LogSVC.BtnLogic.LogAccountPageNotReady();
+                        AccountButton.Visibility = Visibility.Hidden;
+                        ColAccount.Visibility = Visibility.Hidden;
+                        AccountIcon.Visibility = Visibility.Hidden;
+                        SettingsButton.Margin = new Thickness(6, 170, 0, 0);
+                        ColSettings.Margin = new Thickness(10, 170, 0, 0);
+                        UncolSettingsImg.Margin = new Thickness(10, 170, 0, 0);
+                    }
                     Services.LogSVC.BtnLogic.LogColElements();
                 }
             }
@@ -784,7 +867,10 @@ namespace AgsLauncherV2
             //news button logic
             try
             {
-                Services.LogSVC.BtnLogic.LogBugBTNClick();
+                Services.LogSVC.BtnLogic.LogNewsBTNClick();
+                string DATA = File.ReadAllText(filepath + "\\AveryGame Launcher\\fuck.json");
+                LauncherCloud json = JsonConvert.DeserializeObject<LauncherCloud>(DATA);
+                Services.LogSVC.LogJSRead();
                 if ((bool)!CollapseCB.IsChecked)
                 {
                     Uncollapsed.Opacity = 1;
@@ -820,11 +906,18 @@ namespace AgsLauncherV2
                     UncolChangelog.Opacity = 1;
                     UncolBugs.Opacity = 1;
                     UncolSettingsImg.Opacity = 1;
+                    if (json.AccountPageReady.ToLower() == "false")
+                    {
+                        Services.LogSVC.BtnLogic.LogAccountPageNotReady();
+                        AccountButton.Visibility = Visibility.Hidden;
+                        ColAccount.Visibility = Visibility.Hidden;
+                        AccountIcon.Visibility = Visibility.Hidden;
+                        SettingsButton.Margin = new Thickness(6, 170, 0, 0);
+                        ColSettings.Margin = new Thickness(10, 170, 0, 0);
+                        UncolSettingsImg.Margin = new Thickness(10, 170, 0, 0);
+                    }
                     Services.LogSVC.BtnLogic.LogUncolElements();
                 }
-                string DATA = File.ReadAllText(filepath + "\\AveryGame Launcher\\fuck.json");
-                LauncherCloud json = JsonConvert.DeserializeObject<LauncherCloud>(DATA);
-                Services.LogSVC.LogJSRead();
                 AGSLog.Opacity = 0;
                 AveryGame.Opacity = 1;
                 ColVerSTR.Opacity = 0;
@@ -887,6 +980,7 @@ namespace AgsLauncherV2
                 {
                     AveryGame.Opacity = 0;
                     ChangelogBugsTitle.Opacity = 0;
+                    Collapsed.Opacity = 1;
                     ColChangelogBugsTitle.Opacity = 0;
                     ColChangelogBugsTitle.Text = "News";
                     ChangelogBugsTitle.Text = "News";
@@ -938,6 +1032,16 @@ namespace AgsLauncherV2
                     ChangelogBugsTitle.Text = "News";
                     CreditLine1.Opacity = 0;
                     CreditLine2.Opacity = 0;
+                    if (json.AccountPageReady.ToLower() == "false")
+                    {
+                        Services.LogSVC.BtnLogic.LogAccountPageNotReady();
+                        AccountButton.Visibility = Visibility.Hidden;
+                        ColAccount.Visibility = Visibility.Hidden;
+                        AccountIcon.Visibility = Visibility.Hidden;
+                        SettingsButton.Margin = new Thickness(6, 170, 0, 0);
+                        ColSettings.Margin = new Thickness(10, 170, 0, 0);
+                        UncolSettingsImg.Margin = new Thickness(10, 170, 0, 0);
+                    }
                     Services.LogSVC.BtnLogic.LogColElements();
                 }
             }
@@ -954,6 +1058,11 @@ namespace AgsLauncherV2
             //setting button logic
             try
             {
+                //why in gods name do i deserialize json in every fucking button
+                //im too lazy to change it but whyyyyy
+                string DATA = File.ReadAllText(filepath + "\\AveryGame Launcher\\fuck.json");
+                LauncherCloud json = JsonConvert.DeserializeObject<LauncherCloud>(DATA);
+                Services.LogSVC.LogJSRead();
                 Services.LogSVC.BtnLogic.LogSettingBTNClick();
                 if ((bool)!CollapseCB.IsChecked)
                 {
@@ -984,13 +1093,18 @@ namespace AgsLauncherV2
                     UncolChangelog.Opacity = 1;
                     UncolBugs.Opacity = 1;
                     UncolSettingsImg.Opacity = 1;
+                    if (json.AccountPageReady.ToLower() == "false")
+                    {
+                        Services.LogSVC.BtnLogic.LogAccountPageNotReady();
+                        AccountButton.Visibility = Visibility.Hidden;
+                        ColAccount.Visibility = Visibility.Hidden;
+                        AccountIcon.Visibility = Visibility.Hidden;
+                        SettingsButton.Margin = new Thickness(6, 170, 0, 0);
+                        ColSettings.Margin = new Thickness(10, 170, 0, 0);
+                        UncolSettingsImg.Margin = new Thickness(10, 170, 0, 0);
+                    }
                     Services.LogSVC.BtnLogic.LogUncolElements();
                 }
-                //why in gods name do i deserialize json in every fucking button
-                //im too lazy to change it but whyyyyy
-                string DATA = File.ReadAllText(filepath + "\\AveryGame Launcher\\fuck.json");
-                LauncherCloud json = JsonConvert.DeserializeObject<LauncherCloud>(DATA);
-                Services.LogSVC.LogJSRead();
                 VerSTR.Text = "" + json.Version + " - " + json.LauncherString;
                 AGSLog.Opacity = 0;
                 AveryGame.Opacity = 1;
@@ -1082,6 +1196,16 @@ namespace AgsLauncherV2
                     SettingsButton.IsEnabled = false;
                     CreditLine1.Opacity = 0;
                     CreditLine2.Opacity = 0;
+                    if (json.AccountPageReady.ToLower() == "false")
+                    {
+                        Services.LogSVC.BtnLogic.LogAccountPageNotReady();
+                        AccountButton.Visibility = Visibility.Hidden;
+                        ColAccount.Visibility = Visibility.Hidden;
+                        AccountIcon.Visibility = Visibility.Hidden;
+                        SettingsButton.Margin = new Thickness(6, 170, 0, 0);
+                        ColSettings.Margin = new Thickness(10, 170, 0, 0);
+                        UncolSettingsImg.Margin = new Thickness(10, 170, 0, 0);
+                    }
                     Services.LogSVC.BtnLogic.LogColElements();
                 }
             }
@@ -1094,10 +1218,13 @@ namespace AgsLauncherV2
 
             }
         }
-        //Process.Start(@"C:\Program Files\Internet Explorer\iexplore.exe", "http://twitter.com/fortnitegame");
         private void AccountButtonClick(object sender, RoutedEventArgs e)
         {
-            System.Diagnostics.Process.Start(@"C:\Program Files\Internet Explorer\iexplore.exe", "http://averygame.averymadness.wtf/averygamelogin/home.php");
+            Services.LogSVC.BtnLogic.LogAccountBTNClick();
+            string DATA = File.ReadAllText(filepath + "\\AveryGame Launcher\\fuck.json");
+            LauncherCloud json = JsonConvert.DeserializeObject<LauncherCloud>(DATA);
+            Services.LogSVC.LogJSRead();
+            System.Diagnostics.Process.Start(@"C:\Program Files\Internet Explorer\iexplore.exe", json.AccountPageURL);
         }
         private void RpcNameCopy(object sender, RoutedEventArgs e)
         {
@@ -1154,7 +1281,7 @@ namespace AgsLauncherV2
                 if (dprog.Opacity == 0)
                 {
                     WebClient webclient = new WebClient();
-                    string DATA = webclient.DownloadString("https://raw.githubusercontent.com/imstillamazedbyit/1q29dks43895r794/main/launcherinfo.json");
+                    string DATA = webclient.DownloadString("https://raw.githubusercontent.com/AyeItsAxi/ags-launcher-strings/main/launcherinfo.json");
                     LauncherCloud json = JsonConvert.DeserializeObject<LauncherCloud>(DATA);
                     if (!File.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\AveryGame\\4.2\\4.2\\WindowsNoEditor\\AveryGame.exe")))
                     {
@@ -1216,7 +1343,7 @@ namespace AgsLauncherV2
                             {
                                 Services.LogSVC.BtnLogic.PlayBTNEvents.Update.LogUserDeny();
                                 var p = new System.Diagnostics.Process();
-                                p.StartInfo.FileName = Path.Combine(json.VersionInt + "/4.2/WindowsNoEditor/AveryGame.exe");
+                                p.StartInfo.FileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\AveryGame\\4.2\\4.2\\WindowsNoEditor\\AveryGame.exe");
                                 p.StartInfo.Arguments = args.Text;
                                 p.Start();
                                 Services.LogSVC.BtnLogic.PlayBTNEvents.LogGameStart();
@@ -1239,7 +1366,7 @@ namespace AgsLauncherV2
                 //game completed callback
                 Services.LogSVC.BtnLogic.PlayBTNEvents.Download.DownloadCallbackEvents.LogDownloadComplete();
                 WebClient webclient = new WebClient();
-                string DATA = webclient.DownloadString("https://raw.githubusercontent.com/imstillamazedbyit/1q29dks43895r794/main/launcherinfo.json");
+                string DATA = webclient.DownloadString("https://raw.githubusercontent.com/AyeItsAxi/ags-launcher-strings/main/launcherinfo.json");
                 LauncherCloud json = JsonConvert.DeserializeObject<LauncherCloud>(DATA);
                 string gzip = "1i9qQNqWOlQcdrZ0qD3NU7WzHKW4h54U.zip";
                 //extracting game
@@ -1277,7 +1404,7 @@ namespace AgsLauncherV2
                 //download code logic
                 string gzip = "1i9qQNqWOlQcdrZ0qD3NU7WzHKW4h54U.zip";
                 WebClient webclient = new WebClient();
-                string DATA = webclient.DownloadString("https://raw.githubusercontent.com/imstillamazedbyit/1q29dks43895r794/main/launcherinfo.json");
+                string DATA = webclient.DownloadString("https://raw.githubusercontent.com/AyeItsAxi/ags-launcher-strings/main/launcherinfo.json");
                 LauncherCloud json = JsonConvert.DeserializeObject<LauncherCloud>(DATA);
                 string dpath = json.VersionInt;
                 new ToastContentBuilder()

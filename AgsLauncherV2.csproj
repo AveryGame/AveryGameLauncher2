@@ -20,28 +20,13 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<None Remove="333-3334785_png-transparent-info-icon-white-clipart.png" />
 		<None Remove="AccountIcon.png" />
-		<None Remove="ags.png" />
-		<None Remove="agsgrey-1x.png" />
-		<None Remove="houseicon.png" />
-		<None Remove="NewPrev.png" />
-		<None Remove="newspaper-128.png" />
-		<None Remove="newspaper-24.png" />
 		<None Remove="newspaper-48.png" />
-		<None Remove="newspaper-512.png" />
-		<None Remove="newspaper-64.png" />
-		<None Remove="NewsPreview.png" />
-		<None Remove="NPRE.png" />
-		<None Remove="nuts.png" />
 		<None Remove="outline_bug_report_white_24dp.png" />
 		<None Remove="outline_home_white_24dp.png" />
 		<None Remove="outline_settings_ethernet_white_24dp.png" />
 		<None Remove="outline_settings_white_24dp.png" />
-		<None Remove="R.png" />
 		<None Remove="slate-blank.png" />
-		<None Remove="st.png" />
-		<None Remove="white-house-icon-31.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -60,22 +45,12 @@
 
 	<ItemGroup>
 		<Resource Include="AccountIcon.png" />
-		<Resource Include="ags.png" />
-		<Resource Include="agsgrey-1x.png" />
-		<Resource Include="NewPrev.png" />
-		<Resource Include="newspaper-128.png" />
-		<Resource Include="newspaper-24.png" />
 		<Resource Include="newspaper-48.png" />
-		<Resource Include="newspaper-512.png" />
-		<Resource Include="newspaper-64.png" />
-		<Resource Include="NewsPreview.png" />
-		<Resource Include="NPRE.png" />
 		<Resource Include="outline_bug_report_white_24dp.png" />
 		<Resource Include="outline_home_white_24dp.png" />
 		<Resource Include="outline_settings_ethernet_white_24dp.png" />
 		<Resource Include="outline_settings_white_24dp.png" />
 		<Resource Include="slate-blank.png" />
-		<Resource Include="st.png" />
 	</ItemGroup>
 
 	<ItemGroup>

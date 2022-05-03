@@ -267,42 +267,6 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Button Name="LaunchButton" Content="Launch Avery Game" HorizontalAlignment="Left" Height="29" Margin="356,371,0,0" VerticalAlignment="Top" Width="242" Opacity="1" FontFamily="Corbel Light" Background="#FF211F1F" BorderBrush="Gainsboro" Foreground="White" Click="testbutton_Click" Visibility="Hidden" Grid.ColumnSpan="2">
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="15"/>
-                </Style>
-            </Button.Resources>
-            <Button.Template>
-                <ControlTemplate TargetType="{x:Type Button}">
-                    <Border Width="242" Height="29" CornerRadius="2" Background="{TemplateBinding Background}">
-                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    </Border>
-                </ControlTemplate>
-            </Button.Template>
-            <Button.Style>
-                <Style TargetType="{x:Type Button}">
-                    <Setter Property="Background" Value="#FF8EBA8A"/>
-                    <Setter Property="Cursor" Value="Hand"/>
-                    <Style.Triggers>
-                        <EventTrigger RoutedEvent="UIElement.MouseEnter">
-                            <BeginStoryboard>
-                                <Storyboard>
-                                    <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="00:00:00.15" From="#FF211F1F" To="#FF313461"/>
-                                </Storyboard>
-                            </BeginStoryboard>
-                        </EventTrigger>
-                        <EventTrigger RoutedEvent="UIElement.MouseLeave">
-                            <BeginStoryboard>
-                                <Storyboard>
-                                    <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="00:00:00.15" From="#FF313461" To="#FF211F1F"/>
-                                </Storyboard>
-                            </BeginStoryboard>
-                        </EventTrigger>
-                    </Style.Triggers>
-                </Style>
-            </Button.Style>
-        </Button>
         <TextBlock Name="ColChangelogBugsTitle" Text="" HorizontalAlignment="Left" Margin="44,26,0,0" VerticalAlignment="Top" Width="756" TextAlignment="Center" Foreground="White" FontFamily="Segoe UI Variable Text Light" Height="73" FontSize="36" Opacity="1" Grid.ColumnSpan="2" RenderTransformOrigin="0.501,0.548"/>
         <TextBlock Name="ChangelogBugsTitle" Text="" HorizontalAlignment="Left" Margin="143,26,0,0" VerticalAlignment="Top" Width="657" TextAlignment="Center" Foreground="White" FontFamily="Segoe UI Variable Text Light" Height="73" FontSize="36" Opacity="1" Grid.ColumnSpan="2" RenderTransformOrigin="0.501,0.548"/>
         <TextBlock Name="VerSTR" HorizontalAlignment="Left" Margin="143,71,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="657" TextAlignment="Center" Foreground="White" FontFamily="Segoe UI Variable Text Light" FontSize="14" Opacity="0" Grid.ColumnSpan="2" Height="19"/>
@@ -450,7 +414,7 @@
         <Image Name="UncolChangelog" HorizontalAlignment="Left" Height="20" Margin="11,80,0,0" VerticalAlignment="Top" Width="21" Source="/outline_settings_ethernet_white_24dp.png"/>
         <Image Name="UncolBugs" HorizontalAlignment="Left" Height="22" Margin="11,110,0,0" VerticalAlignment="Top" Width="20" Source="/outline_bug_report_white_24dp.png"/>
         <!--6,201,0,0-->
-        <Button x:Name="SettingsButton" Content="Settings" HorizontalAlignment="Left" Margin="6,201,0,0" VerticalAlignment="Top" Width="132" BorderBrush="{x:Null}" Foreground="White" Background="#FF24252B" Click="SettingsClick" FontFamily="Segoe UI Variable Text Light" Height="20" Opacity="1">
+        <Button x:Name="SettingsButton" Content="Settings" HorizontalAlignment="Left" Margin="6,201,0,0" VerticalAlignment="Top" Width="132" BorderBrush="{x:Null}" Foreground="White" Background="#FF24252B" Click="SettingsClick" FontFamily="Segoe UI Variable Text Light" Height="20" Opacity="1" Visibility="Visible">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="15"/>
@@ -487,10 +451,10 @@
             </Button.Style>
         </Button>
         <!--12,202,0,0-->
-        <Image Name="UncolSettingsImg" HorizontalAlignment="Left" Height="18" Margin="12,202,0,0" VerticalAlignment="Top" Width="18" Source="/outline_settings_white_24dp.png"/>
+        <Image Name="UncolSettingsImg" HorizontalAlignment="Left" Height="18" Margin="12,202,0,0" VerticalAlignment="Top" Width="18" Source="/outline_settings_white_24dp.png" Opacity="1"/>
         <TextBlock Name="HideMenu" FontFamily="Segoe UI Variable Text Light" HorizontalAlignment="Left" Margin="129,51,0,0" TextWrapping="Wrap" Text="Collapse menu" VerticalAlignment="Top" Foreground="White" FontSize="20" Width="671" Grid.ColumnSpan="2" TextAlignment="Center" Opacity="0"/>
         <!--12,202,0,0-->
-        <Button x:Name="ColSettings" HorizontalAlignment="Left" Margin="12,202,0,0" VerticalAlignment="Top" Width="21" BorderBrush="{x:Null}" Foreground="White" Background="#FF24252B" Click="SettingsClick" FontFamily="Segoe UI Variable Text Light" Height="20" Visibility="Hidden">
+        <Button x:Name="ColSettings" HorizontalAlignment="Left" Margin="10,202,0,0" VerticalAlignment="Top" Width="21" BorderBrush="{x:Null}" Foreground="White" Background="#FF24252B" Click="SettingsClick" FontFamily="Segoe UI Variable Text Light" Height="20" Visibility="Hidden">
             <Image Source="/outline_settings_white_24dp.png" Height="20" Width="19"/>
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
@@ -566,7 +530,7 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Image HorizontalAlignment="Left" Height="18" Margin="12,142,0,0" VerticalAlignment="Top" Width="20" Source="/newspaper-48.png"/>
+        <Image HorizontalAlignment="Left" Height="18" Margin="12,141,0,0" VerticalAlignment="Top" Width="20" Source="/newspaper-48.png"/>
         <Button x:Name="ColNews" HorizontalAlignment="Left" Margin="10,140,0,0" VerticalAlignment="Top" Width="22" BorderBrush="{x:Null}" Foreground="White" Background="#FF24252B" Click="News" FontFamily="Segoe UI Variable Text Light" Height="20" Visibility="Hidden">
             <Image Source="/newspaper-48.png" Height="20" Width="19"/>
             <Button.Resources>
@@ -608,7 +572,7 @@
         <TextBlock x:Name="NewsSubheader" TextWrapping="Wrap" Text="OH MY GOD I LOVE HTEM SO MUCH" Foreground="White" Margin="109,294,79,113" Grid.ColumnSpan="2" TextAlignment="Left" FontSize="14" FontWeight="Normal" FontFamily="Segoe UI Variable Display Light" Opacity="0"/>
         <Border x:Name="NewsImageBorder" CornerRadius="3,3,3,3" Grid.ColumnSpan="2" Margin="109,26,79,193">
             <Border.Background>
-                <ImageBrush Stretch="Fill" ImageSource="/slate-blank.png" Opacity="0"/>
+                <ImageBrush Stretch="None" ImageSource="/slate-blank.png" Opacity="0"/>
             </Border.Background>
         </Border>
         <TextBlock Name="NewsDate" TextWrapping="Wrap" Text="" Margin="100,269,79,0" Grid.Column="1" FontSize="8" TextAlignment="Right" VerticalAlignment="Top" Foreground="Black" Opacity="0"/>
@@ -659,7 +623,7 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Image Source="/AccountIcon.png" Height="20" Width="19" Margin="11,170,445,260"/>
+        <Image Name="AccountIcon" Source="/AccountIcon.png" Height="20" Width="19" Margin="11,170,445,260"/>
         <Button x:Name="ColAccount" HorizontalAlignment="Left" Margin="10,170,0,0" VerticalAlignment="Top" Width="21" BorderBrush="{x:Null}" Foreground="White" Background="#FF24252B" Click="AccountButtonClick" FontFamily="Segoe UI Variable Text Light" Height="20" Visibility="Hidden">
             <Image Source="/AccountIcon.png" Height="20" Width="19"/>
             <Button.Resources>
@@ -690,6 +654,42 @@
                             <BeginStoryboard>
                                 <Storyboard>
                                     <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="00:00:00.15" From="#FF313461" To="#FF24252B"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button Name="LaunchButton" Content="Launch Avery Game" HorizontalAlignment="Left" Height="29" Margin="356,371,0,0" VerticalAlignment="Top" Width="242" Opacity="1" FontFamily="Corbel Light" Background="#FF211F1F" BorderBrush="Gainsboro" Foreground="White" Click="testbutton_Click" Visibility="Hidden" Grid.ColumnSpan="2">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Width="242" Height="29" CornerRadius="2" Background="{TemplateBinding Background}">
+                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="#FF8EBA8A"/>
+                    <Setter Property="Cursor" Value="Hand"/>
+                    <Style.Triggers>
+                        <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="00:00:00.15" From="#FF211F1F" To="#FF313461"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="00:00:00.15" From="#FF313461" To="#FF211F1F"/>
                                 </Storyboard>
                             </BeginStoryboard>
                         </EventTrigger>

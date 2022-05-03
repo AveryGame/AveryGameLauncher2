@@ -217,7 +217,7 @@ namespace AgsLauncherV2.Services
                         }
                         public static void LogWriteVersionString()
                         {
-
+                            File.AppendAllText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\Logs\\LogV2.txt", "[LOGEVENT]: Wrote version string" + Environment.NewLine);
                         }
                     }
                 }

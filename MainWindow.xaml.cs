@@ -223,6 +223,7 @@ namespace AgsLauncherV2
                     //this is not possible in LogV2, sorry.
                     File.AppendAllText(filepath + "\\AveryGame Launcher\\Logs\\LogV2.txt", "Wrote collapse menu checkbox information to json. New state: " + CollapseCB.IsChecked + Environment.NewLine);
                 }
+                /*
                 if (json.LauncherVer != ReleaseString.Text)
                 {
                     //show toast notif
@@ -241,8 +242,9 @@ namespace AgsLauncherV2
                     //start downloading 
                     webclient.DownloadFileAsync(new Uri("https://www.googleapis.com/drive/v3/files/1MBkHHCCuYiJO2Z19OT6djQmnPY0zc6Qv?alt=media&key=AIzaSyD3hsuSxEFnxZkgadbUSPt_iyx8qJ4lwWQ"), Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\DownloadHelper\\Release.zip");
                 }
+                */
             }
-            //if something causes the launher to crash it will log the error and show the user a messagebox
+            //if something causes the launcher to crash it will log the error and show the user a messagebox
             catch (Exception ex)
             {
                 Services.LogSVC.LogFatalErr();

@@ -105,7 +105,7 @@ namespace AgsLauncherV2.Services
             }
             public static void LogAccountPageNotReady()
             {
-                File.AppendAllText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\Logs\\LogV2.txt", "[LOGLAUNCHER]: Account page not ready" + Environment.NewLine + "[LOGLAUNCHER]: Replaced account button logic with settings button logic");
+                File.AppendAllText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\Logs\\LogV2.txt", "[LOGLAUNCHER]: Account page not ready" + Environment.NewLine + "[LOGLAUNCHER]: Replaced account button logic with settings button logic" + Environment.NewLine);
             }
             public static void LogSettingBTNClick()
             {

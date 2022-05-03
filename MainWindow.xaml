@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AgsLauncherV2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" ResizeMode="NoResize" WindowStyle="None">
+        Title="AveryGame Launcher V2" Height="450" Width="800" ResizeMode="NoResize" WindowStyle="None">
     <Grid Background="#FF24252B">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="19*"/>

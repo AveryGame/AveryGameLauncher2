@@ -24,234 +24,233 @@ namespace AgsLauncherV2
         public MainWindow()
         {
             InitializeComponent();
-            //try
-            //{
-            Services.LogSVC.CreateLogFile();
-            Services.LogSVC.LogJSEvent();
-            WebClient webclient = new WebClient();
-            webclient.DownloadFile("https://raw.githubusercontent.com/AyeItsAxi/ags-launcher-strings/main/launcherinfo.json", Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\fuck.json");
-            Services.LogSVC.LogJSDownload();
-            string DATA = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\fuck.json");
-            Services.LogSVC.LogJSRead();
-            LauncherCloud json = JsonConvert.DeserializeObject<LauncherCloud>(DATA);
-            //set client id
-            client = new DiscordRpcClient("939285353355935774");
-            client.Logger = new ConsoleLogger() { Level = LogLevel.Warning };
-            client.OnReady += (sender, e) =>
-            {
-                Console.WriteLine("Received Ready from user {0}", e.User.Username);
-            };
-            client.OnPresenceUpdate += (sender, e) =>
-            {
-                Console.WriteLine("Received Update! {0}", e.Presence);
-            };
-            //initialize discord rpc service
-            client.Initialize();
-            //set rpc
-            client.SetPresence(new RichPresence()
-            {
-                Details = "V2 launcher",
-                State = "In the launcher",
-                Assets = new Assets()
-                {
-                    LargeImageKey = "agsgrey",
-                    LargeImageText = ReleaseString.Text,
-                    SmallImageKey = ""
-                }
-            });
-            Services.LogSVC.LogRPC();
-            //checking for program files directory
-            if (!Directory.Exists(filepath + "\\AveryGame Launcher"))
-            {
-                //create program files directory if it doesnt exist
-                Directory.CreateDirectory(filepath + "\\AveryGame Launcher");
-            }
-            //check if log file doesnt exist
-            Services.LogSVC.CreateLogFile();
-            //check if log file exists
-            Services.LogSVC.LogWindowInit();
-            //write needed launcher updater content
-            File.WriteAllText(filepath + "\\AveryGame Launcher\\EnvPath.txt", Environment.CurrentDirectory + "\\AGSLauncherV2.exe");
-            File.WriteAllText(filepath + "\\AveryGame Launcher\\Dir.txt", Environment.CurrentDirectory);
             try
             {
-                Thread.Sleep(2500);
+                Services.LogSVC.CreateLogFile();
+                Services.LogSVC.LogJSEvent();
+                WebClient webclient = new WebClient();
+                webclient.DownloadFile("https://raw.githubusercontent.com/AyeItsAxi/ags-launcher-strings/main/launcherinfo.json", Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\fuck.json");
+                Services.LogSVC.LogJSDownload();
+                string DATA = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\fuck.json");
+                Services.LogSVC.LogJSRead();
+                LauncherCloud json = JsonConvert.DeserializeObject<LauncherCloud>(DATA);
+                //set client id
+                client = new DiscordRpcClient("939285353355935774");
+                client.Logger = new ConsoleLogger() { Level = LogLevel.Warning };
+                client.OnReady += (sender, e) =>
                 {
-                    try
+                    Console.WriteLine("Received Ready from user {0}", e.User.Username);
+                };
+                client.OnPresenceUpdate += (sender, e) =>
+                {
+                    Console.WriteLine("Received Update! {0}", e.Presence);
+                };
+                //initialize discord rpc service
+                client.Initialize();
+                //set rpc
+                client.SetPresence(new RichPresence()
+                {
+                    Details = "V2 launcher",
+                    State = "In the launcher",
+                    Assets = new Assets()
                     {
-                        //set welcome rpc content
-                        WelcomeRPCLabel.Content = "Welcome, " + client.CurrentUser.Username + "!";
+                        LargeImageKey = "agsgrey",
+                        LargeImageText = ReleaseString.Text,
+                        SmallImageKey = ""
                     }
-                    catch
+                });
+                Services.LogSVC.LogRPC();
+                //checking for program files directory
+                if (!Directory.Exists(filepath + "\\AveryGame Launcher"))
+                {
+                    //create program files directory if it doesnt exist
+                    Directory.CreateDirectory(filepath + "\\AveryGame Launcher");
+                }
+                //check if log file doesnt exist
+                Services.LogSVC.CreateLogFile();
+                //check if log file exists
+                Services.LogSVC.LogWindowInit();
+                //write needed launcher updater content
+                File.WriteAllText(filepath + "\\AveryGame Launcher\\EnvPath.txt", Environment.CurrentDirectory + "\\AGSLauncherV2.exe");
+                File.WriteAllText(filepath + "\\AveryGame Launcher\\Dir.txt", Environment.CurrentDirectory);
+                try
+                {
+                    Thread.Sleep(2500);
                     {
-                        //set fallback content
-                        WelcomeRPCLabel.Content = "Welcome to the AGS Launcher!";
+                        try
+                        {
+                            //set welcome rpc content
+                            WelcomeRPCLabel.Content = "Welcome, " + client.CurrentUser.Username + "!";
+                        }
+                        catch
+                        {
+                            //set fallback content
+                            WelcomeRPCLabel.Content = "Welcome to the AGS Launcher!";
+                        }
+                    }
+                    //check if user is not a developer
+                    if (client.CurrentUser.Username != json.KiannaUN || client.CurrentUser.Username != json.AveryUN || client.CurrentUser.Username != json.CrunnieUN)
+                    {
+                        VerSTR.Text = json.Version + " - " + json.LauncherString;
+                    }
+                    //check if developer is kianna
+                    if (client.CurrentUser.Username == json.KiannaUN)
+                    {
+                        WelcomeRPCLabel.Content = "kys";
+                    }
+                    //check if developer is avery
+                    if (client.CurrentUser.Username == json.AveryUN)
+                    {
+                        WelcomeRPCLabel.Content = "Hi, avery!";
+                    }
+                    //check if developer is crunnie
+                    if (client.CurrentUser.Username == json.CrunnieUN)
+                    {
+                        WelcomeRPCLabel.Content = "FUCK U!";
                     }
                 }
-                //check if user is not a developer
-                if (client.CurrentUser.Username != json.KiannaUN || client.CurrentUser.Username != json.AveryUN || client.CurrentUser.Username != json.CrunnieUN)
+                catch
                 {
-                    VerSTR.Text = json.Version + " - " + json.LauncherString;
+                    //useless catch i guess lol
                 }
-                //check if developer is kianna
-                if (client.CurrentUser.Username == json.KiannaUN)
+                try
                 {
-                    WelcomeRPCLabel.Content = "kys";
+                    //set pfp source to user pfp 
+                    //this is grabbed from rpc
+                    pfp.Source = new BitmapImage(new Uri(client.CurrentUser.GetAvatarURL(User.AvatarFormat.PNG)));
                 }
-                //check if developer is avery
-                if (client.CurrentUser.Username == json.AveryUN)
+                catch
                 {
-                    WelcomeRPCLabel.Content = "Hi, avery!";
+                    //if pfp grab from rpc fails this is the fallback
+                    pfp.Source = new BitmapImage(new Uri("https://cdn.discordapp.com/app-assets/939285353355935774/939285441323077632.png"));
                 }
-                //check if developer is crunnie
-                if (client.CurrentUser.Username == json.CrunnieUN)
+                //check if corrupted game zip exists
+                if (File.Exists("1i9qQNqWOlQcdrZ0qD3NU7WzHKW4h54U.zip"))
                 {
-                    WelcomeRPCLabel.Content = "FUCK U!";
+                    //delete corrupted game zip
+                    File.Delete("1i9qQNqWOlQcdrZ0qD3NU7WzHKW4h54U.zip");
+                    //log corrupted zip deletion
+                    Services.LogSVC.LogCorruptZipDelete();
                 }
-            }
-            catch
-            {
-                //useless catch i guess lol
-            }
-            try
-            {
-                //set pfp source to user pfp 
-                //this is grabbed from rpc
-                pfp.Source = new BitmapImage(new Uri(client.CurrentUser.GetAvatarURL(User.AvatarFormat.PNG)));
-            }
-            catch
-            {
-                //if pfp grab from rpc fails this is the fallback
-                pfp.Source = new BitmapImage(new Uri("https://cdn.discordapp.com/app-assets/939285353355935774/939285441323077632.png"));
-            }
-            //check if corrupted game zip exists
-            if (File.Exists("1i9qQNqWOlQcdrZ0qD3NU7WzHKW4h54U.zip"))
-            {
-                //delete corrupted game zip
-                File.Delete("1i9qQNqWOlQcdrZ0qD3NU7WzHKW4h54U.zip");
-                //log corrupted zip deletion
-                Services.LogSVC.LogCorruptZipDelete();
-            }
-            //check if unneeded download helper folder exists (temporary)
-            if (Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\DownloadHelper"))
-            {
-                Directory.Delete(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\DownloadHelper", true);
-            }
-            //set version descriptions
-            VerSTR.Text = json.Version + " - " + json.LauncherString;
-            //log
-            Services.LogSVC.LogJSSet();
-            //begin setting uncollapsed menu elements
-            HideMenu.Opacity = 0;
-            CollapseCB.Opacity = 0;
-            Notice.Opacity = 0;
-            Arguments.Opacity = 0;
-            args.Opacity = 0;
-            //check if client settings exists
-            //this is only written if the user has collapsed the menu. 
-            //if it does not exist the menu will fallback to its collapsed state
-            if (File.Exists(filepath + "\\AveryGame Launcher\\Clientsettings.json"))
-            {
-                string js2 = File.ReadAllText(filepath + "\\AveryGame Launcher\\Clientsettings.json");
-                LauncherCloud z = JsonConvert.DeserializeObject<LauncherCloud>(js2);
-                //read json data
-                //check if collapse menu option is set to true
-                if (z.CollapseMenu == "True")
+                //check if unneeded download helper folder exists (temporary)
+                if (Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\DownloadHelper"))
                 {
-                    //set collapsed menu elements
-                    CollapseCB.IsChecked = true;
-                    Uncollapsed.Opacity = 0;
-                    AGSLogo.Margin = new Thickness(0, 0, 56, 11);
-                    HomeButton.Visibility = Visibility.Hidden;
-                    ChangelogButton.Visibility = Visibility.Hidden;
-                    BugsButton.Visibility = Visibility.Hidden;
-                    ColSettings.Visibility = Visibility.Visible;
-                    SettingsButton.Visibility = Visibility.Hidden;
-                    AveryGame.Opacity = 0;
-                    AGSLog.Opacity = 1;
-                    ColHomeButton.Visibility = Visibility.Visible;
-                    ColChangelogButton.Visibility = Visibility.Visible;
-                    ColBugsButton.Visibility = Visibility.Visible;
-                    ColNews.Visibility = Visibility.Visible;
-                    NewsButton.Visibility = Visibility.Hidden;
-                    ColAccount.Visibility = Visibility.Visible;
-                    AccountButton.Visibility = Visibility.Hidden;
-                    UncolHome.Opacity = 0;
-                    UncolChangelog.Opacity = 0;
-                    UncolBugs.Opacity = 0;
-                    UncolHome.Margin = new Thickness(69, 69, 69, 69);
-                    UncolChangelog.Margin = new Thickness(69, 69, 69, 69);
-                    UncolBugs.Margin = new Thickness(69, 69, 69, 69);
-                    if (json.AccountPageReady.ToLower() == "false")
+                    Directory.Delete(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\DownloadHelper", true);
+                }
+                //set version descriptions
+                VerSTR.Text = json.Version + " - " + json.LauncherString;
+                //log
+                Services.LogSVC.LogJSSet();
+                //begin setting uncollapsed menu elements
+                HideMenu.Opacity = 0;
+                CollapseCB.Opacity = 0;
+                Notice.Opacity = 0;
+                Arguments.Opacity = 0;
+                args.Opacity = 0;
+                //check if client settings exists
+                //this is only written if the user has collapsed the menu. 
+                //if it does not exist the menu will fallback to its collapsed state
+                if (File.Exists(filepath + "\\AveryGame Launcher\\Clientsettings.json"))
+                {
+                    string js2 = File.ReadAllText(filepath + "\\AveryGame Launcher\\Clientsettings.json");
+                    LauncherCloud z = JsonConvert.DeserializeObject<LauncherCloud>(js2);
+                    //read json data
+                    //check if collapse menu option is set to true
+                    if (z.CollapseMenu == "True")
                     {
-                        Services.LogSVC.BtnLogic.LogAccountPageNotReady();
+                        //set collapsed menu elements
+                        CollapseCB.IsChecked = true;
+                        Uncollapsed.Opacity = 0;
+                        AGSLogo.Margin = new Thickness(0, 0, 56, 11);
+                        HomeButton.Visibility = Visibility.Hidden;
+                        ChangelogButton.Visibility = Visibility.Hidden;
+                        BugsButton.Visibility = Visibility.Hidden;
+                        ColSettings.Visibility = Visibility.Visible;
+                        SettingsButton.Visibility = Visibility.Hidden;
+                        AveryGame.Opacity = 0;
+                        AGSLog.Opacity = 1;
+                        ColHomeButton.Visibility = Visibility.Visible;
+                        ColChangelogButton.Visibility = Visibility.Visible;
+                        ColBugsButton.Visibility = Visibility.Visible;
+                        ColNews.Visibility = Visibility.Visible;
+                        NewsButton.Visibility = Visibility.Hidden;
+                        ColAccount.Visibility = Visibility.Visible;
                         AccountButton.Visibility = Visibility.Hidden;
-                        ColAccount.Visibility = Visibility.Hidden;
-                        AccountIcon.Visibility = Visibility.Hidden;
-                        SettingsButton.Margin = new Thickness(6, 170, 0, 0);
-                        ColSettings.Margin = new Thickness(10, 170, 0, 0);
-                        UncolSettingsImg.Margin = new Thickness(10, 170, 0, 0);
+                        UncolHome.Opacity = 0;
+                        UncolChangelog.Opacity = 0;
+                        UncolBugs.Opacity = 0;
+                        UncolHome.Margin = new Thickness(69, 69, 69, 69);
+                        UncolChangelog.Margin = new Thickness(69, 69, 69, 69);
+                        UncolBugs.Margin = new Thickness(69, 69, 69, 69);
+                        if (json.AccountPageReady.ToLower() == "false")
+                        {
+                            Services.LogSVC.BtnLogic.LogAccountPageNotReady();
+                            AccountButton.Visibility = Visibility.Hidden;
+                            ColAccount.Visibility = Visibility.Hidden;
+                            AccountIcon.Visibility = Visibility.Hidden;
+                            SettingsButton.Margin = new Thickness(6, 170, 0, 0);
+                            ColSettings.Margin = new Thickness(10, 170, 0, 0);
+                            UncolSettingsImg.Margin = new Thickness(10, 170, 0, 0);
+                        }
+                        //log set
+                        Services.LogSVC.BtnLogic.LogColElements();
                     }
-                    //log set
-                    Services.LogSVC.BtnLogic.LogColElements();
+                    else
+                    {
+                        //set checkbox state
+                        CollapseCB.IsChecked = false;
+                        VerSTR.Text = "" + json.Version + " - " + json.LauncherString;
+                        CreditLine1.Opacity = 1;
+                        CreditLine2.Opacity = 1;
+                        if (json.AccountPageReady.ToLower() == "false")
+                        {
+                            Services.LogSVC.BtnLogic.LogAccountPageNotReady();
+                            AccountButton.Visibility = Visibility.Hidden;
+                            ColAccount.Visibility = Visibility.Hidden;
+                            AccountIcon.Visibility = Visibility.Hidden;
+                            SettingsButton.Margin = new Thickness(6, 170, 0, 0);
+                            ColSettings.Margin = new Thickness(10, 170, 0, 0);
+                            UncolSettingsImg.Margin = new Thickness(10, 170, 0, 0);
+                        }
+                        //log data
+                        Services.LogSVC.BtnLogic.LogUncolElements();
+                    }
                 }
                 else
                 {
-                    //set checkbox state
-                    CollapseCB.IsChecked = false;
-                    VerSTR.Text = "" + json.Version + " - " + json.LauncherString;
-                    CreditLine1.Opacity = 1;
-                    CreditLine2.Opacity = 1;
-                    if (json.AccountPageReady.ToLower() == "false")
-                    {
-                        Services.LogSVC.BtnLogic.LogAccountPageNotReady();
-                        AccountButton.Visibility = Visibility.Hidden;
-                        ColAccount.Visibility = Visibility.Hidden;
-                        AccountIcon.Visibility = Visibility.Hidden;
-                        SettingsButton.Margin = new Thickness(6, 170, 0, 0);
-                        ColSettings.Margin = new Thickness(10, 170, 0, 0);
-                        UncolSettingsImg.Margin = new Thickness(10, 170, 0, 0);
-                    }
-                    //log data
-                    Services.LogSVC.BtnLogic.LogUncolElements();
+                    //write client settings
+                    File.WriteAllText(@filepath + "\\AveryGame Launcher\\Clientsettings.json", "{ \"CollapseMenu\":\"" + CollapseCB.IsChecked + "\" }");
+                    //this is not possible in LogV2, sorry.
+                    File.AppendAllText(filepath + "\\AveryGame Launcher\\Logs\\LogV2.txt", "Wrote collapse menu checkbox information to json. New state: " + CollapseCB.IsChecked + Environment.NewLine);
+                }
+                if (json.LauncherVer != ReleaseString.Text)
+                {
+                    //show toast notif
+                    new ToastContentBuilder()
+                    .AddArgument("action", "viewConversation")
+                    .AddArgument("conversationId", 9813)
+                    .AddText("Avery Game download status")
+                    .AddText("There is an update available for the launcher, installing...")
+                    .Show();
+                    Services.LogSVC.LogToastNotif();
+                    //log updater download
+                    Services.LogSVC.LogUpdaterDownload();
+                    //set callbacks
+                    webclient.DownloadFileCompleted += new System.ComponentModel.AsyncCompletedEventHandler(help);
+                    Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\DownloadHelper");
+                    //start downloading 
+                    webclient.DownloadFileAsync(new Uri("https://www.googleapis.com/drive/v3/files/1MBkHHCCuYiJO2Z19OT6djQmnPY0zc6Qv?alt=media&key=AIzaSyD3hsuSxEFnxZkgadbUSPt_iyx8qJ4lwWQ"), Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\DownloadHelper\\Release.zip");
                 }
             }
-            else
+            //if something causes the launher to crash it will log the error and show the user a messagebox
+            catch (Exception ex)
             {
-                //write client settings
-                File.WriteAllText(@filepath + "\\AveryGame Launcher\\Clientsettings.json", "{ \"CollapseMenu\":\"" + CollapseCB.IsChecked + "\" }");
-                //this is not possible in LogV2, sorry.
-                File.AppendAllText(filepath + "\\AveryGame Launcher\\Logs\\LogV2.txt", "Wrote collapse menu checkbox information to json. New state: " + CollapseCB.IsChecked + Environment.NewLine);
-            }
-            /*
-            if (json.LauncherVer != ReleaseString.Text)
-            {
-                //show toast notif
-                new ToastContentBuilder()
-                .AddArgument("action", "viewConversation")
-                .AddArgument("conversationId", 9813)
-                .AddText("Avery Game download status")
-                .AddText("There is an update available for the launcher, installing...")
-                .Show();
-                Services.LogSVC.LogToastNotif();
-                //log updater download
-                Services.LogSVC.LogUpdaterDownload();
-                //set callbacks
-                webclient.DownloadFileCompleted += new System.ComponentModel.AsyncCompletedEventHandler(help);
-                Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\DownloadHelper");
-                //start downloading 
-                webclient.DownloadFileAsync(new Uri("https://www.googleapis.com/drive/v3/files/1MBkHHCCuYiJO2Z19OT6djQmnPY0zc6Qv?alt=media&key=AIzaSyD3hsuSxEFnxZkgadbUSPt_iyx8qJ4lwWQ"), Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\DownloadHelper\\Release.zip");
+                Services.LogSVC.LogFatalErr();
+                ErrorLogging(ex);
+                MessageBox.Show(ex.Message, "Fatal error!", MessageBoxButton.OK, MessageBoxImage.Stop);
+                this.Close();
             }
         }
-        //if something causes the launher to crash it will log the error and show the user a messagebox
-        catch (Exception ex)
-        {
-            Services.LogSVC.LogFatalErr();
-            ErrorLogging(ex);
-            MessageBox.Show(ex.Message, "Fatal error!", MessageBoxButton.OK, MessageBoxImage.Stop);
-            this.Close();
-        }*/
-        }/*
         //im going mental
         //im about to get real
         private void help(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
@@ -278,7 +277,7 @@ namespace AgsLauncherV2
                 ErrorLogging(ex);
                 MessageBox.Show($"Error starting launcher update");
             }
-        }*/
+        }
 
         public static void ErrorLogging(Exception ex)
         {

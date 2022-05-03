@@ -291,7 +291,7 @@
                 </LinearGradientBrush>
             </ProgressBar.Foreground>
         </ProgressBar>
-        <TextBlock x:Name="ReleaseString" Text="ags+prerelease+2.7+dev" HorizontalAlignment="Left" Margin="169,426,0,0" VerticalAlignment="Top" Width="154" Height="20" FontSize="14" FontFamily="Segoe UI Variable Text Light" Foreground="White" TextAlignment="Right" Grid.Column="1" Opacity="0.06"/>
+        <TextBlock x:Name="ReleaseString" Text="ags+release+2.7+prod" HorizontalAlignment="Left" Margin="169,426,0,0" VerticalAlignment="Top" Width="154" Height="20" FontSize="14" FontFamily="Segoe UI Variable Text Light" Foreground="White" TextAlignment="Right" Grid.Column="1" Opacity="0.06"/>
         <TextBlock x:Name="Arguments" FontFamily="Segoe UI Variable Text Light" HorizontalAlignment="Left" Margin="282,78,0,0" TextWrapping="Wrap" Text="Additional arguments:" VerticalAlignment="Top" Foreground="White" FontSize="20" Width="190" TextAlignment="Center" Opacity="0"/>
 
         <Button Name="HomeButton" Content="Home" HorizontalAlignment="Left" Margin="6,50,0,0" VerticalAlignment="Top" Width="132" BorderBrush="{x:Null}" Foreground="White" Background="#FF24252B" Click="Home" FontFamily="Segoe UI Variable Text Light" Height="20" Opacity="1">

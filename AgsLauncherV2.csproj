@@ -6,9 +6,10 @@
 		<UseWPF>true</UseWPF>
 		<ApplicationIcon>resources\launcher.ico</ApplicationIcon>
 		<Authors>Kianna</Authors>
-		<Version>2.6.0</Version>
+		<Version>2.7.2</Version>
 		<Product>AgsLauncherV2</Product>
 		<Description>Launcher for Avery Game by AveryMadness</Description>
+		<Configurations>Debug;Release;Prod</Configurations>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -17,6 +18,10 @@
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
 		<Optimize>False</Optimize>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Prod|AnyCPU'">
+	  <Optimize>False</Optimize>
 	</PropertyGroup>
 
 	<ItemGroup>

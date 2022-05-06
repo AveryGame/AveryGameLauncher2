@@ -291,8 +291,8 @@
                 </LinearGradientBrush>
             </ProgressBar.Foreground>
         </ProgressBar>
-        <TextBlock x:Name="ReleaseString" Text="ags+release+2.7.2+dev" HorizontalAlignment="Left" Margin="169,426,0,0" VerticalAlignment="Top" Width="154" Height="20" FontSize="14" FontFamily="Segoe UI Variable Text Light" Foreground="White" TextAlignment="Right" Grid.Column="1" Opacity="0.06"/>
-        <TextBlock x:Name="Arguments" FontFamily="Segoe UI Variable Text Light" HorizontalAlignment="Left" Margin="282,78,0,0" TextWrapping="Wrap" Text="Additional arguments:" VerticalAlignment="Top" Foreground="White" FontSize="20" Width="190" TextAlignment="Center" Opacity="0"/>
+        <TextBlock x:Name="ReleaseString" Text="ags+prerelease+2.7.2+dev" HorizontalAlignment="Center" Margin="0,426,0,0" VerticalAlignment="Top" Width="321" Height="20" FontSize="14" FontFamily="Segoe UI Variable Text Light" Foreground="White" TextAlignment="Right" Grid.Column="1" Opacity="0.06"/>
+        <TextBlock x:Name="Arguments" FontFamily="Segoe UI Variable Text Light" HorizontalAlignment="Left" Margin="273,82,0,0" TextWrapping="Wrap" Text="Additional arguments:" VerticalAlignment="Top" Foreground="White" FontSize="20" Width="199" TextAlignment="Center" Opacity="0"/>
 
         <Button Name="HomeButton" Content="Home" HorizontalAlignment="Left" Margin="6,50,0,0" VerticalAlignment="Top" Width="132" BorderBrush="{x:Null}" Foreground="White" Background="#FF24252B" Click="Home" FontFamily="Segoe UI Variable Text Light" Height="20" Opacity="1">
             <Button.Resources>
@@ -452,7 +452,7 @@
         </Button>
         <!--12,202,0,0-->
         <Image Name="UncolSettingsImg" HorizontalAlignment="Left" Height="18" Margin="12,202,0,0" VerticalAlignment="Top" Width="18" Source="/outline_settings_white_24dp.png" Opacity="1"/>
-        <TextBlock Name="HideMenu" FontFamily="Segoe UI Variable Text Light" HorizontalAlignment="Left" Margin="129,51,0,0" TextWrapping="Wrap" Text="Collapse menu" VerticalAlignment="Top" Foreground="White" FontSize="20" Width="671" Grid.ColumnSpan="2" TextAlignment="Center" Opacity="0"/>
+        <TextBlock Name="HideMenu" FontFamily="Segoe UI Variable Text Light" HorizontalAlignment="Left" Margin="399,53,0,0" TextWrapping="Wrap" Text="Collapse menu" VerticalAlignment="Top" Foreground="White" FontSize="20" Width="126" TextAlignment="Center" Opacity="0" Grid.ColumnSpan="2"/>
         <!--12,202,0,0-->
         <Button x:Name="ColSettings" HorizontalAlignment="Left" Margin="10,202,0,0" VerticalAlignment="Top" Width="21" BorderBrush="{x:Null}" Foreground="White" Background="#FF24252B" Click="SettingsClick" FontFamily="Segoe UI Variable Text Light" Height="20" Visibility="Hidden">
             <Image Source="/outline_settings_white_24dp.png" Height="20" Width="19"/>
@@ -493,7 +493,6 @@
         </Button>
         <TextBlock Name="DownloadProgPercent" Grid.Column="1" HorizontalAlignment="Left" Margin="278,191,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="32" Opacity="0" Foreground="White" FontFamily="Segoe UI Light"/>
         <TextBlock Name="AGSLog" HorizontalAlignment="Left" Margin="11,24,0,0" TextWrapping="Wrap" Text="AGS" VerticalAlignment="Top" Height="24" Width="23" Foreground="White" FontFamily="Segoe UI Variable Display Light" Opacity="0"/>
-        <TextBlock x:Name="Notice2" FontFamily="Segoe UI Variable Text Light" HorizontalAlignment="Left" Margin="142,106,0,0" TextWrapping="Wrap" Text="This menu is offcenter and i dont care to fix it" VerticalAlignment="Top" Foreground="White" FontSize="20" Grid.ColumnSpan="2" Width="656" TextAlignment="Center" Opacity="0"/>
         <Button x:Name="NewsButton" Content="News" HorizontalAlignment="Left" Margin="6,140,0,0" VerticalAlignment="Top" Width="132" BorderBrush="{x:Null}" Foreground="White" Background="#FF24252B" Click="News" FontFamily="Segoe UI Variable Text Light" Height="20" Opacity="1">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
@@ -584,9 +583,9 @@
                 </LinearGradientBrush>
             </Label.Foreground>
         </Label>
-        <CheckBox Name="CollapseCB" Content="" HorizontalAlignment="Left" Margin="63,59,0,0" VerticalAlignment="Top" Height="16" Width="16" FontSize="2" Foreground="White" BorderBrush="Black" Background="White" Opacity="0" Grid.Column="1"/>
-        <TextBlock x:Name="Notice" FontFamily="Segoe UI Variable Text Light" HorizontalAlignment="Left" Margin="144,18,0,0" TextWrapping="Wrap" Text="Note: some settings require a restart to take effect." VerticalAlignment="Top" Foreground="White" FontSize="20" Grid.ColumnSpan="2" Width="656" TextAlignment="Center" Opacity="0"/>
-        <TextBox x:Name="args" HorizontalAlignment="Left" Margin="2,83,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="190" SelectionBrush="#FF5E91B9" Background="{x:Null}" Foreground="White" BorderBrush="#FF6F6F6F" Opacity="0" Grid.Column="1"/>
+        <CheckBox Name="CollapseCB" Content="" HorizontalAlignment="Left" Margin="55,62,0,0" VerticalAlignment="Top" Height="16" Width="16" FontSize="2" Foreground="White" BorderBrush="Black" Background="White" Opacity="0" Grid.Column="1"/>
+        <TextBlock x:Name="Notice" FontFamily="Segoe UI Variable Text Light" HorizontalAlignment="Left" Margin="262,24,0,0" TextWrapping="Wrap" Text="Note: some settings require a restart to take effect." VerticalAlignment="Top" Foreground="White" FontSize="20" Width="428" TextAlignment="Center" Opacity="0" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="args" HorizontalAlignment="Left" Margin="2,90,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="195" SelectionBrush="#FF5E91B9" Background="{x:Null}" Foreground="White" BorderBrush="#FF6F6F6F" Opacity="0" Grid.Column="1"/>
         <Button x:Name="AccountButton" Content="Account" HorizontalAlignment="Left" Margin="6,170,0,0" VerticalAlignment="Top" Width="132" BorderBrush="{x:Null}" Foreground="White" Background="#FF24252B" Click="AccountButtonClick" FontFamily="Segoe UI Variable Text Light" Height="20" Opacity="1">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">

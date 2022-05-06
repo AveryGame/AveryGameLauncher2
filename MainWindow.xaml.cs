@@ -421,7 +421,6 @@ namespace AgsLauncherV2
                 Notice.Opacity = 0;
                 Arguments.Opacity = 0;
                 args.Opacity = 0;
-                Notice2.Opacity = 0;
                 NewsDate.Opacity = 0;
                 NewsHeader.Opacity = 0;
                 NewsSubheader.Opacity = 0;
@@ -459,6 +458,10 @@ namespace AgsLauncherV2
                     UncolHome.Margin = new Thickness(69, 69, 69, 69);
                     UncolChangelog.Margin = new Thickness(69, 69, 69, 69);
                     UncolBugs.Margin = new Thickness(69, 69, 69, 69);
+                    NewsImageBorder.Margin = new Thickness(109, 26, 79, 193);
+                    NewsHeader.Margin = new Thickness(109, 262, 79, 156);
+                    NewsSubheader.Margin = new Thickness(109, 294, 79, 113);
+                    NewsDate.Margin = new Thickness(100, 269, 79, 0);
                     ColHomeButton.IsEnabled = false;
                     ColChangelogButton.IsEnabled = true;
                     ColBugsButton.IsEnabled = true;
@@ -592,7 +595,6 @@ namespace AgsLauncherV2
                 Notice.Opacity = 0;
                 Arguments.Opacity = 0;
                 args.Opacity = 0;
-                Notice2.Opacity = 0;
                 NewsDate.Opacity = 0;
                 NewsHeader.Opacity = 0;
                 NewsSubheader.Opacity = 0;
@@ -646,6 +648,10 @@ namespace AgsLauncherV2
                     UncolHome.Margin = new Thickness(69, 69, 69, 69);
                     UncolChangelog.Margin = new Thickness(69, 69, 69, 69);
                     UncolBugs.Margin = new Thickness(69, 69, 69, 69);
+                    NewsImageBorder.Margin = new Thickness(109, 26, 79, 193);
+                    NewsHeader.Margin = new Thickness(109, 262, 79, 156);
+                    NewsSubheader.Margin = new Thickness(109, 294, 79, 113);
+                    NewsDate.Margin = new Thickness(100, 269, 79, 0);
                     ColHomeButton.IsEnabled = true;
                     ColChangelogButton.IsEnabled = false;
                     ColBugsButton.IsEnabled = true;
@@ -780,7 +786,6 @@ namespace AgsLauncherV2
                 Notice.Opacity = 0;
                 Arguments.Opacity = 0;
                 args.Opacity = 0;
-                Notice2.Opacity = 0;
                 NewsDate.Opacity = 0;
                 NewsHeader.Opacity = 0;
                 NewsSubheader.Opacity = 0;
@@ -835,6 +840,10 @@ namespace AgsLauncherV2
                     UncolHome.Margin = new Thickness(69, 69, 69, 69);
                     UncolChangelog.Margin = new Thickness(69, 69, 69, 69);
                     UncolBugs.Margin = new Thickness(69, 69, 69, 69);
+                    NewsImageBorder.Margin = new Thickness(109, 26, 79, 193);
+                    NewsHeader.Margin = new Thickness(109, 262, 79, 156);
+                    NewsSubheader.Margin = new Thickness(109, 294, 79, 113);
+                    NewsDate.Margin = new Thickness(100, 269, 79, 0);
                     ColHomeButton.IsEnabled = true;
                     ColChangelogButton.IsEnabled = true;
                     ColBugsButton.IsEnabled = false;
@@ -961,7 +970,6 @@ namespace AgsLauncherV2
                 Notice.Opacity = 0;
                 Arguments.Opacity = 0;
                 args.Opacity = 0;
-                Notice2.Opacity = 0;
                 NewsImageBorder.Opacity = 0.76;
                 NewsHeader.Opacity = 1;
                 NewsSubheader.Opacity = 1;
@@ -1026,6 +1034,10 @@ namespace AgsLauncherV2
                     UncolHome.Margin = new Thickness(69, 69, 69, 69);
                     UncolChangelog.Margin = new Thickness(69, 69, 69, 69);
                     UncolBugs.Margin = new Thickness(69, 69, 69, 69);
+                    NewsImageBorder.Margin = new Thickness(109, 26, 79, 193);
+                    NewsHeader.Margin = new Thickness(109, 262, 79, 156);
+                    NewsSubheader.Margin = new Thickness(109, 294, 79, 113);
+                    NewsDate.Margin = new Thickness(100, 269, 79, 0);
                     ColHomeButton.IsEnabled = true;
                     ColChangelogButton.IsEnabled = true;
                     ColBugsButton.IsEnabled = true;
@@ -1090,6 +1102,11 @@ namespace AgsLauncherV2
                     UncolHome.Margin = new Thickness(11, 50, 0, 0);
                     UncolChangelog.Margin = new Thickness(11, 80, 0, 0);
                     UncolBugs.Margin = new Thickness(11, 110, 0, 0);
+                    Notice.Margin = new Thickness(262, 24, 0, 0);
+                    HideMenu.Margin = new Thickness(399, 53, 0, 0);
+                    CollapseCB.Margin = new Thickness(55, 62, 0, 0);
+                    Arguments.Margin = new Thickness(273, 82, 0, 0);
+                    args.Margin = new Thickness(2, 90, 0, 0);
                     UncolHome.Opacity = 1;
                     UncolChangelog.Opacity = 1;
                     UncolBugs.Opacity = 1;
@@ -1149,7 +1166,6 @@ namespace AgsLauncherV2
                 Notice.Opacity = 1;
                 Arguments.Opacity = 1;
                 args.Opacity = 1;
-                Notice2.Opacity = 1;
                 NewsDate.Opacity = 0;
                 NewsHeader.Opacity = 0;
                 NewsSubheader.Opacity = 0;
@@ -1190,6 +1206,15 @@ namespace AgsLauncherV2
                     UncolHome.Margin = new Thickness(69, 69, 69, 69);
                     UncolChangelog.Margin = new Thickness(69, 69, 69, 69);
                     UncolBugs.Margin = new Thickness(69, 69, 69, 69);
+                    NewsImageBorder.Margin = new Thickness(109, 26, 79, 193);
+                    NewsHeader.Margin = new Thickness(109, 262, 79, 156);
+                    NewsSubheader.Margin = new Thickness(109, 294, 79, 113);
+                    NewsDate.Margin = new Thickness(100, 269, 79, 0);
+                    Notice.Margin = new Thickness(208, 24, 0, 0);
+                    HideMenu.Margin = new Thickness(338, 53, 0, 0);
+                    CollapseCB.Margin = new Thickness(0, 61, 0, 0);
+                    Arguments.Margin = new Thickness(216, 80, 0, 0);
+                    args.Margin = new Thickness(-60, 89, 0, 0);
                     ColHomeButton.IsEnabled = true;
                     ColChangelogButton.IsEnabled = true;
                     ColBugsButton.IsEnabled = true;
@@ -1278,6 +1303,15 @@ namespace AgsLauncherV2
             //play button logic
             try
             {
+                if (Directory.Exists(filepath + "\\AveryGame Launcher\\AveryGame"))
+                {
+                    if (!File.Exists(filepath + "\\AveryGame Launcher\\gclient.json"))
+                    {
+                        string dirname = Directory.GetDirectories(filepath + "\\AveryGame Launcher\\AveryGame").ToString();
+                        File.WriteAllText(filepath + "\\AveryGame Launcher\\gclient.json", dirname);
+                    }
+                    Directory.GetDirectories(filepath + "\\AveryGame Launcher\\AveryGame");
+                }
                 Services.LogSVC.BtnLogic.PlayBTNEvents.LogBTNClick();
                 if (dprog.Opacity == 0)
                 {

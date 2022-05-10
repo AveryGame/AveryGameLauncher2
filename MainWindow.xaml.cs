@@ -14,10 +14,6 @@ using Microsoft.Toolkit.Uwp.Notifications;
 
 namespace AgsLauncherV2
 {
-    //wh test commit
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public DiscordRpcClient client;
@@ -33,7 +29,7 @@ namespace AgsLauncherV2
                 Services.LogSVC.LogJSDownload();
                 string DATA = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\fuck.json");
                 Services.LogSVC.LogJSRead();
-                LauncherCloud json = JsonConvert.DeserializeObject<LauncherCloud>(DATA);
+                Services.AGCloud AGLCloud = JsonConvert.DeserializeObject<Services.AGCloud>(DATA);
                 //set client id
                 client = new DiscordRpcClient("939285353355935774");
                 client.Logger = new ConsoleLogger() { Level = LogLevel.Warning };
@@ -89,22 +85,22 @@ namespace AgsLauncherV2
                         }
                     }
                     //check if user is not a developer
-                    if (client.CurrentUser.Username != json.KiannaUN || client.CurrentUser.Username != json.AveryUN || client.CurrentUser.Username != json.CrunnieUN)
+                    if (client.CurrentUser.Username != AGLCloud.KiannaUN || client.CurrentUser.Username != AGLCloud.AveryUN || client.CurrentUser.Username != AGLCloud.CrunnieUN)
                     {
-                        VerSTR.Text = json.Version + " - " + json.LauncherString;
+                        VerSTR.Text = AGLCloud.Version + " - " + AGLCloud.LauncherString;
                     }
                     //check if developer is kianna
-                    if (client.CurrentUser.Username == json.KiannaUN)
+                    if (client.CurrentUser.Username == AGLCloud.KiannaUN)
                     {
-                        WelcomeRPCLabel.Content = "the fuck did u just say to me you little shit? you kiss your mother with that mouth? asashsaesashassasha! you s- you s- YOU SHUT UP WHEN IM TALKING TO YOU";
+                        WelcomeRPCLabel.Content = "die";
                     }
                     //check if developer is avery
-                    if (client.CurrentUser.Username == json.AveryUN)
+                    if (client.CurrentUser.Username == AGLCloud.AveryUN)
                     {
                         WelcomeRPCLabel.Content = "Hi, avery!";
                     }
                     //check if developer is crunnie
-                    if (client.CurrentUser.Username == json.CrunnieUN)
+                    if (client.CurrentUser.Username == AGLCloud.CrunnieUN)
                     {
                         WelcomeRPCLabel.Content = "FUCK U!";
                     }
@@ -138,7 +134,7 @@ namespace AgsLauncherV2
                     Directory.Delete(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\DownloadHelper", true);
                 }
                 //set version descriptions
-                VerSTR.Text = json.Version + " - " + json.LauncherString;
+                VerSTR.Text = AGLCloud.Version + " - " + AGLCloud.LauncherString;
                 //log
                 Services.LogSVC.LogJSSet();
                 //begin setting uncollapsed menu elements
@@ -153,7 +149,7 @@ namespace AgsLauncherV2
                 if (File.Exists(filepath + "\\AveryGame Launcher\\Clientsettings.json"))
                 {
                     string js2 = File.ReadAllText(filepath + "\\AveryGame Launcher\\Clientsettings.json");
-                    LauncherCloud z = JsonConvert.DeserializeObject<LauncherCloud>(js2);
+                    Services.AGCloud z = JsonConvert.DeserializeObject<Services.AGCloud>(js2);
                     //read json data
                     //check if collapse menu option is set to true
                     if (z.CollapseMenu == "True")
@@ -182,7 +178,7 @@ namespace AgsLauncherV2
                         UncolHome.Margin = new Thickness(69, 69, 69, 69);
                         UncolChangelog.Margin = new Thickness(69, 69, 69, 69);
                         UncolBugs.Margin = new Thickness(69, 69, 69, 69);
-                        if (json.AccountPageReady.ToLower() == "false")
+                        if (AGLCloud.AccountPageReady.ToLower() == "false")
                         {
                             Services.LogSVC.BtnLogic.LogAccountPageNotReady();
                             AccountButton.Visibility = Visibility.Hidden;
@@ -199,10 +195,10 @@ namespace AgsLauncherV2
                     {
                         //set checkbox state
                         CollapseCB.IsChecked = false;
-                        VerSTR.Text = "" + json.Version + " - " + json.LauncherString;
+                        VerSTR.Text = "" + AGLCloud.Version + " - " + AGLCloud.LauncherString;
                         CreditLine1.Opacity = 1;
                         CreditLine2.Opacity = 1;
-                        if (json.AccountPageReady.ToLower() == "false")
+                        if (AGLCloud.AccountPageReady.ToLower() == "false")
                         {
                             Services.LogSVC.BtnLogic.LogAccountPageNotReady();
                             AccountButton.Visibility = Visibility.Hidden;
@@ -296,53 +292,13 @@ namespace AgsLauncherV2
             }
         }
         private static readonly string filepath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-        public class LauncherCloud
-        {
-            //all json strings
-            public string Version { get; set; }
-            public string VersionInt { get; set; }
-            public string ChangelogLine1 { get; set; }
-            public string ChangelogLine2 { get; set; }
-            public string ChangelogLine3 { get; set; }
-            public string ChangelogLine4 { get; set; }
-            public string ChangelogLine5 { get; set; }
-            public string BalanceCL1 { get; set; }
-            public string BalanceCL2 { get; set; }
-            public string BalanceCL3 { get; set; }
-            public string BalanceCL4 { get; set; }
-            public string BalanceCL5 { get; set; }
-            public string BugLine1 { get; set; }
-            public string BugLine2 { get; set; }
-            public string BugLine3 { get; set; }
-            public string BugLine4 { get; set; }
-            public string BugLine5 { get; set; }
-            public string BalanceBL1 { get; set; }
-            public string BalanceBL2 { get; set; }
-            public string BalanceBL3 { get; set; }
-            public string BalanceBL4 { get; set; }
-            public string BalanceBL5 { get; set; }
-            public string KiannaUN { get; set; }
-            public string AveryUN { get; set; }
-            public string CrunnieUN { get; set; }
-            public string VersionFolderInt { get; set; }
-            public string LauncherString { get; set; }
-            public string DevLauncherString { get; set; }
-            public string CollapseMenu { get; set; }
-            public string LauncherVer { get; set; }
-            public string NewsHeader { get; set; }
-            public string NewsSubHeader { get; set; }
-            public string NewsDate { get; set; }
-            public string NewsImageURL { get; set; }
-            public string AccountPageReady { get; set; }
-            public string AccountPageURL { get; set; }
-        }
         private void Home(object sender, RoutedEventArgs e)
         {
             //home button logic
             try
             {
                 string DATA = File.ReadAllText(filepath + "\\AveryGame Launcher\\fuck.json");
-                LauncherCloud json = JsonConvert.DeserializeObject<LauncherCloud>(DATA);
+                Services.AGCloud AGLCloud = JsonConvert.DeserializeObject<Services.AGCloud>(DATA);
                 Services.LogSVC.LogJSRead();
                 if ((bool)!CollapseCB.IsChecked)
                 {
@@ -374,7 +330,7 @@ namespace AgsLauncherV2
                     UncolChangelog.Opacity = 1;
                     UncolBugs.Opacity = 1;
                     UncolSettingsImg.Opacity = 1;
-                    if (json.AccountPageReady.ToLower() == "false")
+                    if (AGLCloud.AccountPageReady.ToLower() == "false")
                     {
                         Services.LogSVC.BtnLogic.LogAccountPageNotReady();
                         AccountButton.Visibility = Visibility.Hidden;
@@ -472,7 +428,7 @@ namespace AgsLauncherV2
                     LaunchButton.Margin = new Thickness(300, 367, 0, 0);
                     CreditLine1.Opacity = 0;
                     CreditLine2.Opacity = 0;
-                    if (json.AccountPageReady.ToLower() == "false")
+                    if (AGLCloud.AccountPageReady.ToLower() == "false")
                     {
                         Services.LogSVC.BtnLogic.LogAccountPageNotReady();
                         AccountButton.Visibility = Visibility.Hidden;
@@ -504,7 +460,7 @@ namespace AgsLauncherV2
             try
             {
                 string DATA = File.ReadAllText(filepath + "\\AveryGame Launcher\\fuck.json");
-                LauncherCloud json = JsonConvert.DeserializeObject<LauncherCloud>(DATA);
+                Services.AGCloud AGLCloud = JsonConvert.DeserializeObject<Services.AGCloud>(DATA);
                 Services.LogSVC.LogJSRead();
                 if ((bool)!CollapseCB.IsChecked)
                 {
@@ -536,7 +492,7 @@ namespace AgsLauncherV2
                     UncolChangelog.Opacity = 1;
                     UncolBugs.Opacity = 1;
                     UncolSettingsImg.Opacity = 1;
-                    if (json.AccountPageReady.ToLower() == "false")
+                    if (AGLCloud.AccountPageReady.ToLower() == "false")
                     {
                         Services.LogSVC.BtnLogic.LogAccountPageNotReady();
                         AccountButton.Visibility = Visibility.Hidden;
@@ -552,14 +508,14 @@ namespace AgsLauncherV2
                 Services.LogSVC.LogJSRead();
                 AGSLog.Opacity = 0;
                 AveryGame.Opacity = 1;
-                LogLine1.Text = json.ChangelogLine1;
-                LogLine2.Text = json.ChangelogLine2;
-                LogLine3.Text = json.ChangelogLine3;
-                LogLine4.Text = json.ChangelogLine4;
-                LogLine5.Text = json.ChangelogLine5;
-                VerSTR.Text = json.Version + " - " + json.LauncherString;
+                LogLine1.Text = AGLCloud.ChangelogLine1;
+                LogLine2.Text = AGLCloud.ChangelogLine2;
+                LogLine3.Text = AGLCloud.ChangelogLine3;
+                LogLine4.Text = AGLCloud.ChangelogLine4;
+                LogLine5.Text = AGLCloud.ChangelogLine5;
+                VerSTR.Text = AGLCloud.Version + " - " + AGLCloud.LauncherString;
                 ColVerSTR.Opacity = 0;
-                ColVerSTR.Text = json.Version + " - " + json.LauncherString;
+                ColVerSTR.Text = AGLCloud.Version + " - " + AGLCloud.LauncherString;
                 ChangelogButton.IsEnabled = false;
                 HomeButton.IsEnabled = true;
                 LaunchButton.IsEnabled = false;
@@ -623,12 +579,12 @@ namespace AgsLauncherV2
                     ColLogLine3.Opacity = 1;
                     ColLogLine4.Opacity = 1;
                     ColLogLine5.Opacity = 1;
-                    VerSTR.Text = json.Version + " - " + json.LauncherString;
-                    ColLogLine1.Text = json.ChangelogLine1;
-                    ColLogLine2.Text = json.ChangelogLine2;
-                    ColLogLine3.Text = json.ChangelogLine3;
-                    ColLogLine4.Text = json.ChangelogLine4;
-                    ColLogLine5.Text = json.ChangelogLine5;
+                    VerSTR.Text = AGLCloud.Version + " - " + AGLCloud.LauncherString;
+                    ColLogLine1.Text = AGLCloud.ChangelogLine1;
+                    ColLogLine2.Text = AGLCloud.ChangelogLine2;
+                    ColLogLine3.Text = AGLCloud.ChangelogLine3;
+                    ColLogLine4.Text = AGLCloud.ChangelogLine4;
+                    ColLogLine5.Text = AGLCloud.ChangelogLine5;
                     Uncollapsed.Opacity = 0;
                     HomeButton.Visibility = Visibility.Hidden;
                     ChangelogButton.Visibility = Visibility.Hidden;
@@ -661,7 +617,7 @@ namespace AgsLauncherV2
                     ChangelogBugsTitle.Text = "Changelog";
                     CreditLine1.Opacity = 0;
                     CreditLine2.Opacity = 0;
-                    if (json.AccountPageReady.ToLower() == "false")
+                    if (AGLCloud.AccountPageReady.ToLower() == "false")
                     {
                         Services.LogSVC.BtnLogic.LogAccountPageNotReady();
                         AccountButton.Visibility = Visibility.Hidden;
@@ -695,7 +651,7 @@ namespace AgsLauncherV2
             {
                 Services.LogSVC.BtnLogic.LogBugBTNClick();
                 string DATA = File.ReadAllText(filepath + "\\AveryGame Launcher\\fuck.json");
-                LauncherCloud json = JsonConvert.DeserializeObject<LauncherCloud>(DATA);
+                Services.AGCloud AGLCloud = JsonConvert.DeserializeObject<Services.AGCloud>(DATA);
                 Services.LogSVC.LogJSRead();
                 if ((bool)!CollapseCB.IsChecked)
                 {
@@ -727,7 +683,7 @@ namespace AgsLauncherV2
                     UncolChangelog.Opacity = 1;
                     UncolBugs.Opacity = 1;
                     UncolSettingsImg.Opacity = 1;
-                    if (json.AccountPageReady.ToLower() == "false")
+                    if (AGLCloud.AccountPageReady.ToLower() == "false")
                     {
                         Services.LogSVC.BtnLogic.LogAccountPageNotReady();
                         AccountButton.Visibility = Visibility.Hidden;
@@ -741,14 +697,14 @@ namespace AgsLauncherV2
                 }
                 AGSLog.Opacity = 0;
                 AveryGame.Opacity = 1;
-                LogLine1.Text = json.BugLine1;
-                LogLine2.Text = json.BugLine2;
-                LogLine3.Text = json.BugLine3;
-                LogLine4.Text = json.BugLine4;
-                LogLine5.Text = json.BugLine5;
-                VerSTR.Text = json.Version + " - " + json.LauncherString;
+                LogLine1.Text = AGLCloud.BugLine1;
+                LogLine2.Text = AGLCloud.BugLine2;
+                LogLine3.Text = AGLCloud.BugLine3;
+                LogLine4.Text = AGLCloud.BugLine4;
+                LogLine5.Text = AGLCloud.BugLine5;
+                VerSTR.Text = AGLCloud.Version + " - " + AGLCloud.LauncherString;
                 ColVerSTR.Opacity = 0;
-                ColVerSTR.Text = json.Version + " - " + json.LauncherString;
+                ColVerSTR.Text = AGLCloud.Version + " - " + AGLCloud.LauncherString;
                 ChangelogBugsTitle.Text = "Bugs";
                 ColChangelogBugsTitle.Text = "Bugs";
                 ChangelogButton.IsEnabled = true;
@@ -814,13 +770,13 @@ namespace AgsLauncherV2
                     ColLogLine3.Opacity = 1;
                     ColLogLine4.Opacity = 1;
                     ColLogLine5.Opacity = 1;
-                    ColVerSTR.Text = json.Version + " - " + json.LauncherString;
+                    ColVerSTR.Text = AGLCloud.Version + " - " + AGLCloud.LauncherString;
                     VerSTR.Opacity = 0;
-                    ColLogLine1.Text = json.BugLine1;
-                    ColLogLine2.Text = json.BugLine2;
-                    ColLogLine3.Text = json.BugLine3;
-                    ColLogLine4.Text = json.BugLine4;
-                    ColLogLine5.Text = json.BugLine5;
+                    ColLogLine1.Text = AGLCloud.BugLine1;
+                    ColLogLine2.Text = AGLCloud.BugLine2;
+                    ColLogLine3.Text = AGLCloud.BugLine3;
+                    ColLogLine4.Text = AGLCloud.BugLine4;
+                    ColLogLine5.Text = AGLCloud.BugLine5;
                     Uncollapsed.Opacity = 0;
                     HomeButton.Visibility = Visibility.Hidden;
                     ChangelogButton.Visibility = Visibility.Hidden;
@@ -854,7 +810,7 @@ namespace AgsLauncherV2
                     ChangelogBugsTitle.Text = "Bugs";
                     CreditLine1.Opacity = 0;
                     CreditLine2.Opacity = 0;
-                    if (json.AccountPageReady.ToLower() == "false")
+                    if (AGLCloud.AccountPageReady.ToLower() == "false")
                     {
                         Services.LogSVC.BtnLogic.LogAccountPageNotReady();
                         AccountButton.Visibility = Visibility.Hidden;
@@ -882,7 +838,7 @@ namespace AgsLauncherV2
             {
                 Services.LogSVC.BtnLogic.LogNewsBTNClick();
                 string DATA = File.ReadAllText(filepath + "\\AveryGame Launcher\\fuck.json");
-                LauncherCloud json = JsonConvert.DeserializeObject<LauncherCloud>(DATA);
+                Services.AGCloud AGLCloud = JsonConvert.DeserializeObject<Services.AGCloud>(DATA);
                 Services.LogSVC.LogJSRead();
                 if ((bool)!CollapseCB.IsChecked)
                 {
@@ -920,7 +876,7 @@ namespace AgsLauncherV2
                     UncolChangelog.Opacity = 1;
                     UncolBugs.Opacity = 1;
                     UncolSettingsImg.Opacity = 1;
-                    if (json.AccountPageReady.ToLower() == "false")
+                    if (AGLCloud.AccountPageReady.ToLower() == "false")
                     {
                         Services.LogSVC.BtnLogic.LogAccountPageNotReady();
                         AccountButton.Visibility = Visibility.Hidden;
@@ -981,13 +937,13 @@ namespace AgsLauncherV2
                 ImageBrush imgB = new ImageBrush();
                 BitmapImage btpImg = new BitmapImage();
                 btpImg.BeginInit();
-                btpImg.UriSource = new Uri(json.NewsImageURL);
+                btpImg.UriSource = new Uri(AGLCloud.NewsImageURL);
                 btpImg.EndInit();
                 imgB.ImageSource = btpImg;
-                NewsDate.Text = json.NewsDate;
-                NewsHeader.Text = json.NewsHeader;
+                NewsDate.Text = AGLCloud.NewsDate;
+                NewsHeader.Text = AGLCloud.NewsHeader;
                 NewsImageBorder.Background = imgB;
-                NewsSubheader.Text = json.NewsSubHeader;
+                NewsSubheader.Text = AGLCloud.NewsSubHeader;
                 Services.LogSVC.BtnLogic.LogUncolElements();
                 if ((bool)(CollapseCB.IsChecked))
                 {
@@ -1009,13 +965,13 @@ namespace AgsLauncherV2
                     ColLogLine3.Opacity = 0;
                     ColLogLine4.Opacity = 0;
                     ColLogLine5.Opacity = 0;
-                    ColVerSTR.Text = json.Version + " - " + json.LauncherString;
+                    ColVerSTR.Text = AGLCloud.Version + " - " + AGLCloud.LauncherString;
                     VerSTR.Opacity = 0;
-                    ColLogLine1.Text = json.BugLine1;
-                    ColLogLine2.Text = json.BugLine2;
-                    ColLogLine3.Text = json.BugLine3;
-                    ColLogLine4.Text = json.BugLine4;
-                    ColLogLine5.Text = json.BugLine5;
+                    ColLogLine1.Text = AGLCloud.BugLine1;
+                    ColLogLine2.Text = AGLCloud.BugLine2;
+                    ColLogLine3.Text = AGLCloud.BugLine3;
+                    ColLogLine4.Text = AGLCloud.BugLine4;
+                    ColLogLine5.Text = AGLCloud.BugLine5;
                     Uncollapsed.Opacity = 0;
                     HomeButton.Visibility = Visibility.Hidden;
                     ChangelogButton.Visibility = Visibility.Hidden;
@@ -1049,7 +1005,7 @@ namespace AgsLauncherV2
                     ChangelogBugsTitle.Text = "News";
                     CreditLine1.Opacity = 0;
                     CreditLine2.Opacity = 0;
-                    if (json.AccountPageReady.ToLower() == "false")
+                    if (AGLCloud.AccountPageReady.ToLower() == "false")
                     {
                         Services.LogSVC.BtnLogic.LogAccountPageNotReady();
                         AccountButton.Visibility = Visibility.Hidden;
@@ -1078,7 +1034,7 @@ namespace AgsLauncherV2
                 //why in gods name do i deserialize json in every fucking button
                 //im too lazy to change it but whyyyyy
                 string DATA = File.ReadAllText(filepath + "\\AveryGame Launcher\\fuck.json");
-                LauncherCloud json = JsonConvert.DeserializeObject<LauncherCloud>(DATA);
+                Services.AGCloud AGSCloud = JsonConvert.DeserializeObject<Services.AGCloud>(DATA);
                 Services.LogSVC.LogJSRead();
                 Services.LogSVC.BtnLogic.LogSettingBTNClick();
                 if ((bool)!CollapseCB.IsChecked)
@@ -1116,7 +1072,7 @@ namespace AgsLauncherV2
                     UncolChangelog.Opacity = 1;
                     UncolBugs.Opacity = 1;
                     UncolSettingsImg.Opacity = 1;
-                    if (json.AccountPageReady.ToLower() == "false")
+                    if (AGSCloud.AccountPageReady.ToLower() == "false")
                     {
                         Services.LogSVC.BtnLogic.LogAccountPageNotReady();
                         AccountButton.Visibility = Visibility.Hidden;
@@ -1128,7 +1084,7 @@ namespace AgsLauncherV2
                     }
                     Services.LogSVC.BtnLogic.LogUncolElements();
                 }
-                VerSTR.Text = "" + json.Version + " - " + json.LauncherString;
+                VerSTR.Text = "" + AGSCloud.Version + " - " + AGSCloud.LauncherString;
                 AGSLog.Opacity = 0;
                 AveryGame.Opacity = 1;
                 ColVerSTR.Opacity = 0;
@@ -1227,7 +1183,7 @@ namespace AgsLauncherV2
                     SettingsButton.IsEnabled = false;
                     CreditLine1.Opacity = 0;
                     CreditLine2.Opacity = 0;
-                    if (json.AccountPageReady.ToLower() == "false")
+                    if (AGSCloud.AccountPageReady.ToLower() == "false")
                     {
                         Services.LogSVC.BtnLogic.LogAccountPageNotReady();
                         AccountButton.Visibility = Visibility.Hidden;
@@ -1253,9 +1209,9 @@ namespace AgsLauncherV2
         {
             Services.LogSVC.BtnLogic.LogAccountBTNClick();
             string DATA = File.ReadAllText(filepath + "\\AveryGame Launcher\\fuck.json");
-            LauncherCloud json = JsonConvert.DeserializeObject<LauncherCloud>(DATA);
+            Services.AGCloud AGSCloud = JsonConvert.DeserializeObject<Services.AGCloud>(DATA);
             Services.LogSVC.LogJSRead();
-            System.Diagnostics.Process.Start(@"C:\Program Files\Internet Explorer\iexplore.exe", json.AccountPageURL);
+            System.Diagnostics.Process.Start(@"C:\Program Files\Internet Explorer\iexplore.exe", AGSCloud.AccountPageURL);
         }
         private void RpcNameCopy(object sender, RoutedEventArgs e)
         {
@@ -1322,7 +1278,7 @@ namespace AgsLauncherV2
                 {
                     WebClient webclient = new WebClient();
                     string DATA = webclient.DownloadString("https://raw.githubusercontent.com/AyeItsAxi/ags-launcher-strings/main/launcherinfo.json");
-                    LauncherCloud json = JsonConvert.DeserializeObject<LauncherCloud>(DATA);
+                    Services.AGCloud AGSCloud = JsonConvert.DeserializeObject<Services.AGCloud>(DATA);
                     if (!File.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\AveryGame\\4.2\\4.2\\WindowsNoEditor\\AveryGame.exe")))
                     {
                         MessageBoxResult result;
@@ -1345,7 +1301,7 @@ namespace AgsLauncherV2
                     else
                     {
                         string latest = File.ReadAllText(filepath + "\\AveryGame Launcher\\" + @"gclient.json");
-                        if (latest.Contains(json.VersionInt))
+                        if (latest.Contains(AGSCloud.VersionInt))
                         {
                             try
                             {
@@ -1369,7 +1325,7 @@ namespace AgsLauncherV2
                                 MessageBox.Show("A fatal error occurred while launching AveryGame!", "Fatal Error", MessageBoxButton.OK, MessageBoxImage.Error);
                             }
                         }
-                        if (!latest.Contains(json.VersionInt))
+                        if (!latest.Contains(AGSCloud.VersionInt))
                         {
                             MessageBoxResult updateAvail = MessageBox.Show("AveryGame has an update. Would you like to install it now?", "Notice", MessageBoxButton.YesNo, MessageBoxImage.Question);
                             Services.LogSVC.BtnLogic.PlayBTNEvents.Update.LogUpdateNotice();
@@ -1407,10 +1363,10 @@ namespace AgsLauncherV2
                 Services.LogSVC.BtnLogic.PlayBTNEvents.Download.DownloadCallbackEvents.LogDownloadComplete();
                 WebClient webclient = new WebClient();
                 string DATA = webclient.DownloadString("https://raw.githubusercontent.com/AyeItsAxi/ags-launcher-strings/main/launcherinfo.json");
-                LauncherCloud json = JsonConvert.DeserializeObject<LauncherCloud>(DATA);
+                Services.AGCloud AGSCloud = JsonConvert.DeserializeObject<Services.AGCloud>(DATA);
                 string gzip = "1i9qQNqWOlQcdrZ0qD3NU7WzHKW4h54U.zip";
                 //extracting game
-                ZipFile.ExtractToDirectory(gzip, Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\AveryGame\\" + json.VersionInt);
+                ZipFile.ExtractToDirectory(gzip, Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\AveryGame\\" + AGSCloud.VersionInt);
                 Services.LogSVC.BtnLogic.PlayBTNEvents.Download.DownloadCallbackEvents.LogExtract();
                 //delete useless folder
                 File.Delete(gzip);
@@ -1419,7 +1375,7 @@ namespace AgsLauncherV2
                 LaunchButton.Content = "Launch Avery Game";
                 Services.LogSVC.BtnLogic.PlayBTNEvents.Download.DownloadCallbackEvents.LogDownloadCleanup();
                 //wrote game version to gclient
-                File.WriteAllText(filepath + "\\AveryGame Launcher\\" + @"gclient.json", json.VersionInt);
+                File.WriteAllText(filepath + "\\AveryGame Launcher\\" + @"gclient.json", AGSCloud.VersionInt);
                 Services.LogSVC.BtnLogic.PlayBTNEvents.Download.DownloadCallbackEvents.LogWriteVersionString();
                 new ToastContentBuilder()
                     .AddArgument("action", "viewConversation")
@@ -1445,8 +1401,8 @@ namespace AgsLauncherV2
                 string gzip = "1i9qQNqWOlQcdrZ0qD3NU7WzHKW4h54U.zip";
                 WebClient webclient = new WebClient();
                 string DATA = webclient.DownloadString("https://raw.githubusercontent.com/AyeItsAxi/ags-launcher-strings/main/launcherinfo.json");
-                LauncherCloud json = JsonConvert.DeserializeObject<LauncherCloud>(DATA);
-                string dpath = json.VersionInt;
+                Services.AGCloud AGSCloud = JsonConvert.DeserializeObject<Services.AGCloud>(DATA);
+                string dpath = AGSCloud.VersionInt;
                 new ToastContentBuilder()
                     .AddArgument("action", "viewConversation")
                     .AddArgument("conversationId", 9813)

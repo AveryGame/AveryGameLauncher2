@@ -96,7 +96,7 @@ namespace AgsLauncherV2
                     //check if developer is kianna
                     if (client.CurrentUser.Username == json.KiannaUN)
                     {
-                        WelcomeRPCLabel.Content = "kys";
+                        WelcomeRPCLabel.Content = "the fuck did u just say to me you little shit? you kiss your mother with that mouth? asashsaesashassasha! you s- you s- YOU SHUT UP WHEN IM TALKING TO YOU";
                     }
                     //check if developer is avery
                     if (client.CurrentUser.Username == json.AveryUN)
@@ -369,6 +369,7 @@ namespace AgsLauncherV2
                     UncolHome.Margin = new Thickness(11, 50, 0, 0);
                     UncolChangelog.Margin = new Thickness(11, 80, 0, 0);
                     UncolBugs.Margin = new Thickness(11, 110, 0, 0);
+                    LaunchButton.Margin = new Thickness(356, 371, 0, 0);
                     UncolHome.Opacity = 1;
                     UncolChangelog.Opacity = 1;
                     UncolBugs.Opacity = 1;
@@ -530,6 +531,7 @@ namespace AgsLauncherV2
                     UncolHome.Margin = new Thickness(11, 50, 0, 0);
                     UncolChangelog.Margin = new Thickness(11, 80, 0, 0);
                     UncolBugs.Margin = new Thickness(11, 110, 0, 0);
+                    LaunchButton.Margin = new Thickness(356, 371, 0, 0);
                     UncolHome.Opacity = 1;
                     UncolChangelog.Opacity = 1;
                     UncolBugs.Opacity = 1;
@@ -720,6 +722,7 @@ namespace AgsLauncherV2
                     UncolHome.Margin = new Thickness(11, 50, 0, 0);
                     UncolChangelog.Margin = new Thickness(11, 80, 0, 0);
                     UncolBugs.Margin = new Thickness(11, 110, 0, 0);
+                    LaunchButton.Margin = new Thickness(356, 371, 0, 0);
                     UncolHome.Opacity = 1;
                     UncolChangelog.Opacity = 1;
                     UncolBugs.Opacity = 1;
@@ -912,6 +915,7 @@ namespace AgsLauncherV2
                     NewsHeader.Margin = new Thickness(169, 262, 19, 156);
                     NewsSubheader.Margin = new Thickness(169, 294, 19, 113);
                     NewsDate.Margin = new Thickness(153, 263, 26, 161);
+                    LaunchButton.Margin = new Thickness(356, 371, 0, 0);
                     UncolHome.Opacity = 1;
                     UncolChangelog.Opacity = 1;
                     UncolBugs.Opacity = 1;
@@ -1107,6 +1111,7 @@ namespace AgsLauncherV2
                     CollapseCB.Margin = new Thickness(55, 62, 0, 0);
                     Arguments.Margin = new Thickness(273, 82, 0, 0);
                     args.Margin = new Thickness(2, 90, 0, 0);
+                    LaunchButton.Margin = new Thickness(356, 371, 0, 0);
                     UncolHome.Opacity = 1;
                     UncolChangelog.Opacity = 1;
                     UncolBugs.Opacity = 1;

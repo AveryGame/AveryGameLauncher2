@@ -21,7 +21,7 @@
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Prod|AnyCPU'">
-	  <Optimize>False</Optimize>
+		<Optimize>False</Optimize>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -49,13 +49,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Resource Include="AccountIcon.png" />
-		<Resource Include="newspaper-48.png" />
-		<Resource Include="outline_bug_report_white_24dp.png" />
-		<Resource Include="outline_home_white_24dp.png" />
-		<Resource Include="outline_settings_ethernet_white_24dp.png" />
-		<Resource Include="outline_settings_white_24dp.png" />
-		<Resource Include="slate-blank.png" />
+		<Resource Include="LauncherImg/AccountIcon.png" />
+		<Resource Include="LauncherImg/newspaper-48.png"/>
+		<Resource Include="LauncherImg/outline_bug_report_white_24dp.png"/>
+		<Resource Include="LauncherImg/outline_home_white_24dp.png"/>
+		<Resource Include="LauncherImg/outline_settings_ethernet_white_24dp.png"/>
+		<Resource Include="LauncherImg/outline_settings_white_24dp.png"/>
+		<Resource Include="LauncherImg/slate-blank.png"/>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -71,6 +71,10 @@
 			<Generator>SettingsSingleFileGenerator</Generator>
 			<LastGenOutput>Settings.Designer.cs</LastGenOutput>
 		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="LauncherImg\" />
 	</ItemGroup>
 
 </Project>

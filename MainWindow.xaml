@@ -30,7 +30,7 @@
         <TextBlock x:Name="ColLogLine4" HorizontalAlignment="Left" Margin="33,206,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontFamily="Segoe UI Variable Text Light" Foreground="White" Width="767" TextAlignment="Center" Height="30" FontSize="18" Opacity="0" Grid.ColumnSpan="2"/>
         <TextBlock x:Name="ColLogLine5" HorizontalAlignment="Left" Margin="33,242,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontFamily="Segoe UI Variable Text Light" Foreground="White" Width="767" TextAlignment="Center" Height="30" FontSize="18" Opacity="0" Grid.ColumnSpan="2"/>
         <Button Name="ColHomeButton" HorizontalAlignment="Left" Margin="11,50,0,0" VerticalAlignment="Top" Width="20" BorderBrush="{x:Null}" Foreground="White" Background="#FF24252B" Click="Home" FontFamily="Segoe UI Variable Text Light" Height="20" Visibility="Hidden">
-            <Image Source="/outline_home_white_24dp.png"/>
+            <Image Source="LauncherImg/outline_home_white_24dp.png"/>
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="15"/>
@@ -78,7 +78,7 @@
         <Label Name="AveryGame" Content="Avery Game" Foreground="White" FontFamily="Corbel Light" FontSize="20" Margin="18,10,0,0" Height="35" VerticalAlignment="Top" HorizontalAlignment="Left" Width="108" Opacity="1"/>
         <TextBlock HorizontalAlignment="Left" Height="0" TextWrapping="Wrap" Text="Test" VerticalAlignment="Center" Width="0" Foreground="White" Margin="400,0,0,0"/>
         <Button Name="ColChangelogButton" HorizontalAlignment="Left" Margin="11,80,0,0" VerticalAlignment="Top" Width="20" BorderBrush="{x:Null}" Foreground="White" Background="#FF24252B" Click="Changelog" FontFamily="Segoe UI Variable Text Light" Height="20" Visibility="Hidden">
-            <Image Source="/outline_settings_ethernet_white_24dp.png"/>
+            <Image Source="LauncherImg/outline_settings_ethernet_white_24dp.png"/>
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="15"/>
@@ -115,7 +115,7 @@
             </Button.Style>
         </Button>
         <Button Name="ColBugsButton" HorizontalAlignment="Left" Margin="11,110,0,0" VerticalAlignment="Top" Width="20" BorderBrush="{x:Null}" Foreground="White" Background="#FF24252B" Click="Bugs" FontFamily="Segoe UI Variable Text Light" Height="20" Visibility="Visible">
-            <Image Source="/outline_bug_report_white_24dp.png"/>
+            <Image Source="LauncherImg/outline_bug_report_white_24dp.png"/>
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="15"/>
@@ -410,9 +410,9 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Image Name="UncolHome" HorizontalAlignment="Left" Height="20" Margin="11,50,0,0" VerticalAlignment="Top" Width="21" Source="/outline_home_white_24dp.png"/>
-        <Image Name="UncolChangelog" HorizontalAlignment="Left" Height="20" Margin="11,80,0,0" VerticalAlignment="Top" Width="21" Source="/outline_settings_ethernet_white_24dp.png"/>
-        <Image Name="UncolBugs" HorizontalAlignment="Left" Height="22" Margin="11,110,0,0" VerticalAlignment="Top" Width="20" Source="/outline_bug_report_white_24dp.png"/>
+        <Image Name="UncolHome" HorizontalAlignment="Left" Height="20" Margin="11,50,0,0" VerticalAlignment="Top" Width="21" Source="LauncherImg/outline_home_white_24dp.png"/>
+        <Image Name="UncolChangelog" HorizontalAlignment="Left" Height="20" Margin="11,80,0,0" VerticalAlignment="Top" Width="21" Source="LauncherImg/outline_settings_ethernet_white_24dp.png"/>
+        <Image Name="UncolBugs" HorizontalAlignment="Left" Height="22" Margin="11,110,0,0" VerticalAlignment="Top" Width="20" Source="LauncherImg/outline_bug_report_white_24dp.png"/>
         <!--6,201,0,0-->
         <Button x:Name="SettingsButton" Content="Settings" HorizontalAlignment="Left" Margin="6,201,0,0" VerticalAlignment="Top" Width="132" BorderBrush="{x:Null}" Foreground="White" Background="#FF24252B" Click="SettingsClick" FontFamily="Segoe UI Variable Text Light" Height="20" Opacity="1" Visibility="Visible">
             <Button.Resources>
@@ -451,11 +451,11 @@
             </Button.Style>
         </Button>
         <!--12,202,0,0-->
-        <Image Name="UncolSettingsImg" HorizontalAlignment="Left" Height="18" Margin="12,202,0,0" VerticalAlignment="Top" Width="18" Source="/outline_settings_white_24dp.png" Opacity="1"/>
+        <Image Name="UncolSettingsImg" HorizontalAlignment="Left" Height="18" Margin="12,202,0,0" VerticalAlignment="Top" Width="18" Source="LauncherImg/outline_settings_white_24dp.png" Opacity="1"/>
         <TextBlock Name="HideMenu" FontFamily="Segoe UI Variable Text Light" HorizontalAlignment="Left" Margin="399,53,0,0" TextWrapping="Wrap" Text="Collapse menu" VerticalAlignment="Top" Foreground="White" FontSize="20" Width="126" TextAlignment="Center" Opacity="0" Grid.ColumnSpan="2"/>
         <!--12,202,0,0-->
         <Button x:Name="ColSettings" HorizontalAlignment="Left" Margin="10,202,0,0" VerticalAlignment="Top" Width="21" BorderBrush="{x:Null}" Foreground="White" Background="#FF24252B" Click="SettingsClick" FontFamily="Segoe UI Variable Text Light" Height="20" Visibility="Hidden">
-            <Image Source="/outline_settings_white_24dp.png" Height="20" Width="19"/>
+            <Image Source="LauncherImg/outline_settings_white_24dp.png" Height="20" Width="19"/>
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="15"/>
@@ -529,9 +529,9 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Image HorizontalAlignment="Left" Height="18" Margin="12,141,0,0" VerticalAlignment="Top" Width="20" Source="/newspaper-48.png"/>
+        <Image HorizontalAlignment="Left" Height="18" Margin="12,141,0,0" VerticalAlignment="Top" Width="20" Source="LauncherImg/newspaper-48.png"/>
         <Button x:Name="ColNews" HorizontalAlignment="Left" Margin="10,140,0,0" VerticalAlignment="Top" Width="22" BorderBrush="{x:Null}" Foreground="White" Background="#FF24252B" Click="News" FontFamily="Segoe UI Variable Text Light" Height="20" Visibility="Hidden">
-            <Image Source="/newspaper-48.png" Height="20" Width="19"/>
+            <Image Source="LauncherImg/newspaper-48.png" Height="20" Width="19"/>
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="15"/>
@@ -571,7 +571,7 @@
         <TextBlock x:Name="NewsSubheader" TextWrapping="Wrap" Text="OH MY GOD I LOVE HTEM SO MUCH" Foreground="White" Margin="109,294,79,113" Grid.ColumnSpan="2" TextAlignment="Left" FontSize="14" FontWeight="Normal" FontFamily="Segoe UI Variable Display Light" Opacity="0"/>
         <Border x:Name="NewsImageBorder" CornerRadius="3,3,3,3" Grid.ColumnSpan="2" Margin="109,26,79,193">
             <Border.Background>
-                <ImageBrush Stretch="None" ImageSource="/slate-blank.png" Opacity="0"/>
+                <ImageBrush Stretch="None" ImageSource="LauncherImg/slate-blank.png" Opacity="0"/>
             </Border.Background>
         </Border>
         <TextBlock Name="NewsDate" TextWrapping="Wrap" Text="" Margin="100,269,79,0" Grid.Column="1" FontSize="8" TextAlignment="Right" VerticalAlignment="Top" Foreground="Black" Opacity="0"/>
@@ -622,9 +622,9 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Image Name="AccountIcon" Source="/AccountIcon.png" Height="20" Width="19" Margin="11,170,445,260"/>
+        <Image Name="AccountIcon" Source="LauncherImg/AccountIcon.png" Height="20" Width="19" Margin="11,170,445,260"/>
         <Button x:Name="ColAccount" HorizontalAlignment="Left" Margin="10,170,0,0" VerticalAlignment="Top" Width="21" BorderBrush="{x:Null}" Foreground="White" Background="#FF24252B" Click="AccountButtonClick" FontFamily="Segoe UI Variable Text Light" Height="20" Visibility="Hidden">
-            <Image Source="/AccountIcon.png" Height="20" Width="19"/>
+            <Image Source="LauncherImg/AccountIcon.png" Height="20" Width="19"/>
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="15"/>

@@ -569,9 +569,9 @@
         </Button>
         <TextBlock Name="NewsHeader" TextWrapping="Wrap" Text="I FUCKING LOVE MEN" Foreground="White" Margin="109,262,79,156" Grid.ColumnSpan="2" TextAlignment="Left" FontSize="20" FontWeight="Normal" FontFamily="Segoe UI Semibold" Opacity="0"/>
         <TextBlock x:Name="NewsSubheader" TextWrapping="Wrap" Text="OH MY GOD I LOVE HTEM SO MUCH" Foreground="White" Margin="109,294,79,113" Grid.ColumnSpan="2" TextAlignment="Left" FontSize="14" FontWeight="Normal" FontFamily="Segoe UI Variable Display Light" Opacity="0"/>
-        <Border x:Name="NewsImageBorder" CornerRadius="3,3,3,3" Grid.ColumnSpan="2" Margin="109,26,79,193">
+        <Border x:Name="NewsImageBorder" CornerRadius="5,5,5,5" Grid.ColumnSpan="2" Margin="109,26,79,193">
             <Border.Background>
-                <ImageBrush Stretch="None" ImageSource="LauncherImg/slate-blank.png" Opacity="0"/>
+                <ImageBrush Stretch="Uniform" ImageSource="LauncherImg/slate-blank.png" Opacity="0"/>
             </Border.Background>
         </Border>
         <TextBlock Name="NewsDate" TextWrapping="Wrap" Text="" Margin="100,269,79,0" Grid.Column="1" FontSize="8" TextAlignment="Right" VerticalAlignment="Top" Foreground="Black" Opacity="0"/>

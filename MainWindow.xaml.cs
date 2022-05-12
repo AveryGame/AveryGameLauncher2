@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.IO.Compression;
 using System.Windows.Media.Imaging;
 using Microsoft.Toolkit.Uwp.Notifications;
+using System.Net.Http;
+using System.Globalization;
 
 namespace AgsLauncherV2
 {
@@ -25,7 +27,9 @@ namespace AgsLauncherV2
                 Services.LogSVC.CreateLogFile();
                 Services.LogSVC.LogJSEvent();
                 WebClient webclient = new WebClient();
-                webclient.DownloadFile("https://raw.githubusercontent.com/AyeItsAxi/ags-launcher-strings/main/launcherinfo.json", Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\fuck.json");
+                //https://raw.githubusercontent.com/AyeItsAxi/ags-launcher-strings/dev/launcherinfo.json
+                //https://raw.githubusercontent.com/AyeItsAxi/ags-launcher-strings/main/launcherinfo.json
+                webclient.DownloadFile("https://raw.githubusercontent.com/AyeItsAxi/ags-launcher-strings/dev/launcherinfo.json", Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\fuck.json");
                 Services.LogSVC.LogJSDownload();
                 string DATA = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\fuck.json");
                 Services.LogSVC.LogJSRead();
@@ -937,12 +941,31 @@ namespace AgsLauncherV2
                 ImageBrush imgB = new ImageBrush();
                 BitmapImage btpImg = new BitmapImage();
                 btpImg.BeginInit();
-                btpImg.UriSource = new Uri(AGLCloud.NewsImageURL);
+                try
+                {
+                    var req = (HttpWebRequest)WebRequest.Create(AGLCloud.NewsImageURL);
+                    req.Method = "HEAD";
+                    using (var resp = req.GetResponse())
+                    {
+                        if (!resp.ContentType.ToLower().StartsWith("image/"))
+                        {
+                            btpImg.UriSource = new Uri("pack://application:,,,/LauncherImg/AveryGameLauncher2NewsImageError.png");
+                        }
+                        else if (resp.ContentType.ToLower().StartsWith("image/"))
+                        {
+                            btpImg.UriSource = new Uri(AGLCloud.NewsImageURL);
+                        }
+                    }
+                }
+                catch
+                {
+                    btpImg.UriSource = new Uri("pack://application:,,,/LauncherImg/AveryGameLauncher2NewsImageError.png");
+                }
                 btpImg.EndInit();
                 imgB.ImageSource = btpImg;
+                NewsImageBorder.Background = imgB;
                 NewsDate.Text = AGLCloud.NewsDate;
                 NewsHeader.Text = AGLCloud.NewsHeader;
-                NewsImageBorder.Background = imgB;
                 NewsSubheader.Text = AGLCloud.NewsSubHeader;
                 Services.LogSVC.BtnLogic.LogUncolElements();
                 if ((bool)(CollapseCB.IsChecked))

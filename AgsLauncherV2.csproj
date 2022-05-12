@@ -25,13 +25,15 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<None Remove="AccountIcon.png" />
-		<None Remove="newspaper-48.png" />
-		<None Remove="outline_bug_report_white_24dp.png" />
-		<None Remove="outline_home_white_24dp.png" />
-		<None Remove="outline_settings_ethernet_white_24dp.png" />
-		<None Remove="outline_settings_white_24dp.png" />
-		<None Remove="slate-blank.png" />
+		<None Remove="LauncherImg/AccountIcon.png" />
+		<None Remove="LauncherImg/newspaper-48.png" />
+		<None Remove="LauncherImg/outline_bug_report_white_24dp.png" />
+		<None Remove="LauncherImg/outline_home_white_24dp.png" />
+		<None Remove="LauncherImg/outline_settings_ethernet_white_24dp.png" />
+		<None Remove="LauncherImg/outline_settings_white_24dp.png" />
+		<None Remove="LauncherImg/slate-blank.png" />
+		<None Remove="LauncherImg/NewsBase.png" />
+		<None Remove="LauncherImg/AveryGameLauncher2NewsImageError.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -56,6 +58,8 @@
 		<Resource Include="LauncherImg/outline_settings_ethernet_white_24dp.png"/>
 		<Resource Include="LauncherImg/outline_settings_white_24dp.png"/>
 		<Resource Include="LauncherImg/slate-blank.png"/>
+		<Resource Include="LauncherImg/NewsBase.png"/>
+		<Resource Include="LauncherImg/AveryGameLauncher2NewsImageError.png"/>
 	</ItemGroup>
 
 	<ItemGroup>

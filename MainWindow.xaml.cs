@@ -387,7 +387,7 @@ namespace AgsLauncherV2
                 NewsSubheader.Opacity = 0;
                 NewsImageBorder.Opacity = 0;
                 Services.LogSVC.BtnLogic.LogOpacityChange();
-                if ((bool)(CollapseCB.IsChecked))
+                if ((bool)CollapseCB.IsChecked)
                 {
                     AveryGame.Opacity = 0;
                     ChangelogBugsTitle.Opacity = 0;
@@ -563,7 +563,7 @@ namespace AgsLauncherV2
                 NewsImageBorder.Opacity = 0;
                 Services.LogSVC.BtnLogic.LogUncolElements();
                 Services.LogSVC.BtnLogic.LogOpacityChange();
-                if ((bool)(CollapseCB.IsChecked))
+                if ((bool)CollapseCB.IsChecked)
                 {
                     AveryGame.Opacity = 0;
                     ChangelogBugsTitle.Opacity = 0;
@@ -754,7 +754,7 @@ namespace AgsLauncherV2
                 NewsSubheader.Opacity = 0;
                 NewsImageBorder.Opacity = 0;
                 Services.LogSVC.BtnLogic.LogUncolElements();
-                if ((bool)(CollapseCB.IsChecked))
+                if ((bool)CollapseCB.IsChecked)
                 {
                     AveryGame.Opacity = 0;
                     ChangelogBugsTitle.Opacity = 0;
@@ -968,7 +968,7 @@ namespace AgsLauncherV2
                 NewsHeader.Text = AGLCloud.NewsHeader;
                 NewsSubheader.Text = AGLCloud.NewsSubHeader;
                 Services.LogSVC.BtnLogic.LogUncolElements();
-                if ((bool)(CollapseCB.IsChecked))
+                if ((bool)CollapseCB.IsChecked)
                 {
                     AveryGame.Opacity = 0;
                     ChangelogBugsTitle.Opacity = 0;
@@ -1155,7 +1155,7 @@ namespace AgsLauncherV2
                 NewsSubheader.Opacity = 0;
                 NewsImageBorder.Opacity = 0;
                 Services.LogSVC.BtnLogic.LogOpacityChange();
-                if ((bool)(CollapseCB.IsChecked))
+                if ((bool)CollapseCB.IsChecked)
                 {
                     VerSTR.Opacity = 0;
                     ColVerSTR.Opacity = 0;

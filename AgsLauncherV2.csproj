@@ -5,23 +5,46 @@
 		<TargetFramework>netcoreapp3.1</TargetFramework>
 		<UseWPF>true</UseWPF>
 		<ApplicationIcon>resources\launcher.ico</ApplicationIcon>
-		<Authors>Kianna</Authors>
+		<Authors>1 24 9 (Kianna)</Authors>
 		<Version>2.7.2</Version>
-		<Product>AgsLauncherV2</Product>
+		<Product>AveryGameLauncher2</Product>
 		<Description>Launcher for Avery Game by AveryMadness</Description>
 		<Configurations>Debug;Release;Prod</Configurations>
+		<StartupObject>AgsLauncherV2.App</StartupObject>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<RepositoryType>git</RepositoryType>
+		<NeutralLanguage>en</NeutralLanguage>
+		<PlatformTarget>x64</PlatformTarget>
+		<IsPublishable>False</IsPublishable>
+		<UseWindowsForms>False</UseWindowsForms>
+		<Company></Company>
+		<PackageLicenseFile>C:\Users\shawn\OneDrive\Documents\Visual Studio Projects\ags-launcher-v2\AgsLauncherV2\LICENSE</PackageLicenseFile>
+		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+		<AssemblyVersion>2.7.2.1</AssemblyVersion>
+		<FileVersion>2.7.2.1</FileVersion>
+		<ErrorReport>send</ErrorReport>
+		<SignAssembly>False</SignAssembly>
+		<EnableNETAnalyzers>True</EnableNETAnalyzers>
+		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+		<AnalysisLevel>latest-all</AnalysisLevel>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
 		<Optimize>True</Optimize>
+		<WarningLevel>9999</WarningLevel>
+		<DebugType>embedded</DebugType>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
 		<Optimize>False</Optimize>
+		<WarningLevel>9999</WarningLevel>
+		<DebugType>embedded</DebugType>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Prod|AnyCPU'">
 		<Optimize>False</Optimize>
+		<WarningLevel>9999</WarningLevel>
+		<DebugType>embedded</DebugType>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -52,14 +75,14 @@
 
 	<ItemGroup>
 		<Resource Include="LauncherImg/AccountIcon.png" />
-		<Resource Include="LauncherImg/newspaper-48.png"/>
-		<Resource Include="LauncherImg/outline_bug_report_white_24dp.png"/>
-		<Resource Include="LauncherImg/outline_home_white_24dp.png"/>
-		<Resource Include="LauncherImg/outline_settings_ethernet_white_24dp.png"/>
-		<Resource Include="LauncherImg/outline_settings_white_24dp.png"/>
-		<Resource Include="LauncherImg/slate-blank.png"/>
-		<Resource Include="LauncherImg/NewsBase.png"/>
-		<Resource Include="LauncherImg/AveryGameLauncher2NewsImageError.png"/>
+		<Resource Include="LauncherImg/newspaper-48.png" />
+		<Resource Include="LauncherImg/outline_bug_report_white_24dp.png" />
+		<Resource Include="LauncherImg/outline_home_white_24dp.png" />
+		<Resource Include="LauncherImg/outline_settings_ethernet_white_24dp.png" />
+		<Resource Include="LauncherImg/outline_settings_white_24dp.png" />
+		<Resource Include="LauncherImg/slate-blank.png" />
+		<Resource Include="LauncherImg/NewsBase.png" />
+		<Resource Include="LauncherImg/AveryGameLauncher2NewsImageError.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -74,6 +97,10 @@
 		<None Update="Properties\Settings.settings">
 			<Generator>SettingsSingleFileGenerator</Generator>
 			<LastGenOutput>Settings.Designer.cs</LastGenOutput>
+		</None>
+		<None Update="README.md">
+		  <Pack>True</Pack>
+		  <PackagePath>\</PackagePath>
 		</None>
 	</ItemGroup>
 

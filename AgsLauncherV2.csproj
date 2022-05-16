@@ -20,8 +20,8 @@
 		<Company></Company>
 		<PackageLicenseFile>C:\Users\shawn\OneDrive\Documents\Visual Studio Projects\ags-launcher-v2\AgsLauncherV2\LICENSE</PackageLicenseFile>
 		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
-		<AssemblyVersion>2.7.2.1</AssemblyVersion>
-		<FileVersion>2.7.2.1</FileVersion>
+		<AssemblyVersion>2.7.2.2</AssemblyVersion>
+		<FileVersion>2.7.2.2</FileVersion>
 		<ErrorReport>send</ErrorReport>
 		<SignAssembly>False</SignAssembly>
 		<EnableNETAnalyzers>True</EnableNETAnalyzers>
@@ -31,19 +31,19 @@
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
 		<Optimize>True</Optimize>
-		<WarningLevel>9999</WarningLevel>
+		<WarningLevel>4</WarningLevel>
 		<DebugType>embedded</DebugType>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
 		<Optimize>False</Optimize>
-		<WarningLevel>9999</WarningLevel>
+		<WarningLevel>4</WarningLevel>
 		<DebugType>embedded</DebugType>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Prod|AnyCPU'">
 		<Optimize>False</Optimize>
-		<WarningLevel>9999</WarningLevel>
+		<WarningLevel>4</WarningLevel>
 		<DebugType>embedded</DebugType>
 	</PropertyGroup>
 

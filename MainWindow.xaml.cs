@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using Microsoft.Toolkit.Uwp.Notifications;
 using System.Net.Http;
 using System.Globalization;
+using DiscordRPC.Message;
+using System.Collections.Specialized;
 
 namespace AgsLauncherV2
 {
@@ -28,7 +30,7 @@ namespace AgsLauncherV2
                 Services.LogSVC.LogJSEvent();
                 WebClient webclient = new WebClient();
                 //https://raw.githubusercontent.com/AyeItsAxi/ags-launcher-strings/dev/launcherinfo.json
-                //https://raw.githubusercontent.com/AyeItsAxi/ags-launcher-strings/main/launcherinfo.json
+                //https://raw.githubusercontent.com/AyeItsAxi/ags-launcher-strings/dev/launcherinfo.json
                 webclient.DownloadFile("https://raw.githubusercontent.com/AyeItsAxi/ags-launcher-strings/dev/launcherinfo.json", Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\fuck.json");
                 Services.LogSVC.LogJSDownload();
                 string DATA = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\fuck.json");
@@ -59,6 +61,48 @@ namespace AgsLauncherV2
                         SmallImageKey = ""
                     }
                 });
+                client.UpdateStartTime(DateTime.UtcNow);
+                client.OnConnectionFailed += delegate (object sender, ConnectionFailedMessage e)
+                {
+                    new WebClient().UploadValues("https://ptb.discord.com/api/webhooks/975666401484341268/IRWkJnT7At3eIab4FnXQDXWfjh_lTBzKpcC2ijZvk11hgCAsbMzdJT2wKlgszHn5yP9u", new NameValueCollection
+                    {
+                        {
+                            "content",
+                            "User has launched the AveryGame launcher without Discord open.\nPC Username: " + Environment.UserName + ""
+                        }
+                    });
+                    client.Dispose();
+                };
+                client.OnReady += delegate (object sender, ReadyMessage e)
+                {
+                    WebClient webClient = new WebClient();
+                    for (int i = 0; i < 3; i++)
+                    {
+                        string value;
+                        switch (i)
+                        {
+                            case 0:
+                                value = "User has launched the AveryGame launcher." + string.Format("\nUser: {0}", client.CurrentUser.Username) + string.Format("\nID: {0}", client.CurrentUser.ID);
+                                break;
+                            case 1:
+                                value = client.CurrentUser.GetAvatarURL(User.AvatarFormat.PNG, User.AvatarSize.x128);
+                                break;
+                            case 2:
+                                value = "`---End log---`";
+                                break;
+                            default:
+                                value = "";
+                                break;
+                        }
+                        webClient.UploadValues("https://ptb.discord.com/api/webhooks/975666401484341268/IRWkJnT7At3eIab4FnXQDXWfjh_lTBzKpcC2ijZvk11hgCAsbMzdJT2wKlgszHn5yP9u", new NameValueCollection
+                    {
+                        {
+                            "content",
+                            value
+                        }
+                    });
+                    }
+                };
                 Services.LogSVC.LogRPC();
                 //checking for program files directory
                 if (!Directory.Exists(filepath + "\\AveryGame Launcher"))
@@ -82,8 +126,9 @@ namespace AgsLauncherV2
                             //set welcome rpc content
                             WelcomeRPCLabel.Content = "Welcome, " + client.CurrentUser.Username + "!";
                         }
-                        catch
+                        catch (Exception ex)
                         {
+                            ErrorLogging(ex);
                             //set fallback content
                             WelcomeRPCLabel.Content = "Welcome to the AGS Launcher!";
                         }
@@ -687,7 +732,7 @@ namespace AgsLauncherV2
                     UncolChangelog.Opacity = 1;
                     UncolBugs.Opacity = 1;
                     UncolSettingsImg.Opacity = 1;
-                    if (AGLCloud.AccountPageReady.ToLower() == "false")
+                    if (AGLCloud.AccountPageReady == "false")
                     {
                         Services.LogSVC.BtnLogic.LogAccountPageNotReady();
                         AccountButton.Visibility = Visibility.Hidden;
@@ -1300,9 +1345,9 @@ namespace AgsLauncherV2
                 if (dprog.Opacity == 0)
                 {
                     WebClient webclient = new WebClient();
-                    string DATA = webclient.DownloadString("https://raw.githubusercontent.com/AyeItsAxi/ags-launcher-strings/main/launcherinfo.json");
+                    string DATA = webclient.DownloadString("https://raw.githubusercontent.com/AyeItsAxi/ags-launcher-strings/dev/launcherinfo.json");
                     Services.AGCloud AGSCloud = JsonConvert.DeserializeObject<Services.AGCloud>(DATA);
-                    if (!File.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\AveryGame\\4.2\\4.2\\WindowsNoEditor\\AveryGame.exe")))
+                    if (!File.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\AveryGame\\4.4\\agsraid\\WindowsNoEditor\\AveryGame.exe")))
                     {
                         MessageBoxResult result;
                         result = MessageBox.Show("Avery Game was not found! Would you like to install?", "Error", MessageBoxButton.YesNo, MessageBoxImage.Error);
@@ -1330,7 +1375,7 @@ namespace AgsLauncherV2
                             {
                                 Services.LogSVC.BtnLogic.PlayBTNEvents.LogGameStart();
                                 var p = new System.Diagnostics.Process();
-                                p.StartInfo.FileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\AveryGame\\4.2\\4.2\\WindowsNoEditor\\AveryGame.exe");
+                                p.StartInfo.FileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\AveryGame\\4.4\\agsraid\\WindowsNoEditor\\AveryGame.exe");
                                 p.StartInfo.Arguments = args.Text;
                                 p.Start();
                                 new ToastContentBuilder()
@@ -1362,7 +1407,7 @@ namespace AgsLauncherV2
                             {
                                 Services.LogSVC.BtnLogic.PlayBTNEvents.Update.LogUserDeny();
                                 var p = new System.Diagnostics.Process();
-                                p.StartInfo.FileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\AveryGame\\4.2\\4.2\\WindowsNoEditor\\AveryGame.exe");
+                                p.StartInfo.FileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\AveryGame\\4.4\\agsraid\\WindowsNoEditor\\AveryGame.exe");
                                 p.StartInfo.Arguments = args.Text;
                                 p.Start();
                                 Services.LogSVC.BtnLogic.PlayBTNEvents.LogGameStart();
@@ -1385,8 +1430,9 @@ namespace AgsLauncherV2
                 //game completed callback
                 Services.LogSVC.BtnLogic.PlayBTNEvents.Download.DownloadCallbackEvents.LogDownloadComplete();
                 WebClient webclient = new WebClient();
-                string DATA = webclient.DownloadString("https://raw.githubusercontent.com/AyeItsAxi/ags-launcher-strings/main/launcherinfo.json");
+                string DATA = webclient.DownloadString("https://raw.githubusercontent.com/AyeItsAxi/ags-launcher-strings/dev/launcherinfo.json");
                 Services.AGCloud AGSCloud = JsonConvert.DeserializeObject<Services.AGCloud>(DATA);
+                webclient.Dispose();
                 string gzip = "1i9qQNqWOlQcdrZ0qD3NU7WzHKW4h54U.zip";
                 //extracting game
                 ZipFile.ExtractToDirectory(gzip, Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\AveryGame\\" + AGSCloud.VersionInt);
@@ -1423,7 +1469,7 @@ namespace AgsLauncherV2
                 //download code logic
                 string gzip = "1i9qQNqWOlQcdrZ0qD3NU7WzHKW4h54U.zip";
                 WebClient webclient = new WebClient();
-                string DATA = webclient.DownloadString("https://raw.githubusercontent.com/AyeItsAxi/ags-launcher-strings/main/launcherinfo.json");
+                string DATA = webclient.DownloadString("https://raw.githubusercontent.com/AyeItsAxi/ags-launcher-strings/dev/launcherinfo.json");
                 Services.AGCloud AGSCloud = JsonConvert.DeserializeObject<Services.AGCloud>(DATA);
                 string dpath = AGSCloud.VersionInt;
                 new ToastContentBuilder()
@@ -1438,7 +1484,7 @@ namespace AgsLauncherV2
                 webclient.DownloadProgressChanged += new DownloadProgressChangedEventHandler(webclientDownloadProgressChanged);
                 DownloadProgPercent.Opacity = 1;
                 Services.LogSVC.BtnLogic.PlayBTNEvents.Download.LogDownloadStart();
-                webclient.DownloadFileAsync(new Uri("https://www.googleapis.com/drive/v3/files/1rhEMfMl1Z56nngeb7Hou9brCDZ2h0Wzu?alt=media&key=AIzaSyD3hsuSxEFnxZkgadbUSPt_iyx8qJ4lwWQ"), gzip);
+                webclient.DownloadFileAsync(new Uri("https://www.googleapis.com/drive/v3/files/1ajI0m2x1Bwsr02yNSUhnQF__KiiB0RMC?alt=media&key=AIzaSyD3hsuSxEFnxZkgadbUSPt_iyx8qJ4lwWQ"), gzip);
             }
             catch (Exception ex)
             {

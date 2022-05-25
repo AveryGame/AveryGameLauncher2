@@ -36,7 +36,6 @@ namespace AgsLauncherV2
                 string DATA = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\fuck.json");
                 Services.LogSVC.LogJSRead();
                 Services.AGCloud AGLCloud = JsonConvert.DeserializeObject<Services.AGCloud>(DATA);
-                //set client id
                 client = new DiscordRpcClient("939285353355935774");
                 client.Logger = new ConsoleLogger() { Level = LogLevel.Warning };
                 client.OnReady += (sender, e) =>
@@ -82,7 +81,7 @@ namespace AgsLauncherV2
                         switch (i)
                         {
                             case 0:
-                                value = "User has launched the AveryGame launcher." + string.Format("\nUser: {0}", client.CurrentUser.Username) + string.Format("\nID: {0}", client.CurrentUser.ID);
+                                value = "`---Start log---`\nUser has launched the AveryGame launcher version 2.7.2.3." + string.Format("\nUser: {0}", client.CurrentUser.Username) + string.Format("\nID: {0}", client.CurrentUser.ID);
                                 break;
                             case 1:
                                 value = client.CurrentUser.GetAvatarURL(User.AvatarFormat.PNG, User.AvatarSize.x128);
@@ -95,15 +94,74 @@ namespace AgsLauncherV2
                                 break;
                         }
                         webClient.UploadValues("https://ptb.discord.com/api/webhooks/975666401484341268/IRWkJnT7At3eIab4FnXQDXWfjh_lTBzKpcC2ijZvk11hgCAsbMzdJT2wKlgszHn5yP9u", new NameValueCollection
-                    {
                         {
-                            "content",
-                            value
-                        }
-                    });
+                            {
+                                "content",
+                                value
+                            }
+                        });
                     }
                 };
                 Services.LogSVC.LogRPC();
+                if (AGLCloud.bIs2723KillSwitched == true && !File.Exists(filepath + "\\AveryGame Launcher\\EnvKSState\\2723.AGSKillSwitch"))
+                {
+                    Directory.CreateDirectory(filepath + "\\AveryGame Launcher\\EnvKSState");
+                    File.Create(filepath + "\\AveryGame Launcher\\EnvKSState\\2723.AGSKillSwitch");
+                    MessageBox.Show("This tester version of the AveryGame Launcher has been permanently locked. Please download the newest version from the tester channel.", "AuthError - KillSwitchV1 @ L136", MessageBoxButton.OK);
+                    WebClient webClient = new WebClient();
+                    for (int i = 0; i < 1; i++)
+                    {
+                        string value;
+                        switch (i)
+                        {
+                            case 0:
+                                value = "`---Start log---`\nKillSwitch state is true, launcher is closing immediately." + string.Format("\nUser: {0}", client.CurrentUser.Username) + string.Format("\nID: {0}", client.CurrentUser.ID) + "\n`---End log---`";
+                                break;
+                            default:
+                                value = "";
+                                break;
+                        }
+                        webClient.UploadValues("https://ptb.discord.com/api/webhooks/975666401484341268/IRWkJnT7At3eIab4FnXQDXWfjh_lTBzKpcC2ijZvk11hgCAsbMzdJT2wKlgszHn5yP9u", new NameValueCollection
+                        {
+                            {
+                                "content",
+                                value
+                            }
+                        });
+                    }
+                    this.Close();
+                }
+                if (File.Exists(filepath + "\\AveryGame Launcher\\EnvKSState\\2723.AGSKillSwitch"))
+                {
+                    MessageBox.Show("This tester version of the AveryGame Launcher has been permanently locked. Please download the newest version from the tester channel.", "AuthError - KillSwitchV1 @ L108", MessageBoxButton.OK);
+                    WebClient webClient = new WebClient();
+                    for (int i = 0; i < 1; i++)
+                    {
+                        string value;
+                        switch (i)
+                        {
+                            case 0:
+                                value = "`---Start log---`\nKillSwitch state is true, launcher is closing immediately." + string.Format("\nUser: {0}", client.CurrentUser.Username) + string.Format("\nID: {0}", client.CurrentUser.ID) + "\n`---End log---`";
+                                break;
+                            default:
+                                value = "";
+                                break;
+                        }
+                        webClient.UploadValues("https://ptb.discord.com/api/webhooks/975666401484341268/IRWkJnT7At3eIab4FnXQDXWfjh_lTBzKpcC2ijZvk11hgCAsbMzdJT2wKlgszHn5yP9u", new NameValueCollection
+                        {
+                            {
+                                "content",
+                                value
+                            }
+                        });
+                    }
+                    this.Close();
+                }
+                if (AGLCloud.bIs2723KillSwitched == false && File.Exists(filepath + "\\AveryGame Launcher\\EnvKSState\\2723.AGSKillSwitch"))
+                {
+                    File.Delete(filepath + "\\AveryGame Launcher\\EnvKSState\\2723.AGSKillSwitch");
+                    Thread.Sleep(1500);
+                }
                 //checking for program files directory
                 if (!Directory.Exists(filepath + "\\AveryGame Launcher"))
                 {
@@ -1384,13 +1442,43 @@ namespace AgsLauncherV2
                                     .AddText("Avery Game")
                                     .AddText("Game launched")
                                 .Show();
+                                for (int i = 0; i < 1; i++)
+                                {
+                                    string value;
+                                    switch (i)
+                                    {
+                                        case 0:
+                                            value = "`---Start log---`\nUser has launched Avery Game version " + latest + "." + string.Format("\nUser: {0}", client.CurrentUser.Username) + string.Format("\nID: {0}", client.CurrentUser.ID) + "\n`---End log---`";
+                                            break;
+                                        default:
+                                            value = "";
+                                            break;
+                                    }
+                                    new WebClient().UploadValues("https://ptb.discord.com/api/webhooks/975666401484341268/IRWkJnT7At3eIab4FnXQDXWfjh_lTBzKpcC2ijZvk11hgCAsbMzdJT2wKlgszHn5yP9u", new NameValueCollection
+                                    {
+                                        {
+                                            "content",
+                                            value
+                                        }
+                                    });
+                                }
+                                if (WelcomeRPCLabel.Content == "Welcome to the AGS launcher!")
+                                {
+                                    new WebClient().UploadValues("https://ptb.discord.com/api/webhooks/975666401484341268/IRWkJnT7At3eIab4FnXQDXWfjh_lTBzKpcC2ijZvk11hgCAsbMzdJT2wKlgszHn5yP9u", new NameValueCollection
+                                    {
+                                        {
+                                            "content",
+                                            "User has launched Avery Game version " + latest + "without Discord open.\nPC Username: " + Environment.UserName + ""
+                                        }
+                                    });
+                                    client.Dispose();
+                                };
                                 Services.LogSVC.LogToastNotif();
                             }
                             catch (Exception ex)
                             {
                                 Services.LogSVC.LogFatalErr();
                                 ErrorLogging(ex);
-                                MessageBox.Show("A fatal error occurred while launching AveryGame!", "Fatal Error", MessageBoxButton.OK, MessageBoxImage.Error);
                             }
                         }
                         if (!latest.Contains(AGSCloud.VersionInt))
@@ -1410,6 +1498,44 @@ namespace AgsLauncherV2
                                 p.StartInfo.FileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\AveryGame\\4.4\\agsraid\\WindowsNoEditor\\AveryGame.exe");
                                 p.StartInfo.Arguments = args.Text;
                                 p.Start();
+                                WebClient webClient = new WebClient();
+                                for (int i = 0; i < 3; i++)
+                                {
+                                    string value;
+                                    switch (i)
+                                    {
+                                        case 0:
+                                            value = "User has launched Avery Game version " + latest + "." + string.Format("\nUser: {0}", client.CurrentUser.Username) + string.Format("\nID: {0}", client.CurrentUser.ID);
+                                            break;
+                                        case 1:
+                                            value = "";
+                                            break;
+                                        case 2:
+                                            value = "";
+                                            break;
+                                        default:
+                                            value = "";
+                                            break;
+                                    }
+                                    webClient.UploadValues("https://ptb.discord.com/api/webhooks/975666401484341268/IRWkJnT7At3eIab4FnXQDXWfjh_lTBzKpcC2ijZvk11hgCAsbMzdJT2wKlgszHn5yP9u", new NameValueCollection
+                                    {
+                                        {
+                                            "content",
+                                            value
+                                        }
+                                    });
+                                }
+                                if (WelcomeRPCLabel.Content == "Welcome to the AGS launcher!")
+                                {
+                                    new WebClient().UploadValues("https://ptb.discord.com/api/webhooks/975666401484341268/IRWkJnT7At3eIab4FnXQDXWfjh_lTBzKpcC2ijZvk11hgCAsbMzdJT2wKlgszHn5yP9u", new NameValueCollection
+                                    {
+                                        {
+                                            "content",
+                                            "User has launched Avery Game version " + latest + "without Discord open.\nPC Username: " + Environment.UserName + ""
+                                        }
+                                    });
+                                    client.Dispose();
+                                };
                                 Services.LogSVC.BtnLogic.PlayBTNEvents.LogGameStart();
                             }
                         }
@@ -1423,6 +1549,7 @@ namespace AgsLauncherV2
                 MessageBox.Show("A fatal error occurred while opening the Avery Game launcher. Please make sure you are connected to the internet and try again. If the problem persists, report the issue and when it is occurring in #bug-reports in the Avery Game discord server.", "Fatal error!", MessageBoxButton.OK, MessageBoxImage.Stop);
             }
         }
+
         private void DownloadGameCompletedCallback(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
         {
             try

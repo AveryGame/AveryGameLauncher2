@@ -4,17 +4,17 @@ using DiscordRPC;
 using System.Net;
 using System.Windows;
 using Newtonsoft.Json;
+using System.Net.Http;
 using System.Threading;
 using DiscordRPC.Logging;
+using DiscordRPC.Message;
+using System.Globalization;
 using System.Windows.Media;
 using System.Windows.Input;
 using System.IO.Compression;
 using System.Windows.Media.Imaging;
-using Microsoft.Toolkit.Uwp.Notifications;
-using System.Net.Http;
-using System.Globalization;
-using DiscordRPC.Message;
 using System.Collections.Specialized;
+using Microsoft.Toolkit.Uwp.Notifications;
 
 namespace AgsLauncherV2
 {

@@ -16,6 +16,14 @@ using System.Windows.Media.Imaging;
 using System.Collections.Specialized;
 using Microsoft.Toolkit.Uwp.Notifications;
 
+//Pragma warning disabling
+#pragma warning disable IDE0079 //1984
+#pragma warning disable IDE1006 //FUCK YOUR NAMING VIOLATION BITCH
+#pragma warning disable IDE0017 //I simply do not care.
+#pragma warning disable IDE0066 //mald
+#pragma warning disable IDE0063 //using my fucking nuts
+#pragma warning disable CS0252 //cast some bitches
+
 namespace AgsLauncherV2
 {
     public partial class MainWindow : Window

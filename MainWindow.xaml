@@ -195,7 +195,7 @@
         <Border CornerRadius="7" BorderThickness="2" BorderBrush="#FF121212" Margin="5,422,444,2"/>
         <Border CornerRadius="7" BorderThickness="4" BorderBrush="#FF121212" Margin="2,420,441,-1"/>
         <Border BorderThickness="4" BorderBrush="#FF121212" Margin="2,420,441,-1"/>
-        <Button Content="r" Margin="0,1,2,0" VerticalAlignment="Top" Height="14" Click="Close" FontFamily="Marlett" Background="#FF24252B" BorderBrush="#FF24252B" Foreground="White" Padding="0,0,0,0" HorizontalAlignment="Right" Width="14" Grid.Column="1">
+        <Button Name="CloseButton" Content="r" Margin="0,1,2,0" VerticalAlignment="Top" Height="14" Click="Close" FontFamily="Marlett" Background="#FF24252B" BorderBrush="#FF24252B" Foreground="White" Padding="0,0,0,0" HorizontalAlignment="Right" Width="14" Grid.Column="1">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="15"/>
@@ -231,7 +231,7 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Button Content="q" FontSize="15" Margin="0,1,19,0" VerticalAlignment="Top" Height="14" Click="Minimize" FontFamily="Marlett" Background="#FF24252B" BorderBrush="#FF24252B" Foreground="White" Padding="0,0,0,0" HorizontalAlignment="Right" Width="14" Grid.Column="1">
+        <Button Name="MinimizeButton" Content="q" FontSize="15" Margin="0,1,19,0" VerticalAlignment="Top" Height="14" Click="Minimize" FontFamily="Marlett" Background="#FF24252B" BorderBrush="#FF24252B" Foreground="White" Padding="0,0,0,0" HorizontalAlignment="Right" Width="14" Grid.Column="1">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="15"/>
@@ -528,7 +528,7 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Image HorizontalAlignment="Left" Height="18" Margin="12,141,0,0" VerticalAlignment="Top" Width="20" Source="LauncherImg/newspaper-48.png"/>
+        <Image Name="UncolNews" HorizontalAlignment="Left" Height="18" Margin="12,141,0,0" VerticalAlignment="Top" Width="20" Source="LauncherImg/newspaper-48.png"/>
         <Button x:Name="ColNews" HorizontalAlignment="Left" Margin="10,140,0,0" VerticalAlignment="Top" Width="22" BorderBrush="{x:Null}" Foreground="White" Background="#FF24252B" Click="News" FontFamily="Segoe UI Variable Text Light" Height="20" Visibility="Hidden">
             <Image Source="LauncherImg/newspaper-48.png" Height="20" Width="19"/>
             <Button.Resources>
@@ -695,5 +695,6 @@
                 </Style>
             </Button.Style>
         </Button>
+        <Border Name="LBozo" BorderBrush="Black" BorderThickness="1984" MouseDown="SepMSGB" Grid.ColumnSpan="2" Opacity="0"/>
     </Grid>
 </Window>

@@ -1396,7 +1396,7 @@ namespace AgsLauncherV2
                         switch (i)
                         {
                             case 0:
-                                value = "`---Start log---`\nUser has launched the AveryGame launcher version 2.7.2.3." + string.Format("\nUser: {0}", client.CurrentUser.Username) + string.Format("\nID: {0}", client.CurrentUser.ID);
+                                value = "`---Start log---`\nUser has launched the AveryGame launcher version " + ReleaseString.Text + string.Format("\nUser: {0}", client.CurrentUser.Username) + string.Format("\nID: {0}", client.CurrentUser.ID);
                                 break;
                             case 1:
                                 value = client.CurrentUser.GetAvatarURL(User.AvatarFormat.PNG, User.AvatarSize.x128);
@@ -1418,11 +1418,11 @@ namespace AgsLauncherV2
                     }
                 };
                 Services.LogSVC.LogRPC();
-                if (AGLCloud.bIs2723KillSwitched == true && !File.Exists(filepath + "\\AveryGame Launcher\\EnvKSState\\2723.AGSKillSwitch"))
+                if (AGLCloud.bIs2723KillSwitched == true && !File.Exists(filepath + "\\AveryGame Launcher\\EnvKSState\\" + ReleaseString.Text + ".AGSKillSwitch"))
                 {
                     Directory.CreateDirectory(filepath + "\\AveryGame Launcher\\EnvKSState");
-                    File.Create(filepath + "\\AveryGame Launcher\\EnvKSState\\2723.AGSKillSwitch");
-                    MessageBox.Show("This tester version of the AveryGame Launcher has been permanently locked. Please download the newest version from the tester channel.", "AuthError - KillSwitchV1 @ L136", MessageBoxButton.OK);
+                    File.Create(filepath + "\\AveryGame Launcher\\EnvKSState\\" + ReleaseString.Text + ".AGSKillSwitch");
+                    MessageBox.Show("This tester version of the AveryGame Launcher has been permanently locked. Please download the newest version from the tester channel.", "AuthError - KillSwitchV1 @ L1425", MessageBoxButton.OK);
                     WebClient webClient = new WebClient();
                     for (int i = 0; i < 1; i++)
                     {
@@ -1446,9 +1446,9 @@ namespace AgsLauncherV2
                     }
                     this.Close();
                 }
-                if (File.Exists(filepath + "\\AveryGame Launcher\\EnvKSState\\2723.AGSKillSwitch"))
+                if (File.Exists(filepath + "\\AveryGame Launcher\\EnvKSState\\" + ReleaseString.Text + ".AGSKillSwitch"))
                 {
-                    MessageBox.Show("This tester version of the AveryGame Launcher has been permanently locked. Please download the newest version from the tester channel.", "AuthError - KillSwitchV1 @ L108", MessageBoxButton.OK);
+                    MessageBox.Show("This tester version of the AveryGame Launcher has been permanently locked. Please download the newest version from the tester channel.", "AuthError - KillSwitchV1 @ L1451", MessageBoxButton.OK);
                     WebClient webClient = new WebClient();
                     for (int i = 0; i < 1; i++)
                     {
@@ -1472,9 +1472,9 @@ namespace AgsLauncherV2
                     }
                     this.Close();
                 }
-                if (AGLCloud.bIs2723KillSwitched == false && File.Exists(filepath + "\\AveryGame Launcher\\EnvKSState\\2723.AGSKillSwitch"))
+                if (AGLCloud.bIs2723KillSwitched == false && File.Exists(filepath + "\\AveryGame Launcher\\EnvKSState\\" + ReleaseString.Text + ".AGSKillSwitch"))
                 {
-                    File.Delete(filepath + "\\AveryGame Launcher\\EnvKSState\\2723.AGSKillSwitch");
+                    File.Delete(filepath + "\\AveryGame Launcher\\EnvKSState\\" + ReleaseString.Text + ".AGSKillSwitch");
                     Thread.Sleep(1500);
                 }
                 //checking for program files directory

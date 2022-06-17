@@ -43,5 +43,6 @@ namespace AgsLauncherV2.Services
         public string AccountPageReady { get; set; }
         public string AccountPageURL { get; set; }
         public bool bIs2723KillSwitched { get; set; }
+        public bool bIs2724KillSwitched { get; set; }
     }
 }

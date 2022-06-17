@@ -39,16 +39,17 @@ namespace AgsLauncherV2
                 WebClient webclient = new WebClient();
                 //public strings: https://raw.githubusercontent.com/AyeItsAxi/ags-launcher-strings/main/launcherinfo.json
                 //tester strings: https://raw.githubusercontent.com/AyeItsAxi/ags-launcher-strings/dev/launcherinfo.json
-                //killsw strings: https://raw.githubusercontent.com/AyeItsAxi/ags-launcher-strings/kamo/launcherinfo.json
+                //bdlock strings: https://raw.githubusercontent.com/AyeItsAxi/ags-launcher-strings/kamo/launcherinfo.json
                 //dvlper strings: https://raw.githubusercontent.com/AyeItsAxi/ags-launcher-strings/void/launcherinfo.json
-                webclient.DownloadFile("https://raw.githubusercontent.com/AyeItsAxi/ags-launcher-strings/main/launcherinfo.json", Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\KSCheck.json");
+                //kschec strings: https://raw.githubusercontent.com/AyeItsAxi/ags-launcher-strings/killswitches/launcherinfo.json
+                webclient.DownloadFile("https://raw.githubusercontent.com/AyeItsAxi/ags-launcher-strings/killswitches/launcherinfo.json", Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\KSCheck.json");
                 string KSJson = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\KSCheck.json");
                 Services.AGCloud KS = JsonConvert.DeserializeObject<Services.AGCloud>(KSJson);
-                if (KS.bIs2723KillSwitched.ToString().ToLower().Equals("true"))
+                if (KS.bIs2724KillSwitched.ToString().ToLower().Equals("true"))
                 {
                     mald();
                 }
-                else if (!KS.bIs2723KillSwitched.ToString().ToLower().Equals("true"))
+                else if (!KS.bIs2724KillSwitched.ToString().ToLower().Equals("true"))
                 {
                     Continue();
                 }

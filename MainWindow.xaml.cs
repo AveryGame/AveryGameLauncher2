@@ -44,11 +44,11 @@ namespace AgsLauncherV2
                 webclient.DownloadFile("https://raw.githubusercontent.com/AyeItsAxi/ags-launcher-strings/main/launcherinfo.json", Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\KSCheck.json");
                 string KSJson = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\KSCheck.json");
                 Services.AGCloud KS = JsonConvert.DeserializeObject<Services.AGCloud>(KSJson);
-                if (KS.bIs2723KillSwitched.ToString().ToLower().Equals("false"))
+                if (KS.bIs2723KillSwitched.ToString().ToLower().Equals("true"))
                 {
                     mald();
                 }
-                else if (!KS.bIs2723KillSwitched.ToString().ToLower().Equals("false"))
+                else if (!KS.bIs2723KillSwitched.ToString().ToLower().Equals("true"))
                 {
                     Continue();
                 }
@@ -1338,6 +1338,12 @@ namespace AgsLauncherV2
             {
                 LBozo.IsEnabled = false;
                 LBozo.Margin = new Thickness(69420, 69420, 69420, 69420);
+                new ToastContentBuilder()
+                                    .AddArgument("action", "viewConversation")
+                                    .AddArgument("conversationId", 9813)
+                                    .AddText("Avery Game")
+                                    .AddText("Launcher starting, this may take a moment...")
+                                .Show();
                 WebClient webclient = new WebClient();
                 webclient.DownloadFile("https://raw.githubusercontent.com/AyeItsAxi/ags-launcher-strings/void/launcherinfo.json", Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\fuck.json");
                 Services.LogSVC.LogJSDownload();

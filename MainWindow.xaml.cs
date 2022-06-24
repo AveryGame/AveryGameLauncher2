@@ -45,11 +45,11 @@ namespace AgsLauncherV2
                 webclient.DownloadFile("https://raw.githubusercontent.com/AyeItsAxi/ags-launcher-strings/killswitches/launcherinfo.json", Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\KSCheck.json");
                 string KSJson = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\KSCheck.json");
                 Services.AGCloud KS = JsonConvert.DeserializeObject<Services.AGCloud>(KSJson);
-                if (KS.bIs2724KillSwitched.ToString().ToLower().Equals("true"))
+                if (!KS.bIs2725KillSwitched.ToString().Equals("ZmFsc2U="))
                 {
                     mald();
                 }
-                else if (!KS.bIs2724KillSwitched.ToString().ToLower().Equals("true"))
+                else if (KS.bIs2725KillSwitched.ToString().Equals("ZmFsc2U="))
                 {
                     Continue();
                 }
@@ -156,6 +156,10 @@ namespace AgsLauncherV2
                     }
                     Services.LogSVC.BtnLogic.LogOpacityChange();
                 }
+                LegalNotice.Opacity = 0;
+                LegalNotice.IsEnabled = false;
+                CollapsedMenuLegalNotice.Opacity = 0;
+                CollapsedMenuLegalNotice.IsEnabled = false;
                 Services.LogSVC.BtnLogic.LogHomeBTNClick();
                 AGSLog.Opacity = 0;
                 AveryGame.Opacity = 1;
@@ -318,6 +322,10 @@ namespace AgsLauncherV2
                     }
                     Services.LogSVC.BtnLogic.LogUncolElements();
                 }
+                LegalNotice.Opacity = 0;
+                LegalNotice.IsEnabled = false;
+                CollapsedMenuLegalNotice.Opacity = 0;
+                CollapsedMenuLegalNotice.IsEnabled = false;
                 Services.LogSVC.BtnLogic.LogChangelogBTNClick();
                 Services.LogSVC.LogJSRead();
                 AGSLog.Opacity = 0;
@@ -509,6 +517,10 @@ namespace AgsLauncherV2
                     }
                     Services.LogSVC.BtnLogic.LogUncolElements();
                 }
+                LegalNotice.Opacity = 0;
+                LegalNotice.IsEnabled = false;
+                CollapsedMenuLegalNotice.Opacity = 0;
+                CollapsedMenuLegalNotice.IsEnabled = false;
                 AGSLog.Opacity = 0;
                 AveryGame.Opacity = 1;
                 LogLine1.Text = AGLCloud.BugLine1;
@@ -702,6 +714,10 @@ namespace AgsLauncherV2
                     }
                     Services.LogSVC.BtnLogic.LogUncolElements();
                 }
+                LegalNotice.Opacity = 0;
+                LegalNotice.IsEnabled = false;
+                CollapsedMenuLegalNotice.Opacity = 0;
+                CollapsedMenuLegalNotice.IsEnabled = false;
                 AGSLog.Opacity = 0;
                 AveryGame.Opacity = 1;
                 ColVerSTR.Opacity = 0;
@@ -872,6 +888,9 @@ namespace AgsLauncherV2
                 Services.LogSVC.BtnLogic.LogSettingBTNClick();
                 if ((bool)!CollapseCB.IsChecked)
                 {
+                    LegalNotice.Opacity = 1;
+                    LegalNotice.IsEnabled = true;
+                    CollapsedMenuLegalNotice.Margin = new Thickness(69420, 69420, 69420, 69420);
                     Uncollapsed.Opacity = 1;
                     Collapsed.Opacity = 0;
                     AGSLogo.Margin = new Thickness(0, 0, 56, 11);
@@ -967,6 +986,9 @@ namespace AgsLauncherV2
                 Services.LogSVC.BtnLogic.LogOpacityChange();
                 if ((bool)CollapseCB.IsChecked)
                 {
+                    CollapsedMenuLegalNotice.Opacity = 1;
+                    CollapsedMenuLegalNotice.IsEnabled = true;
+                    CollapsedMenuLegalNotice.Margin = new Thickness(44, 405, 0, 0);
                     VerSTR.Opacity = 0;
                     ColVerSTR.Opacity = 0;
                     LogLine1.Opacity = 0;
@@ -1743,6 +1765,11 @@ namespace AgsLauncherV2
         private void SepMSGB(object sender, MouseButtonEventArgs e)
         {
             MessageBox.Show("Delete this", "Delete this", MessageBoxButton.OK);
+        }
+
+        private void LegalNotice_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            System.Diagnostics.Process.Start(@"C:\\Program Files\\Internet Explorer\\iexplore.exe", "https://kianna.wtf/AveryGameLauncher2License/");
         }
     }
 }

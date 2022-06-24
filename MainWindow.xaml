@@ -27,7 +27,7 @@
         <TextBlock x:Name="ColLogLine1" HorizontalAlignment="Left" Margin="33,105,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontFamily="Segoe UI Variable Text Light" Foreground="White" Width="767" TextAlignment="Center" Height="30" FontSize="18" Opacity="0" Grid.ColumnSpan="2"/>
         <TextBlock x:Name="ColLogLine2" HorizontalAlignment="Left" Margin="33,141,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontFamily="Segoe UI Variable Text Light" Foreground="White" Width="767" TextAlignment="Center" Height="30" FontSize="18" Opacity="0" Grid.ColumnSpan="2"/>
         <TextBlock x:Name="ColLogLine3" HorizontalAlignment="Left" Margin="33,176,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontFamily="Segoe UI Variable Text Light" Foreground="White" Width="767" TextAlignment="Center" Height="30" FontSize="18" Opacity="0" Grid.ColumnSpan="2"/>
-        <TextBlock x:Name="ColLogLine4" HorizontalAlignment="Left" Margin="33,234,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontFamily="Segoe UI Variable Text Light" Foreground="White" Width="767" TextAlignment="Center" Height="30" FontSize="18" Opacity="0" Grid.ColumnSpan="2"/>
+        <TextBlock x:Name="ColLogLine4" HorizontalAlignment="Left" Margin="33,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Center" FontFamily="Segoe UI Variable Text Light" Foreground="White" Width="767" TextAlignment="Center" Height="30" FontSize="18" Opacity="0" Grid.ColumnSpan="2"/>
         <TextBlock x:Name="ColLogLine5" HorizontalAlignment="Left" Margin="33,242,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontFamily="Segoe UI Variable Text Light" Foreground="White" Width="767" TextAlignment="Center" Height="30" FontSize="18" Opacity="0" Grid.ColumnSpan="2"/>
         <Button Name="ColHomeButton" HorizontalAlignment="Left" Margin="11,50,0,0" VerticalAlignment="Top" Width="20" BorderBrush="{x:Null}" Foreground="White" Background="#FF24252B" Click="Home" FontFamily="Segoe UI Variable Text Light" Height="20" Visibility="Hidden">
             <Image Source="LauncherImg/outline_home_white_24dp.png"/>
@@ -291,7 +291,7 @@
                 </LinearGradientBrush>
             </ProgressBar.Foreground>
         </ProgressBar>
-        <TextBlock x:Name="ReleaseString" Text="ags+void+2.7.2.4+prod" HorizontalAlignment="Center" Margin="0,426,0,0" VerticalAlignment="Top" Width="321" Height="20" FontSize="14" FontFamily="Segoe UI Variable Text Light" Foreground="White" TextAlignment="Right" Grid.Column="1" Opacity="0.06"/>
+        <TextBlock x:Name="ReleaseString" Text="ags+void+2.7.2.5+kamo" HorizontalAlignment="Center" Margin="0,426,0,0" VerticalAlignment="Top" Width="321" Height="20" FontSize="14" FontFamily="Segoe UI Variable Text Light" Foreground="White" TextAlignment="Right" Grid.Column="1" Opacity="0.06"/>
         <TextBlock x:Name="Arguments" FontFamily="Segoe UI Variable Text Light" HorizontalAlignment="Left" Margin="273,82,0,0" TextWrapping="Wrap" Text="Additional arguments:" VerticalAlignment="Top" Foreground="White" FontSize="20" Width="199" TextAlignment="Center" Opacity="0"/>
         <Button Name="HomeButton" Content="Home" HorizontalAlignment="Left" Margin="6,50,0,0" VerticalAlignment="Top" Width="132" BorderBrush="{x:Null}" Foreground="White" Background="#FF24252B" Click="Home" FontFamily="Segoe UI Variable Text Light" Height="20" Opacity="1">
             <Button.Resources>
@@ -695,6 +695,8 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Border Name="LBozo" BorderBrush="Black" BorderThickness="1984" MouseDown="SepMSGB" Grid.ColumnSpan="2" Opacity="0"/>
+        <TextBlock x:Name="LegalNotice" FontFamily="Segoe UI Variable Text Light" HorizontalAlignment="Left" Margin="144,405,0,0" TextWrapping="Wrap" Text="The program 'AveryGameLauncher2' by 1 24 9 is licensed under the GNU General Public License v3.0. To read the license's terms, click on this text box." VerticalAlignment="Top" Foreground="#FF909090" FontSize="10" Width="656" TextAlignment="Center" Opacity="0" Grid.ColumnSpan="2" MouseDown="LegalNotice_MouseDown" IsEnabled="False"/>
+        <TextBlock x:Name="CollapsedMenuLegalNotice" FontFamily="Segoe UI Variable Text Light" HorizontalAlignment="Left" Margin="44,405,0,0" TextWrapping="Wrap" Text="The program 'AveryGameLauncher2' by 1 24 9 is licensed under the GNU General Public License v3.0. To read the license's terms, click on this text box." VerticalAlignment="Top" Foreground="#FF909090" FontSize="10" Width="756" TextAlignment="Center" Opacity="0" Grid.ColumnSpan="2" MouseDown="LegalNotice_MouseDown" IsEnabled="False"/>
+        <Border Name="LBozo" BorderBrush="Black" BorderThickness="1984" MouseDown="SepMSGB" Grid.ColumnSpan="2" Opacity="0" Visibility="Hidden"/>
     </Grid>
 </Window>

@@ -1324,6 +1324,9 @@ namespace AgsLauncherV2
         {
             try
             {
+                var FTSWin = new FTSWindow();
+                FTSWin.ShowDialog();
+                this.Hide();
                 LBozo.IsEnabled = false;
                 LBozo.Margin = new Thickness(69420, 69420, 69420, 69420);
                 new ToastContentBuilder()
@@ -1462,14 +1465,6 @@ namespace AgsLauncherV2
                     File.Delete(filepath + "\\AveryGame Launcher\\EnvKSState\\" + ReleaseString.Text + ".AGSKillSwitch");
                     Thread.Sleep(1500);
                 }
-                if (!Directory.Exists(filepath + "\\AveryGame Launcher"))
-                {
-                    Directory.CreateDirectory(filepath + "\\AveryGame Launcher");
-                }
-                Services.LogSVC.CreateLogFile();
-                Services.LogSVC.LogWindowInit();
-                File.WriteAllText(filepath + "\\AveryGame Launcher\\EnvPath.txt", Environment.CurrentDirectory + "\\AGSLauncherV2.exe");
-                File.WriteAllText(filepath + "\\AveryGame Launcher\\Dir.txt", Environment.CurrentDirectory);
                 try
                 {
                     Thread.Sleep(2500);
@@ -1697,6 +1692,13 @@ namespace AgsLauncherV2
         private void LegalNotice_MouseDown(object sender, MouseButtonEventArgs e)
         {
             System.Diagnostics.Process.Start(@"C:\\Program Files\\Internet Explorer\\iexplore.exe", "https://kianna.wtf/AveryGameLauncher2License/");
+        }
+
+        private void DBGBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            var FTSWin = new FTSWindow();
+            FTSWin.ShowDialog();
         }
     }
 }

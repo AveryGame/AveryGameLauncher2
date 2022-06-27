@@ -10,12 +10,12 @@ namespace AgsLauncherV2.Services
             if (!File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\Logs\\LogV2.txt"))
             {
                 Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\Logs");
-                File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\Logs\\LogV2.txt", "[LOGINIT] [" + DateTime.Now.ToString() + "]: Log service started at " + DateTime.Now);
+                File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\Logs\\LogV2.txt", "[LOGINIT] [" + DateTime.Now.ToString() + "]: Log service started" + Environment.NewLine);
             }
             if (File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\Logs\\LogV2.txt"))
             {
                 File.Delete(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\Logs\\LogV2.txt");
-                File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\Logs\\LogV2.txt", "[LOGINIT] [" + DateTime.Now.ToString() + "]: Log service started at " + DateTime.Now + Environment.NewLine);
+                File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\Logs\\LogV2.txt", "[LOGINIT] [" + DateTime.Now.ToString() + "]: Log service started" + Environment.NewLine);
             }
         }
         public static void LogWindowInit()

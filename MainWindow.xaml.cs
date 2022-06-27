@@ -45,11 +45,11 @@ namespace AgsLauncherV2
                 webclient.DownloadFile("https://raw.githubusercontent.com/AyeItsAxi/ags-launcher-strings/killswitches/launcherinfo.json", Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\KSCheck.json");
                 string KSJson = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\KSCheck.json");
                 Services.AGCloud KS = JsonConvert.DeserializeObject<Services.AGCloud>(KSJson);
-                if (!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!KS.bIs2725KillSwitched.ToString().Equals("ZmFsc2U="))
+                if (!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!KS.bIsPublic2725KillSwitched.ToString().Equals("ZmFsc2U="))
                 {
                     mald();
                 }
-                else if (KS.bIs2725KillSwitched.ToString().Equals("ZmFsc2U="))
+                else if (KS.bIsPublic2725KillSwitched.ToString().Equals("ZmFsc2U="))
                 {
                     Continue();
                 }
@@ -1368,7 +1368,7 @@ namespace AgsLauncherV2
                                     .AddText("Launcher starting, this may take a moment...")
                                 .Show();
                 WebClient webclient = new WebClient();
-                webclient.DownloadFile("https://raw.githubusercontent.com/AyeItsAxi/ags-launcher-strings/void/launcherinfo.json", Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\fuck.json");
+                webclient.DownloadFile("https://raw.githubusercontent.com/AyeItsAxi/ags-launcher-strings/main/launcherinfo.json", Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\fuck.json");
                 Services.LogSVC.LogJSDownload();
                 string DATA = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\fuck.json");
                 Services.LogSVC.LogJSRead();

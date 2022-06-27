@@ -6,7 +6,7 @@
 		<UseWPF>true</UseWPF>
 		<ApplicationIcon>LauncherImg\launcher.ico</ApplicationIcon>
 		<Authors>1 24 9 (Kianna)</Authors>
-		<Version>2.7.2.4</Version>
+		<Version>2.7.2.5</Version>
 		<Product>AveryGameLauncher2</Product>
 		<Description>Launcher for Avery Game by AveryMadness</Description>
 		<Configurations>Debug;Release;Prod</Configurations>
@@ -20,8 +20,8 @@
 		<Company></Company>
 		<PackageLicenseFile>C:\Users\shawn\OneDrive\Documents\Visual Studio Projects\ags-launcher-v2\AgsLauncherV2\LICENSE</PackageLicenseFile>
 		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
-		<AssemblyVersion>2.7.2.4</AssemblyVersion>
-		<FileVersion>2.7.2.4</FileVersion>
+		<AssemblyVersion>2.7.2.5</AssemblyVersion>
+		<FileVersion>2.7.2.5</FileVersion>
 		<ErrorReport>send</ErrorReport>
 		<SignAssembly>False</SignAssembly>
 		<EnableNETAnalyzers>True</EnableNETAnalyzers>

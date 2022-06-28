@@ -21,12 +21,13 @@ namespace AgsLauncherV2
         public FTSWindow()
         {
             InitializeComponent();
-            Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher");
-            Services.LogSVC.CreateLogFile();
-            Services.LogSVC.LogWindowInit();
-            File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\EnvPath.txt", Environment.CurrentDirectory + "\\AGSLauncherV2.exe");
-            File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\Dir.txt", Environment.CurrentDirectory);
-            SpawnWindowViewport();
+            if (Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher"))
+            {
+                L1.Opacity = 0;
+                L3.Opacity = 0;
+                Title.Text = "How did you get here?";
+                L2.Text = "All of your files are here... 🤔";
+            }
         }
         private void Minimize(object sender, RoutedEventArgs e)
         {
@@ -38,10 +39,30 @@ namespace AgsLauncherV2
             this.DragMove();
         }
 
-        private static void SpawnWindowViewport()
+        private void SpawnWindowViewport()
         {
+            this.Hide();
             var AppWindow = new MainWindow();
             AppWindow.ShowDialog();
+        }
+
+        private void ContinueBTN_Click(object sender, RoutedEventArgs e)
+        {
+            if (!Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher"))
+            {
+                Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher");
+                Services.LogSVC.CreateLogFile();
+                Services.LogSVC.LogWindowInit();
+                File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\EnvPath.txt", Environment.CurrentDirectory + "\\AGSLauncherV2.exe");
+                File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\Dir.txt", Environment.CurrentDirectory);
+                L1.Opacity = 0;
+                L3.Opacity = 0;
+                Title.Text = "All done!";
+                L2.Text = "Click proceed to enter the launcher!";
+            } else if (Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher"))
+            {
+                SpawnWindowViewport();
+            }
         }
     }
 }

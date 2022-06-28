@@ -33,24 +33,20 @@ namespace AgsLauncherV2
             InitializeComponent();
             try
             {
-                Services.LogSVC.CreateLogFile();
-                Services.LogSVC.LogJSEvent();
                 WebClient webclient = new WebClient();
                 //public strings: https://raw.githubusercontent.com/AyeItsAxi/ags-launcher-strings/main/launcherinfo.json
                 //tester strings: https://raw.githubusercontent.com/AyeItsAxi/ags-launcher-strings/dev/launcherinfo.json
                 //bdlock strings: https://raw.githubusercontent.com/AyeItsAxi/ags-launcher-strings/kamo/launcherinfo.json
                 //dvlper strings: https://raw.githubusercontent.com/AyeItsAxi/ags-launcher-strings/void/launcherinfo.json
                 //kschec strings: https://raw.githubusercontent.com/AyeItsAxi/ags-launcher-strings/killswitches/launcherinfo.json
-                webclient.DownloadFile("https://raw.githubusercontent.com/AyeItsAxi/ags-launcher-strings/killswitches/launcherinfo.json", Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\KSCheck.json");
-                string KSJson = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\KSCheck.json");
-                Services.AGCloud KS = JsonConvert.DeserializeObject<Services.AGCloud>(KSJson);
-                if (!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!KS.bIsPublic2725KillSwitched.ToString().Equals("ZmFsc2U="))
+                if (!Directory.Exists(filepath + "\\AveryGame Launcher"))
                 {
-                    mald();
-                }
-                else if (KS.bIsPublic2725KillSwitched.ToString().Equals("ZmFsc2U="))
+                    var FTSWin = new FTSWindow();
+                    FTSWin.ShowDialog();
+                    this.Hide();
+                } else if (Directory.Exists(filepath + "\\AveryGame Launcher"))
                 {
-                    Continue();
+                    RunKSCheck();
                 }
             }
             catch (Exception ex)
@@ -58,7 +54,7 @@ namespace AgsLauncherV2
                 Services.LogSVC.LogFatalErr();
                 ErrorLogging(ex);
                 MessageBox.Show(ex.Message, "Fatal error!", MessageBoxButton.OK, MessageBoxImage.Stop);
-                this.Close();
+                Environment.Exit(0);
             }
         }
         private void help(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
@@ -70,13 +66,29 @@ namespace AgsLauncherV2
                 System.Diagnostics.Process.Start(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\DownloadHelper\\AGSLauncherUpdater.exe");
                 Services.LogSVC.LogUpdaterStart();
                 Services.LogSVC.LogLauncherShutdown();
-                this.Close();
+                Environment.Exit(0);
             }
             catch (Exception ex)
             {
                 Services.LogSVC.LogLauncherShutdown();
                 ErrorLogging(ex);
                 MessageBox.Show($"Error starting launcher update");
+            }
+        }
+
+        private void RunKSCheck()
+        {
+            WebClient webclient = new WebClient();
+            webclient.DownloadFile("https://raw.githubusercontent.com/AyeItsAxi/ags-launcher-strings/killswitches/launcherinfo.json", Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\KSCheck.json");
+            string KSJson = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\KSCheck.json");
+            Services.AGCloud KS = JsonConvert.DeserializeObject<Services.AGCloud>(KSJson);
+            if (!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!KS.bIsPublic2725KillSwitched.ToString().Equals("ZmFsc2U="))
+            {
+                mald();
+            }
+            else if (KS.bIsPublic2725KillSwitched.ToString().Equals("ZmFsc2U="))
+            {
+                Continue();
             }
         }
 
@@ -255,7 +267,7 @@ namespace AgsLauncherV2
                 File.AppendAllText(filepath + "\\AveryGame Launcher\\Logs\\LogV2.txt", "Fatal error occurred, logging..." + Environment.NewLine);
                 ErrorLogging(ex);
                 MessageBox.Show("A fatal error occurred while opening the Avery Game launcher. Please make sure you are connected to the internet and try again. If the problem persists, report the issue and when it is occurring in #bug-reports in the Avery Game discord server.", "Fatal error!", MessageBoxButton.OK, MessageBoxImage.Stop);
-                this.Close();
+                Environment.Exit(0);
             }
         }
         private void Changelog(object sender, RoutedEventArgs e)
@@ -442,7 +454,7 @@ namespace AgsLauncherV2
                 Services.LogSVC.LogFatalErr();
                 ErrorLogging(ex);
                 MessageBox.Show("A fatal error occurred while navigating to the changelog tab in the Avery Game launcher. Please make sure you are connected to the internet and try again. If the problem persists, report the issue and when it is occurring in #bug-reports in the Avery Game discord server.", "Fatal error!", MessageBoxButton.OK, MessageBoxImage.Stop);
-                this.Close();
+                Environment.Exit(0);
             }
         }
         private void DragBar(object sender, MouseButtonEventArgs e)
@@ -637,7 +649,7 @@ namespace AgsLauncherV2
                 Services.LogSVC.LogFatalErr();
                 ErrorLogging(ex);
                 MessageBox.Show("A fatal error occurred while navigating to the bugs tab in the Avery Game launcher. Please make sure you are connected to the internet and try again. If the problem persists, report the issue and when it is occurring in #bug-reports in the Avery Game discord server.", "Fatal error!", MessageBoxButton.OK, MessageBoxImage.Stop);
-                this.Close();
+                Environment.Exit(0);
             }
         }
         private void News(object sender, RoutedEventArgs e)
@@ -854,7 +866,7 @@ namespace AgsLauncherV2
                 Services.LogSVC.LogFatalErr();
                 ErrorLogging(ex);
                 MessageBox.Show("A fatal error occurred while navigating to the bugs tab in the Avery Game launcher. Please make sure you are connected to the internet and try again. If the problem persists, report the issue and when it is occurring in #bug-reports in the Avery Game discord server.", "Fatal error!", MessageBoxButton.OK, MessageBoxImage.Stop);
-                this.Close();
+                Environment.Exit(0);
             }
         }
         private void SettingsClick(object sender, RoutedEventArgs e)
@@ -1035,7 +1047,7 @@ namespace AgsLauncherV2
                 Services.LogSVC.LogFatalErr();
                 ErrorLogging(ex);
                 MessageBox.Show("A fatal error occurred while navigating to the settings tab in the Avery Game launcher. Please make sure you are connected to the internet and try again. If the problem persists, report the issue and when it is occurring in #bug-reports in the Avery Game discord server.", "Fatal error!", MessageBoxButton.OK, MessageBoxImage.Stop);
-                this.Close();
+                Environment.Exit(0);
 
             }
         }
@@ -1068,7 +1080,7 @@ namespace AgsLauncherV2
                 {
                     Services.LogSVC.BtnLogic.CloseBTNEvents.LogUserConfirm();
                     Services.LogSVC.LogLauncherShutdown();
-                    this.Close();
+                    Environment.Exit(0);
                 }
                 else
                 {
@@ -1082,7 +1094,7 @@ namespace AgsLauncherV2
                 File.WriteAllText(@filepath + "\\AveryGame Launcher\\Clientsettings.json", "{ \"CollapseMenu\":\"" + CollapseCB.IsChecked + "\" }");
                 Services.LogSVC.LogCMenuState();
                 Services.LogSVC.LogLauncherShutdown();
-                this.Close();
+                Environment.Exit(0);
             }
         }
 
@@ -1324,9 +1336,13 @@ namespace AgsLauncherV2
         {
             try
             {
-                var FTSWin = new FTSWindow();
-                FTSWin.ShowDialog();
-                this.Hide();
+                InitializeComponent();
+                if(!Directory.Exists(filepath + "\\AveryGame Launcher"))
+                {
+                    var FTSWin = new FTSWindow();
+                    FTSWin.ShowDialog();
+                    this.Hide();
+                }
                 LBozo.IsEnabled = false;
                 LBozo.Margin = new Thickness(69420, 69420, 69420, 69420);
                 new ToastContentBuilder()
@@ -1432,7 +1448,7 @@ namespace AgsLauncherV2
                             }
                         });
                     }
-                    this.Close();
+                    Environment.Exit(0);
                 }
                 if (File.Exists(filepath + "\\AveryGame Launcher\\EnvKSState\\" + ReleaseString.Text + ".AGSKillSwitch"))
                 {
@@ -1458,7 +1474,7 @@ namespace AgsLauncherV2
                             }
                         });
                     }
-                    this.Close();
+                    Environment.Exit(0);
                 }
                 if (AGLCloud.bIs2723KillSwitched == false && File.Exists(filepath + "\\AveryGame Launcher\\EnvKSState\\" + ReleaseString.Text + ".AGSKillSwitch"))
                 {
@@ -1614,7 +1630,7 @@ namespace AgsLauncherV2
                 Services.LogSVC.LogFatalErr();
                 ErrorLogging(ex);
                 MessageBox.Show(ex.Message, "Fatal error!", MessageBoxButton.OK, MessageBoxImage.Stop);
-                this.Close();
+                Environment.Exit(0);
             }
         }
         public void mald()

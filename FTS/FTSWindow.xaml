@@ -7,10 +7,10 @@
         mc:Ignorable="d"
         Title="FTSWindow" Height="249" Width="300" WindowStyle="None" ResizeMode="NoResize">
     <Grid Background="#FF24252B">
-        <TextBlock Text="Welcome to the Avery Game launcher!" TextAlignment="Center" HorizontalAlignment="Center" Margin="0,48,0,0" VerticalAlignment="Top" Height="34" Width="280" Foreground="White" FontFamily="Segoe UI Light" FontSize="17" FontWeight="ExtraBold"/>
-        <TextBlock Text="It looks like you're new here. Please wait while we set" TextAlignment="Center" Margin="10,108,10,89" Foreground="#FFB9B9B9" FontFamily="Segoe UI Semilight" FontWeight="ExtraBold" FontSize="10"/>
-        <TextBlock Text="up some things for you. This shouldn't take long, we're" TextAlignment="Center" Foreground="#FFB9B9B9" FontFamily="Segoe UI Semilight" FontWeight="ExtraBold" Margin="10,125,10,89" FontSize="10"/>
-        <TextBlock Text="just writing some required files." TextAlignment="Center" Foreground="#FFB9B9B9" FontFamily="Segoe UI Semilight" FontWeight="ExtraBold" Margin="10,142,10,89" FontSize="10"/>
+        <TextBlock Name="Title" Text="Welcome to the Avery Game launcher!" TextAlignment="Center" HorizontalAlignment="Center" Margin="0,48,0,0" VerticalAlignment="Top" Height="34" Width="280" Foreground="White" FontFamily="Segoe UI Light" FontSize="17" FontWeight="ExtraBold"/>
+        <TextBlock Name="L1" Text="It looks like you're new here. Please wait while we set" TextAlignment="Center" Margin="10,108,10,89" Foreground="#FFB9B9B9" FontFamily="Segoe UI Semilight" FontWeight="ExtraBold" FontSize="10"/>
+        <TextBlock Name="L2" Text="up some things for you. This shouldn't take long, we're" TextAlignment="Center" Foreground="#FFB9B9B9" FontFamily="Segoe UI Semilight" FontWeight="ExtraBold" Margin="10,125,10,89" FontSize="10"/>
+        <TextBlock Name="L3" Text="just writing some required files." TextAlignment="Center" Foreground="#FFB9B9B9" FontFamily="Segoe UI Semilight" FontWeight="ExtraBold" Margin="10,142,10,89" FontSize="10"/>
         <Border BorderBrush="#FF121212" BorderThickness="69" Margin="0,0,0,233" MouseDown="DragMove"/>
         <Button Name="MinimizeButton" Content="q" FontSize="15" Margin="0,1,2,0" VerticalAlignment="Top" Height="14" Click="Minimize" FontFamily="Marlett" Background="#FF24252B" BorderBrush="#FF24252B" Foreground="White" Padding="0,0,0,0" HorizontalAlignment="Right" Width="14" Grid.Column="1">
             <Button.Resources>
@@ -41,6 +41,42 @@
                             <BeginStoryboard>
                                 <Storyboard>
                                     <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="00:00:00.15" From="#FF313461" To="#FF24252B"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button Name="ContinueBTN" Content="Proceed" FontSize="14" Margin="0,174,0,0" VerticalAlignment="Top" Height="24" Click="ContinueBTN_Click" FontFamily="Segoe UI Light" Background="#FF1B1C21" BorderBrush="#FF24252B" Foreground="White" Padding="0,0,0,0" HorizontalAlignment="Center" Width="216">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Width="215" Height="24" CornerRadius="2" Background="{TemplateBinding Background}">
+                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="#FF8EBA8A"/>
+                    <Setter Property="Cursor" Value="Hand"/>
+                    <Style.Triggers>
+                        <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="00:00:00.15" From="#FF1B1C21" To="#FF121212"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="00:00:00.15" From="#FF121212" To="#FF1B1C21"/>
                                 </Storyboard>
                             </BeginStoryboard>
                         </EventTrigger>

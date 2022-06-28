@@ -10,6 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using AgsLauncherV2.Services;
 
 namespace AgsLauncherV2
 {
@@ -51,8 +52,8 @@ namespace AgsLauncherV2
             if (!Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher"))
             {
                 Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher");
-                Services.LogSVC.CreateLogFile();
-                Services.LogSVC.LogWindowInit();
+                LogSVC.CreateLogFile();
+                LogSVC.LogWindowInit();
                 File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\EnvPath.txt", Environment.CurrentDirectory + "\\AGSLauncherV2.exe");
                 File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\Dir.txt", Environment.CurrentDirectory);
                 L1.Opacity = 0;

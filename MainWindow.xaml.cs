@@ -46,6 +46,7 @@ namespace AgsLauncherV2
                     this.Hide();
                 } else if (Directory.Exists(filepath + "\\AveryGame Launcher"))
                 {
+                    Services.LogSVC.LogFTSCheckFalse();
                     RunKSCheck();
                 }
             }

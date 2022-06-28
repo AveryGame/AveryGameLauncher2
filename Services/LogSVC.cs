@@ -82,6 +82,10 @@ namespace AgsLauncherV2.Services
         {
             File.AppendAllText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\Logs\\LogV2.txt", "[LOGLAUNCHER] [" + DateTime.Now.ToString() + "]: Corrupt game zip deleted" + Environment.NewLine);
         }
+        public static void LogFTSCheckFalse()
+        {
+            File.AppendAllText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\Logs\\LogV2.txt", "[LOGLAUNCHER] [" + DateTime.Now.ToString() + "]: Not FTS. Running Killswitch check." + Environment.NewLine);
+        }
         internal class BtnLogic
         {
             public static void LogHomeBTNClick()

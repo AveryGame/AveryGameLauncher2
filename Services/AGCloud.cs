@@ -48,5 +48,32 @@ namespace AgsLauncherV2.Services
         public string bIsPublic2725KillSwitched { get; set; }
         public string bIs2726KillSwitched { get; set; }
         public string bIsPublic2726KillSwitched { get; set; }
+        public string bIs2727KillSwitched { get; set; }
+        public string bIsPublic2727KillSwitched { get; set; }
+        public string bIs2728KillSwitched { get; set; }
+        public string bIsPublic2728KillSwitched { get; set; }
+        public string bIs2729KillSwitched { get; set; }
+        public string bIsPublic2729KillSwitched { get; set; }
+        public string bIs2730KillSwitched { get; set; }
+        public string bIsPublic2730KillSwitched { get; set; }
+        public string bIs2731KillSwitched { get; set; }
+        public string bIsPublic2732KillSwitched { get; set; }
+        public string bIs2732KillSwitched { get; set; }
+        public string bIsPublic2733KillSwitched { get; set; }
+        public string bIs2733KillSwitched { get; set; }
+        public string bIsPublic2734KillSwitched { get; set; }
+        public string bIs2734KillSwitched { get; set; }
+        public string bIsPublic2735KillSwitched { get; set; }
+        public string bIs2735KillSwitched { get; set; }
+        public string bIsPublic2736KillSwitched { get; set; }
+        public string bIs2736KillSwitched { get; set; }
+        public string bIsPublic2737KillSwitched { get; set; }
+        public string bIs2737KillSwitched { get; set; }
+        public string bIsPublic2738KillSwitched { get; set; }
+        public string bIs2738KillSwitched { get; set; }
+        public string bIsPublic2739KillSwitched { get; set; }
+        public string bIs2739KillSwitched { get; set; }
+        public string bIsPublic2740KillSwitched { get; set; }
+        public string bIs2740KillSwitched { get; set; }
     }
 }

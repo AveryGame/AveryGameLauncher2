@@ -42,9 +42,6 @@ namespace AgsLauncherV2.Services
         public string NewsImageURL { get; set; }
         public string AccountPageReady { get; set; }
         public string AccountPageURL { get; set; }
-        public bool bIs2723KillSwitched { get; set; }
-        public bool bIs2724KillSwitched { get; set; }
-        public string bIs2725KillSwitched { get; set; }
         public string bIsPublic2725KillSwitched { get; set; }
         public string bIs2726KillSwitched { get; set; }
         public string bIsPublic2726KillSwitched { get; set; }

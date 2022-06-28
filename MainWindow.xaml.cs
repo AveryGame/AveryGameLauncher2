@@ -1423,7 +1423,7 @@ namespace AgsLauncherV2
                     }
                 };
                 Services.LogSVC.LogRPC();
-                if (AGLCloud.bIs2723KillSwitched == true && !File.Exists(filepath + "\\AveryGame Launcher\\EnvKSState\\" + ReleaseString.Text + ".AGSKillSwitch"))
+                if (AGLCloud.bIs2726KillSwitched.Equals("dHJ1ZQ==") && !File.Exists(filepath + "\\AveryGame Launcher\\EnvKSState\\" + ReleaseString.Text + ".AGSKillSwitch"))
                 {
                     Directory.CreateDirectory(filepath + "\\AveryGame Launcher\\EnvKSState");
                     File.Create(filepath + "\\AveryGame Launcher\\EnvKSState\\" + ReleaseString.Text + ".AGSKillSwitch");
@@ -1477,7 +1477,7 @@ namespace AgsLauncherV2
                     }
                     Environment.Exit(0);
                 }
-                if (AGLCloud.bIs2723KillSwitched == false && File.Exists(filepath + "\\AveryGame Launcher\\EnvKSState\\" + ReleaseString.Text + ".AGSKillSwitch"))
+                if (AGLCloud.bIs2726KillSwitched.Equals("ZmFsc2U=") && File.Exists(filepath + "\\AveryGame Launcher\\EnvKSState\\" + ReleaseString.Text + ".AGSKillSwitch"))
                 {
                     File.Delete(filepath + "\\AveryGame Launcher\\EnvKSState\\" + ReleaseString.Text + ".AGSKillSwitch");
                 }

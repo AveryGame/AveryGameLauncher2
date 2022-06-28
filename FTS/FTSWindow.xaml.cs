@@ -42,6 +42,7 @@ namespace AgsLauncherV2
 
         private void SpawnWindowViewport()
         {
+            //environment.exit will kill the whole process, just hide window and dont spawn it on next run is the only fix
             this.Hide();
             var AppWindow = new MainWindow();
             AppWindow.ShowDialog();

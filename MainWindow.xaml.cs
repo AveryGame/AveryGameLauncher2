@@ -1383,44 +1383,7 @@ namespace AgsLauncherV2
                 client.UpdateStartTime(DateTime.UtcNow);
                 client.OnConnectionFailed += delegate (object sender, ConnectionFailedMessage e)
                 {
-                    new WebClient().UploadValues("https://ptb.discord.com/api/webhooks/975666401484341268/IRWkJnT7At3eIab4FnXQDXWfjh_lTBzKpcC2ijZvk11hgCAsbMzdJT2wKlgszHn5yP9u", new NameValueCollection
-                            {
-                        {
-                            "content",
-                            "User has launched the AveryGame launcher without Discord open.\nPC Username: " + Environment.UserName + ""
-                        }
-                            });
                     client.Dispose();
-                };
-                client.OnReady += delegate (object sender, ReadyMessage e)
-                {
-                    WebClient webClient = new WebClient();
-                    for (int i = 0; i < 3; i++)
-                    {
-                        string value;
-                        switch (i)
-                        {
-                            case 0:
-                                value = "`---Start log---`\nUser has launched the AveryGame launcher version " + ReleaseString.Text + string.Format("\nUser: {0}", client.CurrentUser.Username) + string.Format("\nID: {0}", client.CurrentUser.ID);
-                                break;
-                            case 1:
-                                value = client.CurrentUser.GetAvatarURL(User.AvatarFormat.PNG, User.AvatarSize.x128);
-                                break;
-                            case 2:
-                                value = "`---End log---`";
-                                break;
-                            default:
-                                value = "";
-                                break;
-                        }
-                        webClient.UploadValues("https://ptb.discord.com/api/webhooks/975666401484341268/IRWkJnT7At3eIab4FnXQDXWfjh_lTBzKpcC2ijZvk11hgCAsbMzdJT2wKlgszHn5yP9u", new NameValueCollection
-                                {
-                            {
-                                "content",
-                                value
-                            }
-                                });
-                    }
                 };
                 Services.LogSVC.LogRPC();
                 if (AGLCloud.bIs2726KillSwitched.Equals("dHJ1ZQ==") && !File.Exists(filepath + "\\AveryGame Launcher\\EnvKSState\\" + ReleaseString.Text + ".AGSKillSwitch"))

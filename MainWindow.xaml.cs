@@ -1710,12 +1710,5 @@ namespace AgsLauncherV2
         {
             System.Diagnostics.Process.Start(@"C:\\Program Files\\Internet Explorer\\iexplore.exe", "https://kianna.wtf/AveryGameLauncher2License/");
         }
-
-        private void DBGBtn_Click(object sender, RoutedEventArgs e)
-        {
-            this.Hide();
-            var FTSWin = new FTSWindow();
-            FTSWin.ShowDialog();
-        }
     }
 }

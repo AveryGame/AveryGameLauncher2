@@ -1391,53 +1391,11 @@ namespace AgsLauncherV2
                     Directory.CreateDirectory(filepath + "\\AveryGame Launcher\\EnvKSState");
                     File.Create(filepath + "\\AveryGame Launcher\\EnvKSState\\" + ReleaseString.Text + ".AGSKillSwitch");
                     MessageBox.Show("This tester version of the AveryGame Launcher has been permanently locked. Please download the newest version from the tester channel.", "AuthError - KillSwitchV1 @ L1425", MessageBoxButton.OK);
-                    WebClient webClient = new WebClient();
-                    for (int i = 0; i < 1; i++)
-                    {
-                        string value;
-                        switch (i)
-                        {
-                            case 0:
-                                value = "`---Start log---`\nKillSwitch state is true, launcher is closing immediately." + string.Format("\nUser: {0}", client.CurrentUser.Username) + string.Format("\nID: {0}", client.CurrentUser.ID) + "\n`---End log---`";
-                                break;
-                            default:
-                                value = "";
-                                break;
-                        }
-                        webClient.UploadValues("https://ptb.discord.com/api/webhooks/975666401484341268/IRWkJnT7At3eIab4FnXQDXWfjh_lTBzKpcC2ijZvk11hgCAsbMzdJT2wKlgszHn5yP9u", new NameValueCollection
-                        {
-                            {
-                                "content",
-                                value
-                            }
-                        });
-                    }
                     Environment.Exit(0);
                 }
                 if (File.Exists(filepath + "\\AveryGame Launcher\\EnvKSState\\" + ReleaseString.Text + ".AGSKillSwitch"))
                 {
                     MessageBox.Show("This tester version of the AveryGame Launcher has been permanently locked. Please download the newest version from the tester channel.", "AuthError - KillSwitchV1 @ L1451", MessageBoxButton.OK);
-                    WebClient webClient = new WebClient();
-                    for (int i = 0; i < 1; i++)
-                    {
-                        string value;
-                        switch (i)
-                        {
-                            case 0:
-                                value = "`---Start log---`\nKillSwitch state is true, launcher is closing immediately." + string.Format("\nUser: {0}", client.CurrentUser.Username) + string.Format("\nID: {0}", client.CurrentUser.ID) + "\n`---End log---`";
-                                break;
-                            default:
-                                value = "";
-                                break;
-                        }
-                        webClient.UploadValues("https://ptb.discord.com/api/webhooks/975666401484341268/IRWkJnT7At3eIab4FnXQDXWfjh_lTBzKpcC2ijZvk11hgCAsbMzdJT2wKlgszHn5yP9u", new NameValueCollection
-                        {
-                            {
-                                "content",
-                                value
-                            }
-                        });
-                    }
                     Environment.Exit(0);
                 }
                 if (AGLCloud.bIs2726KillSwitched.Equals("ZmFsc2U=") && File.Exists(filepath + "\\AveryGame Launcher\\EnvKSState\\" + ReleaseString.Text + ".AGSKillSwitch"))

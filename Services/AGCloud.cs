@@ -46,5 +46,7 @@ namespace AgsLauncherV2.Services
         public bool bIs2724KillSwitched { get; set; }
         public string bIs2725KillSwitched { get; set; }
         public string bIsPublic2725KillSwitched { get; set; }
+        public string bIs2726KillSwitched { get; set; }
+        public string bIsPublic2726KillSwitched { get; set; }
     }
 }

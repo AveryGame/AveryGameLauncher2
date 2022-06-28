@@ -83,11 +83,11 @@ namespace AgsLauncherV2
             webclient.DownloadFile("https://raw.githubusercontent.com/AyeItsAxi/ags-launcher-strings/killswitches/launcherinfo.json", Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\KSCheck.json");
             string KSJson = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\KSCheck.json");
             Services.AGCloud KS = JsonConvert.DeserializeObject<Services.AGCloud>(KSJson);
-            if (!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!KS.bIsPublic2725KillSwitched.ToString().Equals("ZmFsc2U="))
+            if (!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!KS.bIs2726KillSwitched.ToString().Equals("ZmFsc2U="))
             {
                 mald();
             }
-            else if (KS.bIsPublic2725KillSwitched.ToString().Equals("ZmFsc2U="))
+            else if (KS.bIs2726KillSwitched.ToString().Equals("ZmFsc2U="))
             {
                 Continue();
             }
@@ -1480,7 +1480,6 @@ namespace AgsLauncherV2
                 if (AGLCloud.bIs2723KillSwitched == false && File.Exists(filepath + "\\AveryGame Launcher\\EnvKSState\\" + ReleaseString.Text + ".AGSKillSwitch"))
                 {
                     File.Delete(filepath + "\\AveryGame Launcher\\EnvKSState\\" + ReleaseString.Text + ".AGSKillSwitch");
-                    Thread.Sleep(1500);
                 }
                 try
                 {

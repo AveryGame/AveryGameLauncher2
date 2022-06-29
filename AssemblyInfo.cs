@@ -1,3 +1,5 @@
+//AveryGame Launcher Copyright (C) 2022, Avery Fiebig-Dorey & Tristan Gee
+
 using System.Windows;
 
 [assembly: ThemeInfo(

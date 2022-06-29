@@ -1,4 +1,6 @@
-﻿using System;
+﻿//AveryGame Launcher Copyright (C) 2022, Avery Fiebig-Dorey & Tristan Gee
+
+using System;
 using System.IO;
 using DiscordRPC;
 using System.Net;

@@ -17,8 +17,6 @@ using System.IO.Compression;
 using System.Windows.Media.Imaging;
 using System.Collections.Specialized;
 using Microsoft.Toolkit.Uwp.Notifications;
-using System.Windows.Controls;
-using System.Windows.Navigation;
 
 #pragma warning disable IDE0079
 #pragma warning disable IDE1006

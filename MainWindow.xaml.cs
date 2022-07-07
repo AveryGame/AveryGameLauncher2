@@ -1625,23 +1625,5 @@ namespace AgsLauncherV2
         {
             System.Diagnostics.Process.Start(@"C:\\Program Files\\Internet Explorer\\iexplore.exe", "https://kianna.wtf/AveryGameLauncher2License/");
         }
-
-        private void CrashLauncher_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                NavigationWindow window = new NavigationWindow();
-                window.Source = new Uri("Page1.xaml", UriKind.Relative);
-                window.Show();
-                this.Visibility = Visibility.Hidden;
-            }
-            catch (Exception ex)
-            {
-                Services.LogSVC.LogFatalErr();
-                Services.LogSVC.LogStackTrace(ex);
-                MessageBox.Show(ex.Message, "Fatal error!", MessageBoxButton.OK, MessageBoxImage.Stop);
-                Environment.Exit(0);
-            }
-        }
     }
 }

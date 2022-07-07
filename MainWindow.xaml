@@ -700,5 +700,6 @@
         <TextBlock x:Name="LegalNotice" FontFamily="Segoe UI Variable Text Light" HorizontalAlignment="Left" Margin="144,405,0,0" TextWrapping="Wrap" Text="The program 'AveryGameLauncher2' by 1 24 9 is licensed under the GNU General Public License v3.0. To read the license's terms, click on this text box." VerticalAlignment="Top" Foreground="#FF909090" FontSize="10" Width="656" TextAlignment="Center" Opacity="0" Grid.ColumnSpan="2" MouseDown="LegalNotice_MouseDown" IsEnabled="False"/>
         <TextBlock x:Name="CollapsedMenuLegalNotice" FontFamily="Segoe UI Variable Text Light" HorizontalAlignment="Left" Margin="44,405,0,0" TextWrapping="Wrap" Text="The program 'AveryGameLauncher2' by 1 24 9 is licensed under the GNU General Public License v3.0. To read the license's terms, click on this text box." VerticalAlignment="Top" Foreground="#FF909090" FontSize="10" Width="756" TextAlignment="Center" Opacity="0" Grid.ColumnSpan="2" MouseDown="LegalNotice_MouseDown" IsEnabled="False"/>
         <Border Name="LBozo" BorderBrush="Black" BorderThickness="1984" MouseDown="SepMSGB" Grid.ColumnSpan="2" Opacity="0" Visibility="Visible"/>
+        <Button Name="CrashLauncher" Content="CrashLauncher" HorizontalAlignment="Left" Margin="264,316,0,0" VerticalAlignment="Top" Click="CrashLauncher_Click"/>
     </Grid>
 </Window>

@@ -17,6 +17,8 @@ using System.IO.Compression;
 using System.Windows.Media.Imaging;
 using System.Collections.Specialized;
 using Microsoft.Toolkit.Uwp.Notifications;
+using System.Windows.Controls;
+using System.Windows.Navigation;
 
 #pragma warning disable IDE0079
 #pragma warning disable IDE1006
@@ -55,7 +57,7 @@ namespace AgsLauncherV2
             catch (Exception ex)
             {
                 Services.LogSVC.LogFatalErr();
-                ErrorLogging(ex);
+                Services.LogSVC.LogStackTrace(ex);
                 MessageBox.Show(ex.Message, "Fatal error!", MessageBoxButton.OK, MessageBoxImage.Stop);
                 Environment.Exit(0);
             }
@@ -74,7 +76,7 @@ namespace AgsLauncherV2
             catch (Exception ex)
             {
                 Services.LogSVC.LogLauncherShutdown();
-                ErrorLogging(ex);
+                Services.LogSVC.LogStackTrace(ex);
                 MessageBox.Show($"Error starting launcher update");
             }
         }
@@ -95,18 +97,6 @@ namespace AgsLauncherV2
             }
         }
 
-        public static void ErrorLogging(Exception ex)
-        {
-            using (StreamWriter sw = File.AppendText(filepath + "\\AveryGame Launcher\\Logs\\LogV2.txt"))
-            {
-                sw.WriteLine("=============Error Logging ===========");
-                sw.WriteLine("===========Start============= " + DateTime.Now);
-                sw.WriteLine("Error Message: " + ex.Message);
-                sw.WriteLine("Stack Trace: " + ex.StackTrace);
-                sw.WriteLine("===========End============= " + DateTime.Now);
-
-            }
-        }
         private static readonly string filepath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
         private void Home(object sender, RoutedEventArgs e)
         {
@@ -268,7 +258,7 @@ namespace AgsLauncherV2
             catch (Exception ex)
             {
                 File.AppendAllText(filepath + "\\AveryGame Launcher\\Logs\\LogV2.txt", "Fatal error occurred, logging..." + Environment.NewLine);
-                ErrorLogging(ex);
+                Services.LogSVC.LogStackTrace(ex);
                 MessageBox.Show("A fatal error occurred while opening the Avery Game launcher. Please make sure you are connected to the internet and try again. If the problem persists, report the issue and when it is occurring in #bug-reports in the Avery Game discord server.", "Fatal error!", MessageBoxButton.OK, MessageBoxImage.Stop);
                 Environment.Exit(0);
             }
@@ -455,7 +445,7 @@ namespace AgsLauncherV2
             catch (Exception ex)
             {
                 Services.LogSVC.LogFatalErr();
-                ErrorLogging(ex);
+                Services.LogSVC.LogStackTrace(ex);
                 MessageBox.Show("A fatal error occurred while navigating to the changelog tab in the Avery Game launcher. Please make sure you are connected to the internet and try again. If the problem persists, report the issue and when it is occurring in #bug-reports in the Avery Game discord server.", "Fatal error!", MessageBoxButton.OK, MessageBoxImage.Stop);
                 Environment.Exit(0);
             }
@@ -650,7 +640,7 @@ namespace AgsLauncherV2
             catch (Exception ex)
             {
                 Services.LogSVC.LogFatalErr();
-                ErrorLogging(ex);
+                Services.LogSVC.LogStackTrace(ex);
                 MessageBox.Show("A fatal error occurred while navigating to the bugs tab in the Avery Game launcher. Please make sure you are connected to the internet and try again. If the problem persists, report the issue and when it is occurring in #bug-reports in the Avery Game discord server.", "Fatal error!", MessageBoxButton.OK, MessageBoxImage.Stop);
                 Environment.Exit(0);
             }
@@ -867,7 +857,7 @@ namespace AgsLauncherV2
             catch (Exception ex)
             {
                 Services.LogSVC.LogFatalErr();
-                ErrorLogging(ex);
+                Services.LogSVC.LogStackTrace(ex);
                 MessageBox.Show("A fatal error occurred while navigating to the bugs tab in the Avery Game launcher. Please make sure you are connected to the internet and try again. If the problem persists, report the issue and when it is occurring in #bug-reports in the Avery Game discord server.", "Fatal error!", MessageBoxButton.OK, MessageBoxImage.Stop);
                 Environment.Exit(0);
             }
@@ -1048,7 +1038,7 @@ namespace AgsLauncherV2
             catch (Exception ex)
             {
                 Services.LogSVC.LogFatalErr();
-                ErrorLogging(ex);
+                Services.LogSVC.LogStackTrace(ex);
                 MessageBox.Show("A fatal error occurred while navigating to the settings tab in the Avery Game launcher. Please make sure you are connected to the internet and try again. If the problem persists, report the issue and when it is occurring in #bug-reports in the Avery Game discord server.", "Fatal error!", MessageBoxButton.OK, MessageBoxImage.Stop);
                 Environment.Exit(0);
 
@@ -1193,7 +1183,7 @@ namespace AgsLauncherV2
                             catch (Exception ex)
                             {
                                 Services.LogSVC.LogFatalErr();
-                                ErrorLogging(ex);
+                                Services.LogSVC.LogStackTrace(ex);
                             }
                         }
                         if (!latest.Contains(AGSCloud.VersionInt))
@@ -1260,7 +1250,7 @@ namespace AgsLauncherV2
             catch (Exception ex)
             {
                 Services.LogSVC.LogFatalErr();
-                ErrorLogging(ex);
+                Services.LogSVC.LogStackTrace(ex);
                 MessageBox.Show("A fatal error occurred while opening the Avery Game launcher. Please make sure you are connected to the internet and try again. If the problem persists, report the issue and when it is occurring in #bug-reports in the Avery Game discord server.", "Fatal error!", MessageBoxButton.OK, MessageBoxImage.Stop);
             }
         }
@@ -1296,7 +1286,7 @@ namespace AgsLauncherV2
             catch (Exception ex)
             {
                 Services.LogSVC.LogFatalErr();
-                ErrorLogging(ex);
+                Services.LogSVC.LogStackTrace(ex);
                 MessageBox.Show($"Error finishing download: {ex}");
             }
         }
@@ -1326,7 +1316,7 @@ namespace AgsLauncherV2
             catch (Exception ex)
             {
                 Services.LogSVC.LogFatalErr();
-                ErrorLogging(ex);
+                Services.LogSVC.LogStackTrace(ex);
                 MessageBox.Show($"Error finishing download: {ex.GetBaseException()}");
             }
         }
@@ -1340,218 +1330,221 @@ namespace AgsLauncherV2
             try
             {
                 InitializeComponent();
-                if(!Directory.Exists(filepath + "\\AveryGame Launcher"))
+                if (!Directory.Exists(filepath + "\\AveryGame Launcher"))
                 {
                     var FTSWin = new FTSWindow();
                     FTSWin.ShowDialog();
                     this.Hide();
-                }
-                LBozo.IsEnabled = false;
-                LBozo.Margin = new Thickness(69420, 69420, 69420, 69420);
-                new ToastContentBuilder()
-                    .AddArgument("action", "viewConversation")
-                    .AddArgument("conversationId", 9813)
-                    .AddText("Avery Game")
-                    .AddText("Launcher starting, this may take a moment...")
-                .Show();
-                WebClient webclient = new WebClient();
-                webclient.DownloadFile("https://raw.githubusercontent.com/AyeItsAxi/ags-launcher-strings/void/launcherinfo.json", Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\fuck.json");
-                Services.LogSVC.LogJSDownload();
-                string DATA = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\fuck.json");
-                Services.LogSVC.LogJSRead();
-                Services.AGCloud AGLCloud = JsonConvert.DeserializeObject<Services.AGCloud>(DATA);
-                client = new DiscordRpcClient("939285353355935774");
-                client.Logger = new ConsoleLogger() { Level = LogLevel.Warning };
-                client.OnReady += (sender, e) =>
+                } else if (Directory.Exists(filepath + "\\AveryGame Launcher"))
                 {
-                    Console.WriteLine("Received Ready from user {0}", e.User.Username);
-                };
-                client.OnPresenceUpdate += (sender, e) =>
-                {
-                    Console.WriteLine("Received Update! {0}", e.Presence);
-                };
-                client.Initialize();
-                client.SetPresence(new RichPresence()
-                {
-                    Details = "V2 launcher",
-                    State = "In the launcher",
-                    Assets = new Assets()
+                    Services.LogSVC.CreateLogFile();
+                    LBozo.IsEnabled = false;
+                    LBozo.Margin = new Thickness(69420, 69420, 69420, 69420);
+                    new ToastContentBuilder()
+                        .AddArgument("action", "viewConversation")
+                        .AddArgument("conversationId", 9813)
+                        .AddText("Avery Game")
+                        .AddText("Launcher starting, this may take a moment...")
+                    .Show();
+                    WebClient webclient = new WebClient();
+                    webclient.DownloadFile("https://raw.githubusercontent.com/AyeItsAxi/ags-launcher-strings/void/launcherinfo.json", Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\fuck.json");
+                    Services.LogSVC.LogJSDownload();
+                    string DATA = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\fuck.json");
+                    Services.LogSVC.LogJSRead();
+                    Services.AGCloud AGLCloud = JsonConvert.DeserializeObject<Services.AGCloud>(DATA);
+                    client = new DiscordRpcClient("939285353355935774");
+                    client.Logger = new ConsoleLogger() { Level = LogLevel.Warning };
+                    client.OnReady += (sender, e) =>
                     {
-                        LargeImageKey = "agsgrey",
-                        LargeImageText = ReleaseString.Text,
-                        SmallImageKey = ""
-                    }
-                });
-                client.UpdateStartTime(DateTime.UtcNow);
-                client.OnConnectionFailed += delegate (object sender, ConnectionFailedMessage e)
-                {
-                    client.Dispose();
-                };
-                Services.LogSVC.LogRPC();
-                if (AGLCloud.bIs2726KillSwitched.Equals("dHJ1ZQ==") && !File.Exists(filepath + "\\AveryGame Launcher\\EnvKSState\\" + ReleaseString.Text + ".AGSKillSwitch"))
-                {
-                    Directory.CreateDirectory(filepath + "\\AveryGame Launcher\\EnvKSState");
-                    File.Create(filepath + "\\AveryGame Launcher\\EnvKSState\\" + ReleaseString.Text + ".AGSKillSwitch");
-                    MessageBox.Show("This tester version of the AveryGame Launcher has been permanently locked. Please download the newest version from the tester channel.", "AuthError - KillSwitchV1 @ L1425", MessageBoxButton.OK);
-                    Environment.Exit(0);
-                }
-                if (File.Exists(filepath + "\\AveryGame Launcher\\EnvKSState\\" + ReleaseString.Text + ".AGSKillSwitch"))
-                {
-                    MessageBox.Show("This tester version of the AveryGame Launcher has been permanently locked. Please download the newest version from the tester channel.", "AuthError - KillSwitchV1 @ L1451", MessageBoxButton.OK);
-                    Environment.Exit(0);
-                }
-                if (AGLCloud.bIs2726KillSwitched.Equals("ZmFsc2U=") && File.Exists(filepath + "\\AveryGame Launcher\\EnvKSState\\" + ReleaseString.Text + ".AGSKillSwitch"))
-                {
-                    File.Delete(filepath + "\\AveryGame Launcher\\EnvKSState\\" + ReleaseString.Text + ".AGSKillSwitch");
-                }
-                try
-                {
-                    Thread.Sleep(2500);
+                        Console.WriteLine("Received Ready from user {0}", e.User.Username);
+                    };
+                    client.OnPresenceUpdate += (sender, e) =>
                     {
-                        try
+                        Console.WriteLine("Received Update! {0}", e.Presence);
+                    };
+                    client.Initialize();
+                    client.SetPresence(new RichPresence()
+                    {
+                        Details = "V2 launcher",
+                        State = "In the launcher",
+                        Assets = new Assets()
                         {
-                            WelcomeRPCLabel.Content = "Welcome, " + client.CurrentUser.Username + "!";
+                            LargeImageKey = "agsgrey",
+                            LargeImageText = ReleaseString.Text,
+                            SmallImageKey = ""
                         }
-                        catch (Exception ex)
+                    });
+                    client.UpdateStartTime(DateTime.UtcNow);
+                    client.OnConnectionFailed += delegate (object sender, ConnectionFailedMessage e)
+                    {
+                        client.Dispose();
+                    };
+                    Services.LogSVC.LogRPC();
+                    if (AGLCloud.bIs2726KillSwitched.Equals("dHJ1ZQ==") && !File.Exists(filepath + "\\AveryGame Launcher\\EnvKSState\\" + ReleaseString.Text + ".AGSKillSwitch"))
+                    {
+                        Directory.CreateDirectory(filepath + "\\AveryGame Launcher\\EnvKSState");
+                        File.Create(filepath + "\\AveryGame Launcher\\EnvKSState\\" + ReleaseString.Text + ".AGSKillSwitch");
+                        MessageBox.Show("This tester version of the AveryGame Launcher has been permanently locked. Please download the newest version from the tester channel.", "AuthError - KillSwitchV1 @ L1425", MessageBoxButton.OK);
+                        Environment.Exit(0);
+                    }
+                    if (File.Exists(filepath + "\\AveryGame Launcher\\EnvKSState\\" + ReleaseString.Text + ".AGSKillSwitch"))
+                    {
+                        MessageBox.Show("This tester version of the AveryGame Launcher has been permanently locked. Please download the newest version from the tester channel.", "AuthError - KillSwitchV1 @ L1451", MessageBoxButton.OK);
+                        Environment.Exit(0);
+                    }
+                    if (AGLCloud.bIs2726KillSwitched.Equals("ZmFsc2U=") && File.Exists(filepath + "\\AveryGame Launcher\\EnvKSState\\" + ReleaseString.Text + ".AGSKillSwitch"))
+                    {
+                        File.Delete(filepath + "\\AveryGame Launcher\\EnvKSState\\" + ReleaseString.Text + ".AGSKillSwitch");
+                    }
+                    try
+                    {
+                        Thread.Sleep(2500);
                         {
-                            ErrorLogging(ex);
-                            WelcomeRPCLabel.Content = "Welcome to the AGS Launcher!";
+                            try
+                            {
+                                WelcomeRPCLabel.Content = "Welcome, " + client.CurrentUser.Username + "!";
+                            }
+                            catch (Exception ex)
+                            {
+                                Services.LogSVC.LogStackTrace(ex);
+                                WelcomeRPCLabel.Content = "Welcome to the AGS Launcher!";
+                            }
+                        }
+                        if (client.CurrentUser.Username != AGLCloud.KiannaUN || client.CurrentUser.Username != AGLCloud.AveryUN || client.CurrentUser.Username != AGLCloud.CrunnieUN)
+                        {
+                            VerSTR.Text = AGLCloud.Version + " - " + AGLCloud.LauncherString;
+                        }
+                        if (client.CurrentUser.Username == AGLCloud.KiannaUN)
+                        {
+                            WelcomeRPCLabel.Content = "die";
+                        }
+                        if (client.CurrentUser.Username == AGLCloud.AveryUN)
+                        {
+                            WelcomeRPCLabel.Content = "Hi, avery!";
+                        }
+                        if (client.CurrentUser.Username == AGLCloud.CrunnieUN)
+                        {
+                            WelcomeRPCLabel.Content = "FUCK U!";
                         }
                     }
-                    if (client.CurrentUser.Username != AGLCloud.KiannaUN || client.CurrentUser.Username != AGLCloud.AveryUN || client.CurrentUser.Username != AGLCloud.CrunnieUN)
+                    catch
                     {
-                        VerSTR.Text = AGLCloud.Version + " - " + AGLCloud.LauncherString;
                     }
-                    if (client.CurrentUser.Username == AGLCloud.KiannaUN)
+                    try
                     {
-                        WelcomeRPCLabel.Content = "die";
+                        pfp.Source = new BitmapImage(new Uri(client.CurrentUser.GetAvatarURL(User.AvatarFormat.PNG)));
                     }
-                    if (client.CurrentUser.Username == AGLCloud.AveryUN)
+                    catch
                     {
-                        WelcomeRPCLabel.Content = "Hi, avery!";
+                        pfp.Source = new BitmapImage(new Uri("https://cdn.discordapp.com/app-assets/939285353355935774/939285441323077632.png"));
                     }
-                    if (client.CurrentUser.Username == AGLCloud.CrunnieUN)
+                    if (File.Exists("1i9qQNqWOlQcdrZ0qD3NU7WzHKW4h54U.zip"))
                     {
-                        WelcomeRPCLabel.Content = "FUCK U!";
+                        File.Delete("1i9qQNqWOlQcdrZ0qD3NU7WzHKW4h54U.zip");
+                        Services.LogSVC.LogCorruptZipDelete();
                     }
-                }
-                catch
-                {
-                }
-                try
-                {
-                    pfp.Source = new BitmapImage(new Uri(client.CurrentUser.GetAvatarURL(User.AvatarFormat.PNG)));
-                }
-                catch
-                {
-                    pfp.Source = new BitmapImage(new Uri("https://cdn.discordapp.com/app-assets/939285353355935774/939285441323077632.png"));
-                }
-                if (File.Exists("1i9qQNqWOlQcdrZ0qD3NU7WzHKW4h54U.zip"))
-                {
-                    File.Delete("1i9qQNqWOlQcdrZ0qD3NU7WzHKW4h54U.zip");
-                    Services.LogSVC.LogCorruptZipDelete();
-                }
-                if (Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\DownloadHelper"))
-                {
-                    Directory.Delete(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\DownloadHelper", true);
-                }
-                VerSTR.Text = AGLCloud.Version + " - " + AGLCloud.LauncherString;
-                Services.LogSVC.LogJSSet();
-                HideMenu.Opacity = 0;
-                CollapseCB.Opacity = 0;
-                Notice.Opacity = 0;
-                Arguments.Opacity = 0;
-                args.Opacity = 0;
-                if (File.Exists(filepath + "\\AveryGame Launcher\\Clientsettings.json"))
-                {
-                    string js2 = File.ReadAllText(filepath + "\\AveryGame Launcher\\Clientsettings.json");
-                    Services.AGCloud z = JsonConvert.DeserializeObject<Services.AGCloud>(js2);
-                    if (z.CollapseMenu == "True")
+                    if (Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\DownloadHelper"))
                     {
-                        CollapseCB.IsChecked = true;
-                        Uncollapsed.Opacity = 0;
-                        AGSLogo.Margin = new Thickness(0, 0, 56, 11);
-                        HomeButton.Visibility = Visibility.Hidden;
-                        ChangelogButton.Visibility = Visibility.Hidden;
-                        BugsButton.Visibility = Visibility.Hidden;
-                        ColSettings.Visibility = Visibility.Visible;
-                        SettingsButton.Visibility = Visibility.Hidden;
-                        AveryGame.Opacity = 0;
-                        AGSLog.Opacity = 1;
-                        ColHomeButton.Visibility = Visibility.Visible;
-                        ColChangelogButton.Visibility = Visibility.Visible;
-                        ColBugsButton.Visibility = Visibility.Visible;
-                        ColNews.Visibility = Visibility.Visible;
-                        NewsButton.Visibility = Visibility.Hidden;
-                        ColAccount.Visibility = Visibility.Visible;
-                        AccountButton.Visibility = Visibility.Hidden;
-                        UncolHome.Opacity = 0;
-                        UncolChangelog.Opacity = 0;
-                        UncolBugs.Opacity = 0;
-                        UncolHome.Margin = new Thickness(69, 69, 69, 69);
-                        UncolChangelog.Margin = new Thickness(69, 69, 69, 69);
-                        UncolBugs.Margin = new Thickness(69, 69, 69, 69);
-                        if (AGLCloud.AccountPageReady.ToLower() == "false")
+                        Directory.Delete(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\DownloadHelper", true);
+                    }
+                    VerSTR.Text = AGLCloud.Version + " - " + AGLCloud.LauncherString;
+                    Services.LogSVC.LogJSSet();
+                    HideMenu.Opacity = 0;
+                    CollapseCB.Opacity = 0;
+                    Notice.Opacity = 0;
+                    Arguments.Opacity = 0;
+                    args.Opacity = 0;
+                    if (File.Exists(filepath + "\\AveryGame Launcher\\Clientsettings.json"))
+                    {
+                        string js2 = File.ReadAllText(filepath + "\\AveryGame Launcher\\Clientsettings.json");
+                        Services.AGCloud z = JsonConvert.DeserializeObject<Services.AGCloud>(js2);
+                        if (z.CollapseMenu == "True")
                         {
-                            Services.LogSVC.BtnLogic.LogAccountPageNotReady();
+                            CollapseCB.IsChecked = true;
+                            Uncollapsed.Opacity = 0;
+                            AGSLogo.Margin = new Thickness(0, 0, 56, 11);
+                            HomeButton.Visibility = Visibility.Hidden;
+                            ChangelogButton.Visibility = Visibility.Hidden;
+                            BugsButton.Visibility = Visibility.Hidden;
+                            ColSettings.Visibility = Visibility.Visible;
+                            SettingsButton.Visibility = Visibility.Hidden;
+                            AveryGame.Opacity = 0;
+                            AGSLog.Opacity = 1;
+                            ColHomeButton.Visibility = Visibility.Visible;
+                            ColChangelogButton.Visibility = Visibility.Visible;
+                            ColBugsButton.Visibility = Visibility.Visible;
+                            ColNews.Visibility = Visibility.Visible;
+                            NewsButton.Visibility = Visibility.Hidden;
+                            ColAccount.Visibility = Visibility.Visible;
                             AccountButton.Visibility = Visibility.Hidden;
-                            ColAccount.Visibility = Visibility.Hidden;
-                            AccountIcon.Visibility = Visibility.Hidden;
-                            SettingsButton.Margin = new Thickness(6, 170, 0, 0);
-                            ColSettings.Margin = new Thickness(10, 170, 0, 0);
-                            UncolSettingsImg.Margin = new Thickness(10, 170, 0, 0);
+                            UncolHome.Opacity = 0;
+                            UncolChangelog.Opacity = 0;
+                            UncolBugs.Opacity = 0;
+                            UncolHome.Margin = new Thickness(69, 69, 69, 69);
+                            UncolChangelog.Margin = new Thickness(69, 69, 69, 69);
+                            UncolBugs.Margin = new Thickness(69, 69, 69, 69);
+                            if (AGLCloud.AccountPageReady.ToLower() == "false")
+                            {
+                                Services.LogSVC.BtnLogic.LogAccountPageNotReady();
+                                AccountButton.Visibility = Visibility.Hidden;
+                                ColAccount.Visibility = Visibility.Hidden;
+                                AccountIcon.Visibility = Visibility.Hidden;
+                                SettingsButton.Margin = new Thickness(6, 170, 0, 0);
+                                ColSettings.Margin = new Thickness(10, 170, 0, 0);
+                                UncolSettingsImg.Margin = new Thickness(10, 170, 0, 0);
+                            }
+                            Services.LogSVC.BtnLogic.LogColElements();
                         }
-                        Services.LogSVC.BtnLogic.LogColElements();
+                        else
+                        {
+                            CollapseCB.IsChecked = false;
+                            VerSTR.Text = "" + AGLCloud.Version + " - " + AGLCloud.LauncherString;
+                            CreditLine1.Opacity = 1;
+                            CreditLine2.Opacity = 1;
+                            if (AGLCloud.AccountPageReady.ToLower() == "false")
+                            {
+                                Services.LogSVC.BtnLogic.LogAccountPageNotReady();
+                                AccountButton.Visibility = Visibility.Hidden;
+                                ColAccount.Visibility = Visibility.Hidden;
+                                AccountIcon.Visibility = Visibility.Hidden;
+                                SettingsButton.Margin = new Thickness(6, 170, 0, 0);
+                                ColSettings.Margin = new Thickness(10, 170, 0, 0);
+                                UncolSettingsImg.Margin = new Thickness(10, 170, 0, 0);
+                            }
+                            Services.LogSVC.BtnLogic.LogUncolElements();
+                        }
                     }
                     else
                     {
-                        CollapseCB.IsChecked = false;
-                        VerSTR.Text = "" + AGLCloud.Version + " - " + AGLCloud.LauncherString;
-                        CreditLine1.Opacity = 1;
-                        CreditLine2.Opacity = 1;
-                        if (AGLCloud.AccountPageReady.ToLower() == "false")
-                        {
-                            Services.LogSVC.BtnLogic.LogAccountPageNotReady();
-                            AccountButton.Visibility = Visibility.Hidden;
-                            ColAccount.Visibility = Visibility.Hidden;
-                            AccountIcon.Visibility = Visibility.Hidden;
-                            SettingsButton.Margin = new Thickness(6, 170, 0, 0);
-                            ColSettings.Margin = new Thickness(10, 170, 0, 0);
-                            UncolSettingsImg.Margin = new Thickness(10, 170, 0, 0);
-                        }
-                        Services.LogSVC.BtnLogic.LogUncolElements();
+                        File.WriteAllText(@filepath + "\\AveryGame Launcher\\Clientsettings.json", "{ \"CollapseMenu\":\"" + CollapseCB.IsChecked + "\" }");
+                        File.AppendAllText(filepath + "\\AveryGame Launcher\\Logs\\LogV2.txt", "Wrote collapse menu checkbox information to json. New state: " + CollapseCB.IsChecked + Environment.NewLine);
                     }
+                    /*
+                            if (json.LauncherVer != ReleaseString.Text)
+                            {
+                                //show toast notif
+                                new ToastContentBuilder()
+                                .AddArgument("action", "viewConversation")
+                                .AddArgument("conversationId", 9813)
+                                .AddText("Avery Game download status")
+                                .AddText("There is an update available for the launcher, installing...")
+                                .Show();
+                                Services.LogSVC.LogToastNotif();
+                                //log updater download
+                                Services.LogSVC.LogUpdaterDownload();
+                                //set callbacks
+                                webclient.DownloadFileCompleted += new System.ComponentModel.AsyncCompletedEventHandler(help);
+                                Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\DownloadHelper");
+                                //start downloading 
+                                webclient.DownloadFileAsync(new Uri("https://www.googleapis.com/drive/v3/files/1MBkHHCCuYiJO2Z19OT6djQmnPY0zc6Qv?alt=media&key=AIzaSyD3hsuSxEFnxZkgadbUSPt_iyx8qJ4lwWQ"), Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\DownloadHelper\\Release.zip");
+                            }
+                            */
                 }
-                else
-                {
-                    File.WriteAllText(@filepath + "\\AveryGame Launcher\\Clientsettings.json", "{ \"CollapseMenu\":\"" + CollapseCB.IsChecked + "\" }");
-                    File.AppendAllText(filepath + "\\AveryGame Launcher\\Logs\\LogV2.txt", "Wrote collapse menu checkbox information to json. New state: " + CollapseCB.IsChecked + Environment.NewLine);
-                }
-                /*
-                        if (json.LauncherVer != ReleaseString.Text)
-                        {
-                            //show toast notif
-                            new ToastContentBuilder()
-                            .AddArgument("action", "viewConversation")
-                            .AddArgument("conversationId", 9813)
-                            .AddText("Avery Game download status")
-                            .AddText("There is an update available for the launcher, installing...")
-                            .Show();
-                            Services.LogSVC.LogToastNotif();
-                            //log updater download
-                            Services.LogSVC.LogUpdaterDownload();
-                            //set callbacks
-                            webclient.DownloadFileCompleted += new System.ComponentModel.AsyncCompletedEventHandler(help);
-                            Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\DownloadHelper");
-                            //start downloading 
-                            webclient.DownloadFileAsync(new Uri("https://www.googleapis.com/drive/v3/files/1MBkHHCCuYiJO2Z19OT6djQmnPY0zc6Qv?alt=media&key=AIzaSyD3hsuSxEFnxZkgadbUSPt_iyx8qJ4lwWQ"), Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\DownloadHelper\\Release.zip");
-                        }
-                        */
             }
             catch (Exception ex)
             {
                 Services.LogSVC.LogFatalErr();
-                ErrorLogging(ex);
+                Services.LogSVC.LogStackTrace(ex);
                 MessageBox.Show(ex.Message, "Fatal error!", MessageBoxButton.OK, MessageBoxImage.Stop);
                 Environment.Exit(0);
             }
@@ -1631,6 +1624,24 @@ namespace AgsLauncherV2
         private void LegalNotice_MouseDown(object sender, MouseButtonEventArgs e)
         {
             System.Diagnostics.Process.Start(@"C:\\Program Files\\Internet Explorer\\iexplore.exe", "https://kianna.wtf/AveryGameLauncher2License/");
+        }
+
+        private void CrashLauncher_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                NavigationWindow window = new NavigationWindow();
+                window.Source = new Uri("Page1.xaml", UriKind.Relative);
+                window.Show();
+                this.Visibility = Visibility.Hidden;
+            }
+            catch (Exception ex)
+            {
+                Services.LogSVC.LogFatalErr();
+                Services.LogSVC.LogStackTrace(ex);
+                MessageBox.Show(ex.Message, "Fatal error!", MessageBoxButton.OK, MessageBoxImage.Stop);
+                Environment.Exit(0);
+            }
         }
     }
 }

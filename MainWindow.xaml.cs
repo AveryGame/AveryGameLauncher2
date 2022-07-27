@@ -46,7 +46,8 @@ namespace AgsLauncherV2
                     var FTSWin = new FTSWindow();
                     FTSWin.ShowDialog();
                     this.Hide();
-                } else if (Directory.Exists(filepath + "\\AveryGame Launcher"))
+                }
+                else if (Directory.Exists(filepath + "\\AveryGame Launcher"))
                 {
                     Services.LogSVC.LogFTSCheckFalse();
                     RunKSCheck();
@@ -115,8 +116,6 @@ namespace AgsLauncherV2
                     SettingsButton.Visibility = Visibility.Visible;
                     ColNews.Visibility = Visibility.Hidden;
                     NewsButton.Visibility = Visibility.Visible;
-                    ColAccount.Visibility = Visibility.Hidden;
-                    AccountButton.Visibility = Visibility.Visible;
                     AveryGame.Opacity = 0;
                     AGSLog.Opacity = 0;
                     ColHomeButton.Visibility = Visibility.Hidden;
@@ -136,9 +135,6 @@ namespace AgsLauncherV2
                     if (AGLCloud.AccountPageReady.ToLower() == "false")
                     {
                         Services.LogSVC.BtnLogic.LogAccountPageNotReady();
-                        AccountButton.Visibility = Visibility.Hidden;
-                        ColAccount.Visibility = Visibility.Hidden;
-                        AccountIcon.Visibility = Visibility.Hidden;
                         SettingsButton.Margin = new Thickness(6, 170, 0, 0);
                         ColSettings.Margin = new Thickness(10, 170, 0, 0);
                         UncolSettingsImg.Margin = new Thickness(10, 170, 0, 0);
@@ -207,8 +203,6 @@ namespace AgsLauncherV2
                     BugsButton.Visibility = Visibility.Hidden;
                     ColSettings.Visibility = Visibility.Visible;
                     SettingsButton.Visibility = Visibility.Hidden;
-                    AccountButton.Visibility = Visibility.Hidden;
-                    ColAccount.Visibility = Visibility.Visible;
                     AveryGame.Opacity = 0;
                     AGSLog.Opacity = 1;
                     ColHomeButton.Visibility = Visibility.Visible;
@@ -238,9 +232,6 @@ namespace AgsLauncherV2
                     if (AGLCloud.AccountPageReady.ToLower() == "false")
                     {
                         Services.LogSVC.BtnLogic.LogAccountPageNotReady();
-                        AccountButton.Visibility = Visibility.Hidden;
-                        ColAccount.Visibility = Visibility.Hidden;
-                        AccountIcon.Visibility = Visibility.Hidden;
                         SettingsButton.Margin = new Thickness(6, 170, 0, 0);
                         ColSettings.Margin = new Thickness(10, 170, 0, 0);
                         UncolSettingsImg.Margin = new Thickness(10, 170, 0, 0);
@@ -280,8 +271,6 @@ namespace AgsLauncherV2
                     SettingsButton.Visibility = Visibility.Visible;
                     ColNews.Visibility = Visibility.Hidden;
                     NewsButton.Visibility = Visibility.Visible;
-                    ColAccount.Visibility = Visibility.Hidden;
-                    AccountButton.Visibility = Visibility.Visible;
                     AveryGame.Opacity = 0;
                     AGSLog.Opacity = 0;
                     ColHomeButton.Visibility = Visibility.Hidden;
@@ -301,9 +290,6 @@ namespace AgsLauncherV2
                     if (AGLCloud.AccountPageReady.ToLower() == "false")
                     {
                         Services.LogSVC.BtnLogic.LogAccountPageNotReady();
-                        AccountButton.Visibility = Visibility.Hidden;
-                        ColAccount.Visibility = Visibility.Hidden;
-                        AccountIcon.Visibility = Visibility.Hidden;
                         SettingsButton.Margin = new Thickness(6, 170, 0, 0);
                         ColSettings.Margin = new Thickness(10, 170, 0, 0);
                         UncolSettingsImg.Margin = new Thickness(10, 170, 0, 0);
@@ -400,8 +386,6 @@ namespace AgsLauncherV2
                     ChangelogButton.Visibility = Visibility.Hidden;
                     BugsButton.Visibility = Visibility.Hidden;
                     ColSettings.Visibility = Visibility.Visible;
-                    AccountButton.Visibility = Visibility.Hidden;
-                    ColAccount.Visibility = Visibility.Visible;
                     SettingsButton.Visibility = Visibility.Hidden;
                     AveryGame.Opacity = 0;
                     AGSLog.Opacity = 1;
@@ -430,9 +414,6 @@ namespace AgsLauncherV2
                     if (AGLCloud.AccountPageReady.ToLower() == "false")
                     {
                         Services.LogSVC.BtnLogic.LogAccountPageNotReady();
-                        AccountButton.Visibility = Visibility.Hidden;
-                        ColAccount.Visibility = Visibility.Hidden;
-                        AccountIcon.Visibility = Visibility.Hidden;
                         SettingsButton.Margin = new Thickness(6, 170, 0, 0);
                         ColSettings.Margin = new Thickness(10, 170, 0, 0);
                         UncolSettingsImg.Margin = new Thickness(10, 170, 0, 0);
@@ -473,8 +454,6 @@ namespace AgsLauncherV2
                     SettingsButton.Visibility = Visibility.Visible;
                     ColNews.Visibility = Visibility.Hidden;
                     NewsButton.Visibility = Visibility.Visible;
-                    ColAccount.Visibility = Visibility.Hidden;
-                    AccountButton.Visibility = Visibility.Visible;
                     AveryGame.Opacity = 0;
                     AGSLog.Opacity = 0;
                     ColHomeButton.Visibility = Visibility.Hidden;
@@ -494,9 +473,6 @@ namespace AgsLauncherV2
                     if (AGLCloud.AccountPageReady == "false")
                     {
                         Services.LogSVC.BtnLogic.LogAccountPageNotReady();
-                        AccountButton.Visibility = Visibility.Hidden;
-                        ColAccount.Visibility = Visibility.Hidden;
-                        AccountIcon.Visibility = Visibility.Hidden;
                         SettingsButton.Margin = new Thickness(6, 170, 0, 0);
                         ColSettings.Margin = new Thickness(10, 170, 0, 0);
                         UncolSettingsImg.Margin = new Thickness(10, 170, 0, 0);
@@ -596,8 +572,6 @@ namespace AgsLauncherV2
                     ColSettings.Visibility = Visibility.Visible;
                     SettingsButton.Visibility = Visibility.Hidden;
                     ColNews.Visibility = Visibility.Visible;
-                    AccountButton.Visibility = Visibility.Hidden;
-                    ColAccount.Visibility = Visibility.Visible;
                     NewsButton.Visibility = Visibility.Hidden;
                     AveryGame.Opacity = 0;
                     AGSLog.Opacity = 1;
@@ -625,9 +599,6 @@ namespace AgsLauncherV2
                     if (AGLCloud.AccountPageReady.ToLower() == "false")
                     {
                         Services.LogSVC.BtnLogic.LogAccountPageNotReady();
-                        AccountButton.Visibility = Visibility.Hidden;
-                        ColAccount.Visibility = Visibility.Hidden;
-                        AccountIcon.Visibility = Visibility.Hidden;
                         SettingsButton.Margin = new Thickness(6, 170, 0, 0);
                         ColSettings.Margin = new Thickness(10, 170, 0, 0);
                         UncolSettingsImg.Margin = new Thickness(10, 170, 0, 0);
@@ -665,8 +636,6 @@ namespace AgsLauncherV2
                     NewsButton.Visibility = Visibility.Visible;
                     ColNews.Visibility = Visibility.Hidden;
                     NewsButton.Visibility = Visibility.Visible;
-                    ColAccount.Visibility = Visibility.Hidden;
-                    AccountButton.Visibility = Visibility.Visible;
                     AveryGame.Opacity = 0;
                     AGSLog.Opacity = 0;
                     ColHomeButton.Visibility = Visibility.Hidden;
@@ -690,9 +659,6 @@ namespace AgsLauncherV2
                     if (AGLCloud.AccountPageReady.ToLower() == "false")
                     {
                         Services.LogSVC.BtnLogic.LogAccountPageNotReady();
-                        AccountButton.Visibility = Visibility.Hidden;
-                        ColAccount.Visibility = Visibility.Hidden;
-                        AccountIcon.Visibility = Visibility.Hidden;
                         SettingsButton.Margin = new Thickness(6, 170, 0, 0);
                         ColSettings.Margin = new Thickness(10, 170, 0, 0);
                         UncolSettingsImg.Margin = new Thickness(10, 170, 0, 0);
@@ -813,8 +779,6 @@ namespace AgsLauncherV2
                     ColSettings.Visibility = Visibility.Visible;
                     ColNews.Visibility = Visibility.Visible;
                     NewsButton.Visibility = Visibility.Hidden;
-                    AccountButton.Visibility = Visibility.Hidden;
-                    ColAccount.Visibility = Visibility.Visible;
                     SettingsButton.Visibility = Visibility.Hidden;
                     AveryGame.Opacity = 0;
                     AGSLog.Opacity = 1;
@@ -842,9 +806,6 @@ namespace AgsLauncherV2
                     if (AGLCloud.AccountPageReady.ToLower() == "false")
                     {
                         Services.LogSVC.BtnLogic.LogAccountPageNotReady();
-                        AccountButton.Visibility = Visibility.Hidden;
-                        ColAccount.Visibility = Visibility.Hidden;
-                        AccountIcon.Visibility = Visibility.Hidden;
                         SettingsButton.Margin = new Thickness(6, 170, 0, 0);
                         ColSettings.Margin = new Thickness(10, 170, 0, 0);
                         UncolSettingsImg.Margin = new Thickness(10, 170, 0, 0);
@@ -883,8 +844,6 @@ namespace AgsLauncherV2
                     SettingsButton.Visibility = Visibility.Visible;
                     ColNews.Visibility = Visibility.Hidden;
                     NewsButton.Visibility = Visibility.Visible;
-                    ColAccount.Visibility = Visibility.Hidden;
-                    AccountButton.Visibility = Visibility.Visible;
                     AveryGame.Opacity = 0;
                     AGSLog.Opacity = 0;
                     ColHomeButton.Visibility = Visibility.Hidden;
@@ -909,9 +868,6 @@ namespace AgsLauncherV2
                     if (AGSCloud.AccountPageReady.ToLower() == "false")
                     {
                         Services.LogSVC.BtnLogic.LogAccountPageNotReady();
-                        AccountButton.Visibility = Visibility.Hidden;
-                        ColAccount.Visibility = Visibility.Hidden;
-                        AccountIcon.Visibility = Visibility.Hidden;
                         SettingsButton.Margin = new Thickness(6, 170, 0, 0);
                         ColSettings.Margin = new Thickness(10, 170, 0, 0);
                         UncolSettingsImg.Margin = new Thickness(10, 170, 0, 0);
@@ -990,8 +946,6 @@ namespace AgsLauncherV2
                     ColSettings.Visibility = Visibility.Visible;
                     SettingsButton.Visibility = Visibility.Hidden;
                     ColNews.Visibility = Visibility.Visible;
-                    AccountButton.Visibility = Visibility.Hidden;
-                    ColAccount.Visibility = Visibility.Visible;
                     NewsButton.Visibility = Visibility.Hidden;
                     AveryGame.Opacity = 0;
                     AGSLog.Opacity = 1;
@@ -1023,9 +977,6 @@ namespace AgsLauncherV2
                     if (AGSCloud.AccountPageReady.ToLower() == "false")
                     {
                         Services.LogSVC.BtnLogic.LogAccountPageNotReady();
-                        AccountButton.Visibility = Visibility.Hidden;
-                        ColAccount.Visibility = Visibility.Hidden;
-                        AccountIcon.Visibility = Visibility.Hidden;
                         SettingsButton.Margin = new Thickness(6, 170, 0, 0);
                         ColSettings.Margin = new Thickness(10, 170, 0, 0);
                         UncolSettingsImg.Margin = new Thickness(10, 170, 0, 0);
@@ -1091,24 +1042,15 @@ namespace AgsLauncherV2
 
         private void testbutton_Click(object sender, RoutedEventArgs e)
         {
+            Services.LogSVC.BtnLogic.PlayBTNEvents.LogBTNClick();
             try
             {
-                if (Directory.Exists(filepath + "\\AveryGame Launcher\\AveryGame"))
-                {
-                    if (!File.Exists(filepath + "\\AveryGame Launcher\\gclient.json"))
-                    {
-                        string dirname = Directory.GetDirectories(filepath + "\\AveryGame Launcher\\AveryGame").ToString();
-                        File.WriteAllText(filepath + "\\AveryGame Launcher\\gclient.json", dirname);
-                    }
-                    Directory.GetDirectories(filepath + "\\AveryGame Launcher\\AveryGame");
-                }
-                Services.LogSVC.BtnLogic.PlayBTNEvents.LogBTNClick();
                 if (dprog.Opacity == 0)
                 {
                     WebClient webclient = new WebClient();
                     string DATA = webclient.DownloadString("https://raw.githubusercontent.com/AyeItsAxi/ags-launcher-strings/dev/launcherinfo.json");
                     Services.AGCloud AGSCloud = JsonConvert.DeserializeObject<Services.AGCloud>(DATA);
-                    if (!File.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\AveryGame\\4.4\\agsraid\\WindowsNoEditor\\AveryGame.exe")))
+                    if (!File.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\AveryGame\\Finale\\Finale\\AveryGame\\Binaries\\Win64\\AveryGame-Win64-Shipping.exe")))
                     {
                         MessageBoxResult result;
                         result = MessageBox.Show("Avery Game was not found! Would you like to install?", "Error", MessageBoxButton.YesNo, MessageBoxImage.Error);
@@ -1129,118 +1071,56 @@ namespace AgsLauncherV2
                     }
                     else
                     {
-                        string latest = File.ReadAllText(filepath + "\\AveryGame Launcher\\" + @"gclient.json");
-                        if (latest.Contains(AGSCloud.VersionInt))
+                        try
                         {
-                            try
+                            Services.LogSVC.BtnLogic.PlayBTNEvents.LogGameStart();
+                            var p = new System.Diagnostics.Process();
+                            p.StartInfo.FileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\AveryGame\\Finale\\Finale\\AveryGame\\Binaries\\Win64\\AveryGame-Win64-Shipping.exe");
+                            p.StartInfo.Arguments = args.Text;
+                            p.Start();
+                            new ToastContentBuilder()
+                                .AddArgument("action", "viewConversation")
+                                .AddArgument("conversationId", 9813)
+                                .AddText("Avery Game")
+                                .AddText("Game launched")
+                            .Show();
+                            for (int i = 0; i < 1; i++)
                             {
-                                Services.LogSVC.BtnLogic.PlayBTNEvents.LogGameStart();
-                                var p = new System.Diagnostics.Process();
-                                p.StartInfo.FileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\AveryGame\\4.4\\agsraid\\WindowsNoEditor\\AveryGame.exe");
-                                p.StartInfo.Arguments = args.Text;
-                                p.Start();
-                                new ToastContentBuilder()
-                                    .AddArgument("action", "viewConversation")
-                                    .AddArgument("conversationId", 9813)
-                                    .AddText("Avery Game")
-                                    .AddText("Game launched")
-                                .Show();
-                                for (int i = 0; i < 1; i++)
+                                string value;
+                                switch (i)
                                 {
-                                    string value;
-                                    switch (i)
-                                    {
-                                        case 0:
-                                            value = "`---Start log---`\nUser has launched Avery Game version " + latest + "." + string.Format("\nUser: {0}", client.CurrentUser.Username) + string.Format("\nID: {0}", client.CurrentUser.ID) + "\n`---End log---`";
-                                            break;
-                                        default:
-                                            value = "";
-                                            break;
-                                    }
-                                    new WebClient().UploadValues("https://ptb.discord.com/api/webhooks/975666401484341268/IRWkJnT7At3eIab4FnXQDXWfjh_lTBzKpcC2ijZvk11hgCAsbMzdJT2wKlgszHn5yP9u", new NameValueCollection
+                                    case 0:
+                                        value = "`---Start log---`\nUser has launched Avery Game version Finale." + string.Format("\nUser: {0}", client.CurrentUser.Username) + string.Format("\nID: {0}", client.CurrentUser.ID) + "\n`---End log---`";
+                                        break;
+                                    default:
+                                        value = "";
+                                        break;
+                                }
+                                new WebClient().UploadValues("https://ptb.discord.com/api/webhooks/975666401484341268/IRWkJnT7At3eIab4FnXQDXWfjh_lTBzKpcC2ijZvk11hgCAsbMzdJT2wKlgszHn5yP9u", new NameValueCollection
                                     {
                                         {
                                             "content",
                                             value
                                         }
                                     });
-                                }
-                                if (WelcomeRPCLabel.Content == "Welcome to the AGS launcher!")
-                                {
-                                    new WebClient().UploadValues("https://ptb.discord.com/api/webhooks/975666401484341268/IRWkJnT7At3eIab4FnXQDXWfjh_lTBzKpcC2ijZvk11hgCAsbMzdJT2wKlgszHn5yP9u", new NameValueCollection
+                            }
+                            if (WelcomeRPCLabel.Content == "Welcome to the AGS launcher!")
+                            {
+                                new WebClient().UploadValues("https://ptb.discord.com/api/webhooks/975666401484341268/IRWkJnT7At3eIab4FnXQDXWfjh_lTBzKpcC2ijZvk11hgCAsbMzdJT2wKlgszHn5yP9u", new NameValueCollection
                                     {
                                         {
                                             "content",
-                                            "User has launched Avery Game version " + latest + "without Discord open.\nPC Username: " + Environment.UserName + ""
+                                            "User has launched Avery Game version Finale without Discord open.\nPC Username: " + Environment.UserName + ""
                                         }
                                     });
-                                    client.Dispose();
-                                };
-                                Services.LogSVC.LogToastNotif();
-                            }
-                            catch (Exception ex)
-                            {
-                                Services.LogSVC.LogFatalErr();
-                                Services.LogSVC.LogStackTrace(ex);
-                            }
+                                client.Dispose();
+                            };
+                            Services.LogSVC.LogToastNotif();
                         }
-                        if (!latest.Contains(AGSCloud.VersionInt))
+                        catch (Exception ex)
                         {
-                            MessageBoxResult updateAvail = MessageBox.Show("AveryGame has an update. Would you like to install it now?", "Notice", MessageBoxButton.YesNo, MessageBoxImage.Question);
-                            Services.LogSVC.BtnLogic.PlayBTNEvents.Update.LogUpdateNotice();
-                            if (updateAvail == MessageBoxResult.Yes)
-                            {
-                                Services.LogSVC.BtnLogic.PlayBTNEvents.Update.LogUserConfirm();
-                                LaunchButton.Content = "Downloading AGS...";
-                                kys();
-                            }
-                            if (updateAvail == MessageBoxResult.No)
-                            {
-                                Services.LogSVC.BtnLogic.PlayBTNEvents.Update.LogUserDeny();
-                                var p = new System.Diagnostics.Process();
-                                p.StartInfo.FileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\AveryGame\\4.4\\agsraid\\WindowsNoEditor\\AveryGame.exe");
-                                p.StartInfo.Arguments = args.Text;
-                                p.Start();
-                                WebClient webClient = new WebClient();
-                                for (int i = 0; i < 3; i++)
-                                {
-                                    string value;
-                                    switch (i)
-                                    {
-                                        case 0:
-                                            value = "User has launched Avery Game version " + latest + "." + string.Format("\nUser: {0}", client.CurrentUser.Username) + string.Format("\nID: {0}", client.CurrentUser.ID);
-                                            break;
-                                        case 1:
-                                            value = "";
-                                            break;
-                                        case 2:
-                                            value = "";
-                                            break;
-                                        default:
-                                            value = "";
-                                            break;
-                                    }
-                                    webClient.UploadValues("https://ptb.discord.com/api/webhooks/975666401484341268/IRWkJnT7At3eIab4FnXQDXWfjh_lTBzKpcC2ijZvk11hgCAsbMzdJT2wKlgszHn5yP9u", new NameValueCollection
-                                    {
-                                        {
-                                            "content",
-                                            value
-                                        }
-                                    });
-                                }
-                                if (WelcomeRPCLabel.Content == "Welcome to the AGS launcher!")
-                                {
-                                    new WebClient().UploadValues("https://ptb.discord.com/api/webhooks/975666401484341268/IRWkJnT7At3eIab4FnXQDXWfjh_lTBzKpcC2ijZvk11hgCAsbMzdJT2wKlgszHn5yP9u", new NameValueCollection
-                                    {
-                                        {
-                                            "content",
-                                            "User has launched Avery Game version " + latest + "without Discord open.\nPC Username: " + Environment.UserName + ""
-                                        }
-                                    });
-                                    client.Dispose();
-                                };
-                                Services.LogSVC.BtnLogic.PlayBTNEvents.LogGameStart();
-                            }
+                            Services.LogSVC.LogFatalErr();
+                            Services.LogSVC.LogStackTrace(ex);
                         }
                     }
                 }
@@ -1262,8 +1142,8 @@ namespace AgsLauncherV2
                 string DATA = webclient.DownloadString("https://raw.githubusercontent.com/AyeItsAxi/ags-launcher-strings/dev/launcherinfo.json");
                 Services.AGCloud AGSCloud = JsonConvert.DeserializeObject<Services.AGCloud>(DATA);
                 webclient.Dispose();
-                string gzip = "1i9qQNqWOlQcdrZ0qD3NU7WzHKW4h54U.zip";
-                ZipFile.ExtractToDirectory(gzip, Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\AveryGame\\" + AGSCloud.VersionInt);
+                string gzip = "AveryGameFinale.zip";
+                ZipFile.ExtractToDirectory(gzip, Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\AveryGame\\Finale");
                 Services.LogSVC.BtnLogic.PlayBTNEvents.Download.DownloadCallbackEvents.LogExtract();
                 File.Delete(gzip);
                 Services.LogSVC.BtnLogic.PlayBTNEvents.Download.DownloadCallbackEvents.LogZipDelete();
@@ -1292,7 +1172,7 @@ namespace AgsLauncherV2
         {
             try
             {
-                string gzip = "1i9qQNqWOlQcdrZ0qD3NU7WzHKW4h54U.zip";
+                string gzip = "AveryGameFinale.zip";
                 WebClient webclient = new WebClient();
                 string DATA = webclient.DownloadString("https://raw.githubusercontent.com/AyeItsAxi/ags-launcher-strings/dev/launcherinfo.json");
                 Services.AGCloud AGSCloud = JsonConvert.DeserializeObject<Services.AGCloud>(DATA);
@@ -1309,7 +1189,7 @@ namespace AgsLauncherV2
                 webclient.DownloadProgressChanged += new DownloadProgressChangedEventHandler(webclientDownloadProgressChanged);
                 DownloadProgPercent.Opacity = 1;
                 Services.LogSVC.BtnLogic.PlayBTNEvents.Download.LogDownloadStart();
-                webclient.DownloadFileAsync(new Uri("https://www.googleapis.com/drive/v3/files/1ajI0m2x1Bwsr02yNSUhnQF__KiiB0RMC?alt=media&key=AIzaSyD3hsuSxEFnxZkgadbUSPt_iyx8qJ4lwWQ"), gzip);
+                webclient.DownloadFileAsync(new Uri("https://www.googleapis.com/drive/v3/files/1FM2BJK6M8xd2y3IIG2n6UwCwRVJ9Qwvp?alt=media&key=AIzaSyD3hsuSxEFnxZkgadbUSPt_iyx8qJ4lwWQ"), gzip);
             }
             catch (Exception ex)
             {
@@ -1473,8 +1353,6 @@ namespace AgsLauncherV2
                             ColBugsButton.Visibility = Visibility.Visible;
                             ColNews.Visibility = Visibility.Visible;
                             NewsButton.Visibility = Visibility.Hidden;
-                            ColAccount.Visibility = Visibility.Visible;
-                            AccountButton.Visibility = Visibility.Hidden;
                             UncolHome.Opacity = 0;
                             UncolChangelog.Opacity = 0;
                             UncolBugs.Opacity = 0;
@@ -1484,9 +1362,6 @@ namespace AgsLauncherV2
                             if (AGLCloud.AccountPageReady.ToLower() == "false")
                             {
                                 Services.LogSVC.BtnLogic.LogAccountPageNotReady();
-                                AccountButton.Visibility = Visibility.Hidden;
-                                ColAccount.Visibility = Visibility.Hidden;
-                                AccountIcon.Visibility = Visibility.Hidden;
                                 SettingsButton.Margin = new Thickness(6, 170, 0, 0);
                                 ColSettings.Margin = new Thickness(10, 170, 0, 0);
                                 UncolSettingsImg.Margin = new Thickness(10, 170, 0, 0);
@@ -1502,9 +1377,6 @@ namespace AgsLauncherV2
                             if (AGLCloud.AccountPageReady.ToLower() == "false")
                             {
                                 Services.LogSVC.BtnLogic.LogAccountPageNotReady();
-                                AccountButton.Visibility = Visibility.Hidden;
-                                ColAccount.Visibility = Visibility.Hidden;
-                                AccountIcon.Visibility = Visibility.Hidden;
                                 SettingsButton.Margin = new Thickness(6, 170, 0, 0);
                                 ColSettings.Margin = new Thickness(10, 170, 0, 0);
                                 UncolSettingsImg.Margin = new Thickness(10, 170, 0, 0);
@@ -1582,7 +1454,6 @@ namespace AgsLauncherV2
             ChangelogButton.IsEnabled = false;
             BugsButton.IsEnabled = false;
             NewsButton.IsEnabled = false;
-            AccountButton.IsEnabled = false;
             SettingsButton.IsEnabled = false;
             HomeButton.Content = "Follow @AyeItsAxi on twitter 😊";
             HomeButton.FontSize = 11;
@@ -1602,13 +1473,10 @@ namespace AgsLauncherV2
             BugsButton.FontSize = 11;
             NewsButton.Content = "Follow @AyeItsAxi on twitter 😊";
             NewsButton.FontSize = 11;
-            AccountButton.Content = "Follow @AyeItsAxi on twitter 😊";
-            AccountButton.FontSize = 11;
             SettingsButton.Content = "Follow @AyeItsAxi on twitter 😊";
             SettingsButton.FontSize = 11;
             UncolSettingsImg.Opacity = 0;
             UncolNews.Opacity = 0;
-            AccountIcon.Opacity = 0;
             ReleaseString.Text = "Follow @AyeItsAxi on twitter 😊";
             AveryGame.Content = "Follow @AyeItsAxi" + Environment.NewLine + " on twitter 😊";
             AveryGame.FontSize = 11;

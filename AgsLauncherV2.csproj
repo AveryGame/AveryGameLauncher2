@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
-		<TargetFramework>netcoreapp3.1</TargetFramework>
+		<TargetFramework>net6.0-windows10.0.17763.0</TargetFramework>
 		<UseWPF>true</UseWPF>
 		<ApplicationIcon>LauncherImg\launcher.ico</ApplicationIcon>
 		<Authors>1 24 9 (Kianna)</Authors>
@@ -23,7 +23,7 @@
 		<AssemblyVersion>2.7.2.5</AssemblyVersion>
 		<FileVersion>2.7.2.5</FileVersion>
 		<ErrorReport>send</ErrorReport>
-		<SignAssembly>False</SignAssembly>
+		<SignAssembly>True</SignAssembly>
 		<EnableNETAnalyzers>True</EnableNETAnalyzers>
 		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
 		<AnalysisLevel>latest-minimum</AnalysisLevel>
@@ -34,19 +34,29 @@
 		<Optimize>True</Optimize>
 		<WarningLevel>4</WarningLevel>
 		<DebugType>embedded</DebugType>
+		<DefineConstants>$(DefineConstants)TRACE; PROD; RELEASE;</DefineConstants>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
 		<Optimize>False</Optimize>
 		<WarningLevel>4</WarningLevel>
 		<DebugType>embedded</DebugType>
+		<DefineConstants>$(DefineConstants)TRACE; PROD; RELEASE;</DefineConstants>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Prod|AnyCPU'">
 		<Optimize>False</Optimize>
 		<WarningLevel>4</WarningLevel>
 		<DebugType>embedded</DebugType>
+		<DefineConstants>$(DefineConstants)TRACE; PROD; RELEASE;</DefineConstants>
 	</PropertyGroup>
+
+	<ItemGroup>
+	  <Compile Remove="resources\**" />
+	  <EmbeddedResource Remove="resources\**" />
+	  <None Remove="resources\**" />
+	  <Page Remove="resources\**" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<None Remove="LauncherImg/AccountIcon.png" />
@@ -68,9 +78,12 @@
 		<PackageReference Include="DiscordRichPresence" Version="1.0.175" />
 		<PackageReference Include="DocumentFormat.OpenXml" Version="2.16.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+		<PackageReference Include="Microsoft.Build" Version="17.2.0" />
 		<PackageReference Include="Microsoft.Toolkit.Uwp.Notifications" Version="7.1.2" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+		<PackageReference Include="RestSharp" Version="108.0.1" />
 		<PackageReference Include="System.IO.Compression.ZipFile" Version="4.3.0" />
+		<PackageReference Include="System.Xml.ReaderWriter" Version="4.3.1" />
 		<PackageReference Include="WPFLocalizeExtension" Version="3.9.4" />
 	</ItemGroup>
 
@@ -103,10 +116,6 @@
 		  <Pack>True</Pack>
 		  <PackagePath>\</PackagePath>
 		</None>
-	</ItemGroup>
-
-	<ItemGroup>
-		<Folder Include="resources\" />
 	</ItemGroup>
 
 </Project>

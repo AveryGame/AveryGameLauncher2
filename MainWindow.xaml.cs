@@ -30,6 +30,8 @@ namespace AgsLauncherV2
     public partial class MainWindow : Window
     {
         public DiscordRpcClient client;
+
+        public string AveryGameLauncher2Appdata = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame launcher";
         public MainWindow()
         {
             InitializeComponent();
@@ -55,10 +57,9 @@ namespace AgsLauncherV2
             }
             catch (Exception ex)
             {
-                Services.LogSVC.LogFatalErr();
+                Services.LogSVC.LogLauncherShutdown();
                 Services.LogSVC.LogStackTrace(ex);
-                MessageBox.Show(ex.Message, "Fatal error!", MessageBoxButton.OK, MessageBoxImage.Stop);
-                Environment.Exit(0);
+                MessageBox.Show($"Error checking for first time setup. \r\n\r\n {ex.Message}");
             }
         }
         private void help(object sender, System.ComponentModel.AsyncCompletedEventArgs e)

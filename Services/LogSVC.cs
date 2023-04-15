@@ -20,6 +20,24 @@ namespace AgsLauncherV2.Services
                 File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\Logs\\LogV2.txt", "[LOGINIT] [" + DateTime.Now.ToString() + "]: Log service started" + Environment.NewLine);
             }
         }
+        public static DateTime GetStartTime()
+        {
+            if (File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\Logs\\LogV2.txt"))
+            {
+                string[] lines = File.ReadAllLines(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\Logs\\LogV2.txt");
+                foreach (string line in lines)
+                {
+                    if (line.Contains("[LOGINIT]"))
+                    {
+                        string[] split = line.Split(' ');
+                        string[] date = split[2].Split('-');
+                        string[] time = split[3].Split(':');
+                        return System.Diagnostics.Process.GetCurrentProcess().StartTime;
+                    }
+                }
+            }
+            return new DateTime();
+        }
         public static void LogStackTrace(Exception ex)
         {
             using (StreamWriter sw = File.AppendText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\AveryGame Launcher\\Logs\\LogV2.txt"))
